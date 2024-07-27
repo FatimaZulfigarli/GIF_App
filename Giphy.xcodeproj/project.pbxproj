@@ -16,12 +16,19 @@
 		4508AD652C50F99F00588B89 /* CategoriesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4508AD632C50F99F00588B89 /* CategoriesHeaderView.xib */; };
 		4508AD6A2C50FB8400588B89 /* CategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508AD682C50FB8400588B89 /* CategoriesCell.swift */; };
 		4508AD6B2C50FB8400588B89 /* CategoriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4508AD692C50FB8400588B89 /* CategoriesCell.xib */; };
-		4508AD6D2C50FBE400588B89 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508AD6C2C50FBE400588B89 /* SearchController.swift */; };
+		4508AD6D2C50FBE400588B89 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508AD6C2C50FBE400588B89 /* HomeController.swift */; };
 		4508ADA22C53BCD300588B89 /* CHTCollectionViewWaterfallLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 4508ADA12C53BCD300588B89 /* CHTCollectionViewWaterfallLayout */; };
 		4508ADA52C53BE9100588B89 /* GifStickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADA32C53BE9100588B89 /* GifStickerCell.swift */; };
 		4508ADA62C53BE9100588B89 /* GifStickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4508ADA42C53BE9100588B89 /* GifStickerCell.xib */; };
 		4508ADA82C53C20900588B89 /* Gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4508ADA72C53C20900588B89 /* Gif.gif */; };
 		4508ADAA2C53C43B00588B89 /* UIImageView+Extension .swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADA92C53C43B00588B89 /* UIImageView+Extension .swift */; };
+		4508ADB92C54DC2300588B89 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADB82C54DC2300588B89 /* NetworkManager.swift */; };
+		4508ADBC2C54DC5000588B89 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4508ADBB2C54DC5000588B89 /* Alamofire */; };
+		4508ADBE2C54DCC700588B89 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADBD2C54DCC700588B89 /* NetworkConstants.swift */; };
+		4508ADC12C54DF5400588B89 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADC02C54DF5400588B89 /* HomeViewModel.swift */; };
+		4508ADC42C54DF7800588B89 /* HomeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADC32C54DF7800588B89 /* HomeManager.swift */; };
+		4508ADC72C54DF9300588B89 /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADC62C54DF9300588B89 /* HomeUseCase.swift */; };
+		4508ADCB2C54EE1D00588B89 /* GIFModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADCA2C54EE1D00588B89 /* GIFModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,11 +43,17 @@
 		4508AD632C50F99F00588B89 /* CategoriesHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesHeaderView.xib; sourceTree = "<group>"; };
 		4508AD682C50FB8400588B89 /* CategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCell.swift; sourceTree = "<group>"; };
 		4508AD692C50FB8400588B89 /* CategoriesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesCell.xib; sourceTree = "<group>"; };
-		4508AD6C2C50FBE400588B89 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		4508AD6C2C50FBE400588B89 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		4508ADA32C53BE9100588B89 /* GifStickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifStickerCell.swift; sourceTree = "<group>"; };
 		4508ADA42C53BE9100588B89 /* GifStickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifStickerCell.xib; sourceTree = "<group>"; };
 		4508ADA72C53C20900588B89 /* Gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Gif.gif; sourceTree = "<group>"; };
 		4508ADA92C53C43B00588B89 /* UIImageView+Extension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension .swift"; sourceTree = "<group>"; };
+		4508ADB82C54DC2300588B89 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		4508ADBD2C54DCC700588B89 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		4508ADC02C54DF5400588B89 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		4508ADC32C54DF7800588B89 /* HomeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeManager.swift; sourceTree = "<group>"; };
+		4508ADC62C54DF9300588B89 /* HomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCase.swift; sourceTree = "<group>"; };
+		4508ADCA2C54EE1D00588B89 /* GIFModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +62,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4508ADA22C53BCD300588B89 /* CHTCollectionViewWaterfallLayout in Frameworks */,
+				4508ADBC2C54DC5000588B89 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,21 +90,91 @@
 			children = (
 				4508AD482C4FC17800588B89 /* AppDelegate.swift */,
 				4508AD4A2C4FC17800588B89 /* SceneDelegate.swift */,
+				4508ADBF2C54DF3100588B89 /* Core */,
+				4508ADB52C54D5AB00588B89 /* HomeController */,
 				4508AD4E2C4FC17800588B89 /* Main.storyboard */,
-				4508AD622C50F99F00588B89 /* CategoriesHeaderView.swift */,
-				4508AD632C50F99F00588B89 /* CategoriesHeaderView.xib */,
-				4508AD682C50FB8400588B89 /* CategoriesCell.swift */,
-				4508AD692C50FB8400588B89 /* CategoriesCell.xib */,
-				4508AD6C2C50FBE400588B89 /* SearchController.swift */,
-				4508ADA92C53C43B00588B89 /* UIImageView+Extension .swift */,
-				4508ADA32C53BE9100588B89 /* GifStickerCell.swift */,
-				4508ADA42C53BE9100588B89 /* GifStickerCell.xib */,
+				4508ADB22C54D55700588B89 /* Extensions */,
+				4508ADB32C54D56200588B89 /* GifStickerCell */,
 				4508AD512C4FC17900588B89 /* Assets.xcassets */,
 				4508AD532C4FC17900588B89 /* LaunchScreen.storyboard */,
 				4508AD562C4FC17900588B89 /* Info.plist */,
 				4508ADA72C53C20900588B89 /* Gif.gif */,
 			);
 			path = Giphy;
+			sourceTree = "<group>";
+		};
+		4508ADB02C54D4BF00588B89 /* CategoriesHeader */ = {
+			isa = PBXGroup;
+			children = (
+				4508AD632C50F99F00588B89 /* CategoriesHeaderView.xib */,
+				4508AD622C50F99F00588B89 /* CategoriesHeaderView.swift */,
+				4508ADB12C54D54700588B89 /* CategoriesCell */,
+			);
+			path = CategoriesHeader;
+			sourceTree = "<group>";
+		};
+		4508ADB12C54D54700588B89 /* CategoriesCell */ = {
+			isa = PBXGroup;
+			children = (
+				4508AD692C50FB8400588B89 /* CategoriesCell.xib */,
+				4508AD682C50FB8400588B89 /* CategoriesCell.swift */,
+			);
+			path = CategoriesCell;
+			sourceTree = "<group>";
+		};
+		4508ADB22C54D55700588B89 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4508ADA92C53C43B00588B89 /* UIImageView+Extension .swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4508ADB32C54D56200588B89 /* GifStickerCell */ = {
+			isa = PBXGroup;
+			children = (
+				4508ADA42C53BE9100588B89 /* GifStickerCell.xib */,
+				4508ADA32C53BE9100588B89 /* GifStickerCell.swift */,
+			);
+			path = GifStickerCell;
+			sourceTree = "<group>";
+		};
+		4508ADB52C54D5AB00588B89 /* HomeController */ = {
+			isa = PBXGroup;
+			children = (
+				4508ADC02C54DF5400588B89 /* HomeViewModel.swift */,
+				4508AD6C2C50FBE400588B89 /* HomeController.swift */,
+				4508ADCA2C54EE1D00588B89 /* GIFModel.swift */,
+				4508ADB02C54D4BF00588B89 /* CategoriesHeader */,
+			);
+			path = HomeController;
+			sourceTree = "<group>";
+		};
+		4508ADBF2C54DF3100588B89 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4508ADC52C54DF8200588B89 /* Use Cases */,
+				4508ADC22C54DF6300588B89 /* Managers */,
+				4508ADB82C54DC2300588B89 /* NetworkManager.swift */,
+				4508ADBD2C54DCC700588B89 /* NetworkConstants.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		4508ADC22C54DF6300588B89 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				4508ADC32C54DF7800588B89 /* HomeManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		4508ADC52C54DF8200588B89 /* Use Cases */ = {
+			isa = PBXGroup;
+			children = (
+				4508ADC62C54DF9300588B89 /* HomeUseCase.swift */,
+			);
+			path = "Use Cases";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -111,6 +195,7 @@
 			name = Giphy;
 			packageProductDependencies = (
 				4508ADA12C53BCD300588B89 /* CHTCollectionViewWaterfallLayout */,
+				4508ADBB2C54DC5000588B89 /* Alamofire */,
 			);
 			productName = Giphy;
 			productReference = 4508AD452C4FC17800588B89 /* Giphy.app */;
@@ -142,6 +227,7 @@
 			mainGroup = 4508AD3C2C4FC17800588B89;
 			packageReferences = (
 				4508ADA02C53BCD300588B89 /* XCRemoteSwiftPackageReference "CHTCollectionViewWaterfallLayout" */,
+				4508ADBA2C54DC5000588B89 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 4508AD462C4FC17800588B89 /* Products */;
 			projectDirPath = "";
@@ -174,10 +260,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4508ADC42C54DF7800588B89 /* HomeManager.swift in Sources */,
+				4508ADBE2C54DCC700588B89 /* NetworkConstants.swift in Sources */,
 				4508ADA52C53BE9100588B89 /* GifStickerCell.swift in Sources */,
 				4508AD492C4FC17800588B89 /* AppDelegate.swift in Sources */,
+				4508ADC12C54DF5400588B89 /* HomeViewModel.swift in Sources */,
 				4508ADAA2C53C43B00588B89 /* UIImageView+Extension .swift in Sources */,
-				4508AD6D2C50FBE400588B89 /* SearchController.swift in Sources */,
+				4508ADC72C54DF9300588B89 /* HomeUseCase.swift in Sources */,
+				4508AD6D2C50FBE400588B89 /* HomeController.swift in Sources */,
+				4508ADB92C54DC2300588B89 /* NetworkManager.swift in Sources */,
+				4508ADCB2C54EE1D00588B89 /* GIFModel.swift in Sources */,
 				4508AD6A2C50FB8400588B89 /* CategoriesCell.swift in Sources */,
 				4508AD642C50F99F00588B89 /* CategoriesHeaderView.swift in Sources */,
 				4508AD4B2C4FC17800588B89 /* SceneDelegate.swift in Sources */,
@@ -411,6 +503,14 @@
 				minimumVersion = 0.9.10;
 			};
 		};
+		4508ADBA2C54DC5000588B89 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -418,6 +518,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4508ADA02C53BCD300588B89 /* XCRemoteSwiftPackageReference "CHTCollectionViewWaterfallLayout" */;
 			productName = CHTCollectionViewWaterfallLayout;
+		};
+		4508ADBB2C54DC5000588B89 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4508ADBA2C54DC5000588B89 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
