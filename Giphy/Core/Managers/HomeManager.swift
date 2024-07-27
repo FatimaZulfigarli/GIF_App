@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 class HomeManager {
     func fetchTrendingGIFs(completion: @escaping (GIFModel?, String?) -> Void) {
         NetworkManager.request(model: GIFModel.self, endpoint: .gifsTrending) { response, error in

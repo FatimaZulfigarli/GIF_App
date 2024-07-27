@@ -4,10 +4,8 @@
 //
 //  Created by Fatya on 27.07.24.
 //
-
 import Foundation
 import Alamofire
-
 
 enum BaseURL {
     case v1
@@ -45,13 +43,12 @@ enum Endpoint {
 
 class NetworkConstants {
     static let baseURL = "https://api.giphy.com/"
-    static let header: HTTPHeaders = ["Authorization": "Bearer uZQeYKsD27WiYMFwwTbJGVsLsRu3YFzv"]
+    static let apiKey = "uZQeYKsD27WiYMFwwTbJGVsLsRu3YFzv"
     
     static func getUrl(for endpoint: Endpoint) -> String {
-        return endpoint.path
+        return "\(endpoint.path)?api_key=\(apiKey)"
     }
 }
-
 
 //this is my GIF endpoint
 //api.giphy.com/v1/gifs/trending

@@ -11,8 +11,10 @@ class GifStickerCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     
     override func awakeFromNib() {
-        super.awakeFromNib()
-        imageView.loadGif(name: "Gif")
-    }
+           super.awakeFromNib()
+       }
 
-}
+       func configure(with url: String) {
+           imageView.loadGif(from: url)
+       }
+   }
