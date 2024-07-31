@@ -29,6 +29,9 @@
 		4508ADC42C54DF7800588B89 /* HomeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADC32C54DF7800588B89 /* HomeManager.swift */; };
 		4508ADC72C54DF9300588B89 /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADC62C54DF9300588B89 /* HomeUseCase.swift */; };
 		4508ADCB2C54EE1D00588B89 /* GIFModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADCA2C54EE1D00588B89 /* GIFModel.swift */; };
+		4508ADCD2C5A9DDC00588B89 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADCC2C5A9DDC00588B89 /* DetailController.swift */; };
+		4508ADD02C5A9E3300588B89 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADCF2C5A9E3300588B89 /* DetailCoordinator.swift */; };
+		4508ADD22C5A9E5800588B89 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADD12C5A9E5800588B89 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,9 @@
 		4508ADC32C54DF7800588B89 /* HomeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeManager.swift; sourceTree = "<group>"; };
 		4508ADC62C54DF9300588B89 /* HomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCase.swift; sourceTree = "<group>"; };
 		4508ADCA2C54EE1D00588B89 /* GIFModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFModel.swift; sourceTree = "<group>"; };
+		4508ADCC2C5A9DDC00588B89 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
+		4508ADCF2C5A9E3300588B89 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
+		4508ADD12C5A9E5800588B89 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,7 @@
 				4508ADBF2C54DF3100588B89 /* Core */,
 				4508ADB52C54D5AB00588B89 /* HomeController */,
 				4508AD4E2C4FC17800588B89 /* Main.storyboard */,
+				4508ADCE2C5A9DE800588B89 /* DetailController */,
 				4508ADB22C54D55700588B89 /* Extensions */,
 				4508ADB32C54D56200588B89 /* GifStickerCell */,
 				4508AD512C4FC17900588B89 /* Assets.xcassets */,
@@ -153,6 +160,7 @@
 		4508ADBF2C54DF3100588B89 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				4508ADD12C5A9E5800588B89 /* Coordinator.swift */,
 				4508ADC52C54DF8200588B89 /* Use Cases */,
 				4508ADC22C54DF6300588B89 /* Managers */,
 				4508ADB82C54DC2300588B89 /* NetworkManager.swift */,
@@ -175,6 +183,15 @@
 				4508ADC62C54DF9300588B89 /* HomeUseCase.swift */,
 			);
 			path = "Use Cases";
+			sourceTree = "<group>";
+		};
+		4508ADCE2C5A9DE800588B89 /* DetailController */ = {
+			isa = PBXGroup;
+			children = (
+				4508ADCC2C5A9DDC00588B89 /* DetailController.swift */,
+				4508ADCF2C5A9E3300588B89 /* DetailCoordinator.swift */,
+			);
+			path = DetailController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,14 +277,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4508ADD22C5A9E5800588B89 /* Coordinator.swift in Sources */,
 				4508ADC42C54DF7800588B89 /* HomeManager.swift in Sources */,
 				4508ADBE2C54DCC700588B89 /* NetworkConstants.swift in Sources */,
 				4508ADA52C53BE9100588B89 /* GifStickerCell.swift in Sources */,
+				4508ADD02C5A9E3300588B89 /* DetailCoordinator.swift in Sources */,
 				4508AD492C4FC17800588B89 /* AppDelegate.swift in Sources */,
 				4508ADC12C54DF5400588B89 /* HomeViewModel.swift in Sources */,
 				4508ADAA2C53C43B00588B89 /* UIImageView+Extension .swift in Sources */,
 				4508ADC72C54DF9300588B89 /* HomeUseCase.swift in Sources */,
 				4508AD6D2C50FBE400588B89 /* HomeController.swift in Sources */,
+				4508ADCD2C5A9DDC00588B89 /* DetailController.swift in Sources */,
 				4508ADB92C54DC2300588B89 /* NetworkManager.swift in Sources */,
 				4508ADCB2C54EE1D00588B89 /* GIFModel.swift in Sources */,
 				4508AD6A2C50FB8400588B89 /* CategoriesCell.swift in Sources */,
