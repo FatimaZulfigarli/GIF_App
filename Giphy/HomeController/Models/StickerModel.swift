@@ -1,41 +1,49 @@
 //
-//  GIFModel.swift
+//  StickerModel.swift
 //  Giphy
 //
-//  Created by Fatya on 27.07.24.
+//  Created by Fatya on 01.08.24.
 //
 
+// StickerModel.swift
 
 import Foundation
 
-// MARK: - GIFModel
-struct GIFModel: Codable {
-    let data: [Datum]?
-    let meta: Meta?
-    let pagination: Pagination?
+// MARK: - StickerModel
+struct StickerModel: Codable {
+    let data: [StickerDatum]?
+    let meta: StickerMeta?
+    let pagination: StickerPagination?
 }
 
-// MARK: - Datum
-struct Datum: Codable {
-    let type: TypeEnum?
+// MARK: - StickerDatum
+struct StickerDatum: Codable, GifStickerCellConfigurable {
+    let type: StickerTypeEnum?
     let id: String?
     let url: String?
     let slug: String?
-    let bitlyGIFURL, bitlyURL: String?
+    let bitlyGIFURL: String?
+    let bitlyURL: String?
     let embedURL: String?
     let username: String?
     let source: String?
     let title: String?
-    let rating: Rating?
-    let contentURL, sourceTLD: String?
+    let rating: StickerRating?
+    let contentURL: String?
+    let sourceTLD: String?
     let sourcePostURL: String?
     let isSticker: Int?
-    let importDatetime, trendingDatetime: String?
-    let images: Images?
-    let user: User?
+    let importDatetime: String?
+    let trendingDatetime: String?
+    let images: StickerImages?
+    let user: StickerUser?
     let analyticsResponsePayload: String?
-    let analytics: Analytics?
+    let analytics: StickerAnalytics?
     let altText: String?
+
+    var imageURL: String? {
+        return images?.fixedHeight?.url
+    }
 
     enum CodingKeys: String, CodingKey {
         case type, id, url, slug
@@ -56,33 +64,45 @@ struct Datum: Codable {
     }
 }
 
-// MARK: - Analytics
-struct Analytics: Codable {
-    let onload, onclick, onsent: Onclick?
+// MARK: - StickerAnalytics
+struct StickerAnalytics: Codable {
+    let onload: StickerOnclick?
+    let onclick: StickerOnclick?
+    let onsent: StickerOnclick?
 }
 
-// MARK: - Onclick
-struct Onclick: Codable {
+// MARK: - StickerOnclick
+struct StickerOnclick: Codable {
     let url: String?
 }
 
-// MARK: - Images
-struct Images: Codable {
-    let original: FixedHeight?
-    let downsized, downsizedLarge, downsizedMedium: The480_WStill?
-    let downsizedSmall: The4_K?
-    let downsizedStill: The480_WStill?
-    let fixedHeight, fixedHeightDownsampled, fixedHeightSmall: FixedHeight?
-    let fixedHeightSmallStill, fixedHeightStill: The480_WStill?
-    let fixedWidth, fixedWidthDownsampled, fixedWidthSmall: FixedHeight?
-    let fixedWidthSmallStill, fixedWidthStill: The480_WStill?
-    let looping: Looping?
-    let originalStill: The480_WStill?
-    let originalMp4, preview: The4_K?
-    let previewGIF, previewWebp: The480_WStill?
-    let hd: The4_K?
-    let the480WStill: The480_WStill?
-    let the4K: The4_K?
+// MARK: - StickerImages
+struct StickerImages: Codable {
+    let original: StickerFixedHeight?
+    let downsized: Sticker480WStill?
+    let downsizedLarge: Sticker480WStill?
+    let downsizedMedium: Sticker480WStill?
+    let downsizedSmall: Sticker4K?
+    let downsizedStill: Sticker480WStill?
+    let fixedHeight: StickerFixedHeight?
+    let fixedHeightDownsampled: StickerFixedHeight?
+    let fixedHeightSmall: StickerFixedHeight?
+    let fixedHeightSmallStill: Sticker480WStill?
+    let fixedHeightStill: Sticker480WStill?
+    let fixedWidth: StickerFixedHeight?
+    let fixedWidthDownsampled: StickerFixedHeight?
+    let fixedWidthSmall: StickerFixedHeight?
+    let fixedWidthSmallStill: Sticker480WStill?
+    let fixedWidthStill: Sticker480WStill?
+    let looping: StickerLooping?
+    let originalStill: Sticker480WStill?
+    let originalMp4: Sticker4K?
+    let preview: Sticker4K?
+    let previewGIF: Sticker480WStill?
+    let previewWebp: Sticker480WStill?
+    let hd: Sticker4K?
+    let the480WStill: Sticker480WStill?
+    let the4K: Sticker4K?
 
     enum CodingKeys: String, CodingKey {
         case original, downsized
@@ -106,21 +126,25 @@ struct Images: Codable {
         case preview
         case previewGIF = "preview_gif"
         case previewWebp = "preview_webp"
-        case hd
         case the480WStill = "480w_still"
+        case hd
         case the4K = "4k"
     }
 }
 
-// MARK: - The480_WStill
-struct The480_WStill: Codable {
-    let height, width, size: String?
+// MARK: - Sticker480WStill
+struct Sticker480WStill: Codable {
+    let height: String?
+    let width: String?
+    let size: String?
     let url: String?
 }
 
-// MARK: - The4_K
-struct The4_K: Codable {
-    let height, width, mp4Size: String?
+// MARK: - Sticker4K
+struct Sticker4K: Codable {
+    let height: String?
+    let width: String?
+    let mp4Size: String?
     let mp4: String?
 
     enum CodingKeys: String, CodingKey {
@@ -130,15 +154,18 @@ struct The4_K: Codable {
     }
 }
 
-// MARK: - FixedHeight
-struct FixedHeight: Codable {
-    let height, width, size: String?
+// MARK: - StickerFixedHeight
+struct StickerFixedHeight: Codable {
+    let height: String?
+    let width: String?
+    let size: String?
     let url: String?
     let mp4Size: String?
     let mp4: String?
     let webpSize: String?
     let webp: String?
-    let frames, hash: String?
+    let frames: String?
+    let hash: String?
 
     enum CodingKeys: String, CodingKey {
         case height, width, size, url
@@ -149,8 +176,8 @@ struct FixedHeight: Codable {
     }
 }
 
-// MARK: - Looping
-struct Looping: Codable {
+// MARK: - StickerLooping
+struct StickerLooping: Codable {
     let mp4Size: String?
     let mp4: String?
 
@@ -160,20 +187,31 @@ struct Looping: Codable {
     }
 }
 
-enum Rating: String, Codable {
+enum StickerRating: String, Codable {
     case g = "g"
     case pg = "pg"
 }
 
-enum TypeEnum: String, Codable {
-    case gif = "gif"
+enum StickerTypeEnum: String, Codable {
+    case sticker = "sticker"
+    case text = "text"
+    case emoji = "emoji"
+    case unknown
+
+    init(from decoder: Decoder) throws {
+        self = try StickerTypeEnum(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .unknown
+    }
 }
 
-// MARK: - User
-struct User: Codable {
-    let avatarURL, bannerImage, bannerURL: String?
+// MARK: - StickerUser
+struct StickerUser: Codable {
+    let avatarURL: String?
+    let bannerImage: String?
+    let bannerURL: String?
     let profileURL: String?
-    let username, displayName, description: String?
+    let username: String?
+    let displayName: String?
+    let description: String?
     let instagramURL: String?
     let websiteURL: String?
     let isVerified: Bool?
@@ -192,10 +230,11 @@ struct User: Codable {
     }
 }
 
-// MARK: - Meta
-struct Meta: Codable {
+// MARK: - StickerMeta
+struct StickerMeta: Codable {
     let status: Int?
-    let msg, responseID: String?
+    let msg: String?
+    let responseID: String?
 
     enum CodingKeys: String, CodingKey {
         case status, msg
@@ -203,9 +242,11 @@ struct Meta: Codable {
     }
 }
 
-// MARK: - Pagination
-struct Pagination: Codable {
-    let totalCount, count, offset: Int?
+// MARK: - StickerPagination
+struct StickerPagination: Codable {
+    let totalCount: Int?
+    let count: Int?
+    let offset: Int?
 
     enum CodingKeys: String, CodingKey {
         case totalCount = "total_count"

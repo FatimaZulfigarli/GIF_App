@@ -7,14 +7,20 @@
 
 import UIKit
 
+protocol GifStickerCellConfigurable {
+    var imageURL: String? { get }
+}
+
 class GifStickerCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     
     override func awakeFromNib() {
-           super.awakeFromNib()
-       }
+            super.awakeFromNib()
+        }
 
-       func configure(with url: String) {
-           imageView.loadGif(from: url)
-       }
-   }
+        func configure(with model: GifStickerCellConfigurable) {
+            if let url = model.imageURL {
+                imageView.loadGif(from: url)
+            }
+        }
+    }

@@ -32,6 +32,7 @@
 		4508ADCD2C5A9DDC00588B89 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADCC2C5A9DDC00588B89 /* DetailController.swift */; };
 		4508ADD02C5A9E3300588B89 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADCF2C5A9E3300588B89 /* DetailCoordinator.swift */; };
 		4508ADD22C5A9E5800588B89 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADD12C5A9E5800588B89 /* Coordinator.swift */; };
+		4508ADD42C5B9DF300588B89 /* StickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADD32C5B9DF300588B89 /* StickerModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		4508ADCC2C5A9DDC00588B89 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		4508ADCF2C5A9E3300588B89 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 		4508ADD12C5A9E5800588B89 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		4508ADD32C5B9DF300588B89 /* StickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +153,7 @@
 			children = (
 				4508ADC02C54DF5400588B89 /* HomeViewModel.swift */,
 				4508AD6C2C50FBE400588B89 /* HomeController.swift */,
-				4508ADCA2C54EE1D00588B89 /* GIFModel.swift */,
+				4508ADD52C5B9DF800588B89 /* Models */,
 				4508ADB02C54D4BF00588B89 /* CategoriesHeader */,
 			);
 			path = HomeController;
@@ -192,6 +194,15 @@
 				4508ADCF2C5A9E3300588B89 /* DetailCoordinator.swift */,
 			);
 			path = DetailController;
+			sourceTree = "<group>";
+		};
+		4508ADD52C5B9DF800588B89 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4508ADCA2C54EE1D00588B89 /* GIFModel.swift */,
+				4508ADD32C5B9DF300588B89 /* StickerModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +304,7 @@
 				4508AD6A2C50FB8400588B89 /* CategoriesCell.swift in Sources */,
 				4508AD642C50F99F00588B89 /* CategoriesHeaderView.swift in Sources */,
 				4508AD4B2C4FC17800588B89 /* SceneDelegate.swift in Sources */,
+				4508ADD42C5B9DF300588B89 /* StickerModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

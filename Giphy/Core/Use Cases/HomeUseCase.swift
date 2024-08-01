@@ -8,15 +8,17 @@
 import Foundation
 
 class HomeUseCase {
-    private let manager: HomeManager
-    
-    init(manager: HomeManager = HomeManager()) {
-        self.manager = manager
-    }
-    
+    private let manager = HomeManager()
+
     func getTrendingGIFs(completion: @escaping ([Datum]?, String?) -> Void) {
         manager.fetchTrendingGIFs { gifModel, error in
             completion(gifModel?.data, error)
+        }
+    }
+    
+    func getTrendingStickers(completion: @escaping ([StickerDatum]?, String?) -> Void) {
+        manager.fetchTrendingStickers { stickerModel, error in
+            completion(stickerModel?.data, error)
         }
     }
 }
