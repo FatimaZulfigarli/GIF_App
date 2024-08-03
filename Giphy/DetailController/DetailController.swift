@@ -13,5 +13,4 @@ class DetailController: UIViewController {
         super.viewDidLoad()
 
     }
-    
 }

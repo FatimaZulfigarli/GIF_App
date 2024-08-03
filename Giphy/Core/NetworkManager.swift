@@ -42,11 +42,7 @@ class NetworkManager {
         }
     }
 }
-//import Foundation
-//import Alamofire
-//
 //class NetworkManager {
-//   
 //    static func request<T: Codable>(model: T.Type,
 //                                    endpoint: Endpoint,
 //                                    method: HTTPMethod = .get,
@@ -58,10 +54,20 @@ class NetworkManager {
 //        AF.request(url,
 //                   method: method,
 //                   parameters: parameters,
-//                   encoding: encoding).responseDecodable(of: T.self) { response in
+//                   encoding: encoding).responseData { response in
 //            switch response.result {
 //            case .success(let data):
-//                completion(data, nil)
+//                // Log the raw response data
+//                if let jsonString = String(data: data, encoding: .utf8) {
+//                    print("Response JSON: \(jsonString)")
+//                }
+//                // Try to decode the data
+//                do {
+//                    let decodedData = try JSONDecoder().decode(T.self, from: data)
+//                    completion(decodedData, nil)
+//                } catch {
+//                    completion(nil, "Decoding error: \(error)")
+//                }
 //            case .failure(let error):
 //                completion(nil, error.localizedDescription)
 //            }
