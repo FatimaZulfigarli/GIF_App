@@ -85,18 +85,20 @@ class HomeViewModel {
     var onFetchFailed: ((String) -> Void)?
     
     func fetchContent(for category: Int) {
-        print("Fetching content for category: \(category)")
-        switch category {
-        case 0: // GIFs
-            fetchTrendingGIFs()
-        case 1: // Stickers
-            fetchTrendingStickers()
-        case 2: // Emojis
-            fetchEmojis()
-        default:
-            print("Unknown category: \(category)")
+            print("Fetching content for category: \(category)")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+                switch category {
+                case 0: // GIFs
+                    self?.fetchTrendingGIFs()
+                case 1: // Stickers
+                    self?.fetchTrendingStickers()
+                case 2: // Emojis
+                    self?.fetchEmojis()
+                default:
+                    print("Unknown category: \(category)")
+                }
+            }
         }
-    }
 
     private func fetchTrendingGIFs() {
         print("Fetching trending GIFs")

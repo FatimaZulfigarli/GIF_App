@@ -11,15 +11,23 @@ class HomeController: UIViewController {
     
     @IBOutlet weak var collection: UICollectionView!
     private let viewModel = HomeViewModel()
-           
+    private let loadingIndicator = UIActivityIndicatorView(style: .large)
+
        override func viewDidLoad() {
            super.viewDidLoad()
-           
+           setupLoadingIndicator()
+
            setupCollectionView()
            bindViewModel()
            viewModel.fetchContent(for: 0) // Start with GIFs
        }
        
+    private func setupLoadingIndicator() {
+        loadingIndicator.center = view.center
+        loadingIndicator.hidesWhenStopped = true
+        view.addSubview(loadingIndicator)
+    }
+
        private func setupCollectionView() {
            let layout = CHTCollectionViewWaterfallLayout()
            layout.columnCount = 2
@@ -37,15 +45,36 @@ class HomeController: UIViewController {
            collection.register(UINib(nibName: "\(CategoriesHeaderView.self)", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(CategoriesHeaderView.self)")
        }
        
-       private func bindViewModel() {
+    private func bindViewModel() {
            viewModel.onFetchCompleted = { [weak self] in
-               self?.collection.reloadData()
+               print("Fetch completed, reloading collection view")
+               DispatchQueue.main.async {
+                   self?.collection.reloadData()
+                   self?.hideLoadingIndicator()
+               }
            }
            
-           viewModel.onFetchFailed = { error in
+           viewModel.onFetchFailed = { [weak self] error in
                print("Failed to fetch data: \(error)")
+               DispatchQueue.main.async {
+                   self?.hideLoadingIndicator()
+                   // Optionally show an error message to the user
+               }
            }
        }
+    private func showLoadingIndicator() {
+            DispatchQueue.main.async {
+                self.loadingIndicator.startAnimating()
+                self.collection.isUserInteractionEnabled = false
+            }
+        }
+        
+        private func hideLoadingIndicator() {
+            DispatchQueue.main.async {
+                self.loadingIndicator.stopAnimating()
+                self.collection.isUserInteractionEnabled = true
+            }
+        }
        
        private func showDetailController() {
            let detailCoordinator = DetailCoordinator(navigationController: self.navigationController ?? UINavigationController())
@@ -85,6 +114,7 @@ class HomeController: UIViewController {
                if kind == UICollectionView.elementKindSectionHeader {
                    let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategoriesHeaderView", for: indexPath) as! CategoriesHeaderView
                    headerView.didSelectCategory = { [weak self] index in
+                       self?.showLoadingIndicator()
                        self?.viewModel.fetchContent(for: index)
                    }
                    return headerView
@@ -92,6 +122,7 @@ class HomeController: UIViewController {
                return UICollectionReusableView()
            }
        }
+
 
    extension HomeController: UICollectionViewDelegate {
        func collectionView(_ collection: UICollectionView, didSelectItemAt indexPath: IndexPath) {
