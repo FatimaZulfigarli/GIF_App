@@ -65,21 +65,42 @@ class HomeController: UIViewController {
            return cell
        }
        
+//       func collectionView(_ collection: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//           if kind == UICollectionView.elementKindSectionHeader {
+//               let header = collection.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(CategoriesHeaderView.self)", for: indexPath) as! CategoriesHeaderView
+//               header.didSelectCategory = { [weak self] index in
+//                   if index == 0 {
+//                       self?.viewModel.fetchTrendingGIFs()
+//                   } else {
+//                       self?.viewModel.fetchTrendingStickers()
+//                   }
+//               }
+//               return header
+//           }
+//           return UICollectionReusableView()
+//       }
+//   }
+       
        func collectionView(_ collection: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-           if kind == UICollectionView.elementKindSectionHeader {
-               let header = collection.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(CategoriesHeaderView.self)", for: indexPath) as! CategoriesHeaderView
-               header.didSelectCategory = { [weak self] index in
-                   if index == 0 {
-                       self?.viewModel.fetchTrendingGIFs()
-                   } else {
-                       self?.viewModel.fetchTrendingStickers()
+               if kind == UICollectionView.elementKindSectionHeader {
+                   let header = collection.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(CategoriesHeaderView.self)", for: indexPath) as! CategoriesHeaderView
+                   header.didSelectCategory = { [weak self] index in
+                       switch index {
+                       case 0:
+                           self?.viewModel.fetchTrendingGIFs()
+                       case 1:
+                           self?.viewModel.fetchTrendingStickers()
+                       case 2:
+                           self?.viewModel.fetchEmojis()
+                       default:
+                           break
+                       }
                    }
+                   return header
                }
-               return header
+               return UICollectionReusableView()
            }
-           return UICollectionReusableView()
        }
-   }
 
    extension HomeController: UICollectionViewDelegate {
        func collectionView(_ collection: UICollectionView, didSelectItemAt indexPath: IndexPath) {

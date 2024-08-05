@@ -33,6 +33,7 @@
 		4508ADD02C5A9E3300588B89 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADCF2C5A9E3300588B89 /* DetailCoordinator.swift */; };
 		4508ADD22C5A9E5800588B89 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADD12C5A9E5800588B89 /* Coordinator.swift */; };
 		4508ADD42C5B9DF300588B89 /* StickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADD32C5B9DF300588B89 /* StickerModel.swift */; };
+		4508AE022C611EE100588B89 /* EmojiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508AE012C611EE100588B89 /* EmojiModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		4508ADCF2C5A9E3300588B89 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 		4508ADD12C5A9E5800588B89 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		4508ADD32C5B9DF300588B89 /* StickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerModel.swift; sourceTree = "<group>"; };
+		4508AE012C611EE100588B89 /* EmojiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 			children = (
 				4508ADCA2C54EE1D00588B89 /* GIFModel.swift */,
 				4508ADD32C5B9DF300588B89 /* StickerModel.swift */,
+				4508AE012C611EE100588B89 /* EmojiModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				4508ADB92C54DC2300588B89 /* NetworkManager.swift in Sources */,
 				4508ADCB2C54EE1D00588B89 /* GIFModel.swift in Sources */,
 				4508AD6A2C50FB8400588B89 /* CategoriesCell.swift in Sources */,
+				4508AE022C611EE100588B89 /* EmojiModel.swift in Sources */,
 				4508AD642C50F99F00588B89 /* CategoriesHeaderView.swift in Sources */,
 				4508AD4B2C4FC17800588B89 /* SceneDelegate.swift in Sources */,
 				4508ADD42C5B9DF300588B89 /* StickerModel.swift in Sources */,

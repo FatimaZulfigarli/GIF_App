@@ -9,6 +9,7 @@ import UIKit
 
 protocol GifStickerCellConfigurable {
     var imageURL: String? { get }
+    var altText: String? { get }
 }
 
 class GifStickerCell: UICollectionViewCell {
