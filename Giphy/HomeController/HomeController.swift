@@ -17,7 +17,7 @@ class HomeController: UIViewController {
            
            setupCollectionView()
            bindViewModel()
-           viewModel.fetchTrendingGIFs()
+           viewModel.fetchContent(for: 0) // Start with GIFs
        }
        
        private func setupCollectionView() {
@@ -58,12 +58,12 @@ class HomeController: UIViewController {
            return viewModel.currentItems.count
        }
        
-       func collectionView(_ collection: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-           let cell = collection.dequeueReusableCell(withReuseIdentifier: "GifStickerCell", for: indexPath) as! GifStickerCell
-           let item = viewModel.currentItems[indexPath.item]
-           cell.configure(with: item)
-           return cell
-       }
+       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+              let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GifStickerCell", for: indexPath) as! GifStickerCell
+              let item = viewModel.currentItems[indexPath.item]
+              cell.configure(with: item)
+              return cell
+          }
        
 //       func collectionView(_ collection: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 //           if kind == UICollectionView.elementKindSectionHeader {
@@ -81,22 +81,13 @@ class HomeController: UIViewController {
 //       }
 //   }
        
-       func collectionView(_ collection: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+       func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
                if kind == UICollectionView.elementKindSectionHeader {
-                   let header = collection.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(CategoriesHeaderView.self)", for: indexPath) as! CategoriesHeaderView
-                   header.didSelectCategory = { [weak self] index in
-                       switch index {
-                       case 0:
-                           self?.viewModel.fetchTrendingGIFs()
-                       case 1:
-                           self?.viewModel.fetchTrendingStickers()
-                       case 2:
-                           self?.viewModel.fetchEmojis()
-                       default:
-                           break
-                       }
+                   let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategoriesHeaderView", for: indexPath) as! CategoriesHeaderView
+                   headerView.didSelectCategory = { [weak self] index in
+                       self?.viewModel.fetchContent(for: index)
                    }
-                   return header
+                   return headerView
                }
                return UICollectionReusableView()
            }

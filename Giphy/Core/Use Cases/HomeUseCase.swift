@@ -32,5 +32,5 @@ protocol HomeUseCase {
     func getTrendingGIFs(completion: @escaping ([Datum]?, String?) -> Void)
     func getTrendingStickers(completion: @escaping ([StickerDatum]?, String?) -> Void)
     func getEmojis(completion: @escaping ([EmojiDatum]?, String?) -> Void)
-       func getEmojiVariations(for gifId: String, completion: @escaping ([EmojiDatum]?, String?) -> Void)
+       
 }

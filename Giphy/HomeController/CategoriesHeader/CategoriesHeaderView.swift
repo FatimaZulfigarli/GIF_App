@@ -27,6 +27,10 @@ class CategoriesHeaderView: UICollectionReusableView {
            return categories.count
        }
        
+       func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+               print("Header cell selected: \(indexPath.item)")
+               didSelectCategory?(indexPath.item)
+           }
        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesCell", for: indexPath) as! CategoriesCell
            let name = categories[indexPath.item]
