@@ -46,6 +46,12 @@ class HomeManager {
             completion(model?.data, error)
         }
     }
+    
+    func getEmojiVariations(for emojiId: String, completion: @escaping ([EmojiDatum]?, String?) -> Void) {
+            NetworkManager.request(model: EmojiModel.self, endpoint: .emojiVariations(gifId: emojiId)) { model, error in
+                completion(model?.data, error)
+            }
+        }
 }
     
 //    func fetchEmojis(completion: @escaping (EmojiModel?, String?) -> Void) {

@@ -14,15 +14,40 @@ protocol GifStickerCellConfigurable {
 
 class GifStickerCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
-    
-    override func awakeFromNib() {
-            super.awakeFromNib()
-        }
+    var onLongPress: ((String) -> Void)?
 
-        func configure(with model: GifStickerCellConfigurable) {
-            if let url = model.imageURL {
-                imageView.loadGif(from: url)
-            }
-        }
-    }
+    override func awakeFromNib() {
+           super.awakeFromNib()
+           setupLongPressGesture()
+       }
+
+    private func setupLongPressGesture() {
+           let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+           addGestureRecognizer(longPressGesture)
+       }
+
+    @objc private func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
+           if gesture.state == .began {
+               onLongPress?(imageView.image?.accessibilityIdentifier ?? "")
+           }
+       }
+
+    func configure(with model: GifStickerCellConfigurable, onLongPress: @escaping (String) -> Void) {
+           if let url = model.imageURL {
+               imageView.loadGif(from: url)
+           }
+           if let emojiDatum = model as? EmojiDatum {
+               imageView.image?.accessibilityIdentifier = emojiDatum.id
+           }
+           self.onLongPress = onLongPress
+       }
+   }
+//        }
+//
+//        func configure(with model: GifStickerCellConfigurable) {
+//            if let url = model.imageURL {
+//                imageView.loadGif(from: url)
+//            }
+//        }
+//    }
 
