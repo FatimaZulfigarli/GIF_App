@@ -17,16 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Ckf-2t-PkD">
-                                <rect key="frame" x="12" y="115" width="369" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="iZP-6w-5gs"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="72K-uZ-qpm"/>
-                                </connections>
-                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oKP-yv-kGF">
                                 <rect key="frame" x="0.0" y="159" width="393" height="659"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
@@ -47,17 +37,55 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qJ-Cq-4Pv">
+                                <rect key="frame" x="12" y="115" width="369" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nli-aA-7Tg">
+                                        <rect key="frame" x="297" y="4" width="52" height="42"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="searchTab"/>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search for emoji" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G60-uv-rg9">
+                                        <rect key="frame" x="20" y="4" width="260" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="fhd-G7-sfw"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="g8M-yb-bAV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="searchAction:" destination="BYZ-38-t0r" eventType="editingChanged" id="Vf6-Gg-ohR"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <color key="tintColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="MaC-tk-Azt"/>
+                                    <constraint firstItem="Nli-aA-7Tg" firstAttribute="top" secondItem="7qJ-Cq-4Pv" secondAttribute="top" constant="4" id="NoC-hs-1c9"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nli-aA-7Tg" secondAttribute="trailing" constant="20" id="Vnv-Fn-F5m"/>
+                                    <constraint firstItem="G60-uv-rg9" firstAttribute="top" secondItem="7qJ-Cq-4Pv" secondAttribute="top" constant="4" id="cjg-Ah-6Ud"/>
+                                    <constraint firstItem="Nli-aA-7Tg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="G60-uv-rg9" secondAttribute="trailing" constant="1" id="pPx-wv-dZn"/>
+                                    <constraint firstItem="G60-uv-rg9" firstAttribute="leading" secondItem="7qJ-Cq-4Pv" secondAttribute="leading" constant="20" id="rlY-ad-Sy4"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="oKP-yv-kGF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0n1-pd-4HC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oKP-yv-kGF" secondAttribute="trailing" id="DA3-un-JRM"/>
+                            <constraint firstItem="7qJ-Cq-4Pv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KCa-Jf-cRy"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oKP-yv-kGF" secondAttribute="bottom" id="LAq-IF-kQl"/>
-                            <constraint firstItem="Ckf-2t-PkD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="QJH-Mn-hGp"/>
-                            <constraint firstItem="Ckf-2t-PkD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="Wpk-RI-fu3"/>
-                            <constraint firstItem="oKP-yv-kGF" firstAttribute="top" secondItem="Ckf-2t-PkD" secondAttribute="bottom" id="ZHI-mg-Xed"/>
-                            <constraint firstAttribute="trailing" secondItem="Ckf-2t-PkD" secondAttribute="trailing" constant="12" id="jgA-0V-SNo"/>
+                            <constraint firstItem="oKP-yv-kGF" firstAttribute="top" secondItem="7qJ-Cq-4Pv" secondAttribute="bottom" constant="4" id="O67-00-uqg"/>
+                            <constraint firstItem="7qJ-Cq-4Pv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="h8L-Nn-X92"/>
+                            <constraint firstItem="7qJ-Cq-4Pv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="uN7-ff-cS0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7qJ-Cq-4Pv" secondAttribute="trailing" constant="12" id="w1C-hU-lYW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="SLY-U6-QhN"/>
@@ -104,8 +132,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="searchTab" width="28" height="28"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

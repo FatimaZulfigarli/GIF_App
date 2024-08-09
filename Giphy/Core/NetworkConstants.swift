@@ -25,7 +25,7 @@ enum Endpoint {
     case gifsTrending
     case stickersTrending
     case emoji
-    case emojiVariations(gifId: String)
+    case emojiVariations(emojiId: String)
     
     var path: String {
         switch self {
@@ -35,8 +35,8 @@ enum Endpoint {
             return BaseURL.v1.path + "stickers/trending"
         case .emoji:
             return BaseURL.v2.path + "emoji"
-        case .emojiVariations(let gifId):
-            return BaseURL.v2.path + "emoji/\(gifId)/variations"
+        case .emojiVariations(let emojiId):
+            return BaseURL.v2.path + "emoji/\(emojiId)/variations"
         }
     }
 }

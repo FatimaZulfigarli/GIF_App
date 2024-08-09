@@ -10,44 +10,66 @@ import UIKit
 protocol GifStickerCellConfigurable {
     var imageURL: String? { get }
     var altText: String? { get }
+    var id: String? { get }
+
 }
 
 class GifStickerCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
-    var onLongPress: ((String) -> Void)?
+    var onTap: ((String) -> Void)?
+        var onForceTouch: ((String) -> Void)?
+        private var previewInteraction: UIPreviewInteraction?
 
-    override func awakeFromNib() {
-           super.awakeFromNib()
-           setupLongPressGesture()
-       }
+        override func awakeFromNib() {
+            super.awakeFromNib()
+            setupGestures()
+        }
 
-    private func setupLongPressGesture() {
-           let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-           addGestureRecognizer(longPressGesture)
-       }
+        private func setupGestures() {
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+            addGestureRecognizer(tapGesture)
 
-    @objc private func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
-           if gesture.state == .began {
-               onLongPress?(imageView.image?.accessibilityIdentifier ?? "")
-           }
-       }
+            if #available(iOS 13.0, *) {
+                let interaction = UIContextMenuInteraction(delegate: self)
+                addInteraction(interaction)
+            } else {
+                previewInteraction = UIPreviewInteraction(view: self)
+                previewInteraction?.delegate = self
+            }
+        }
 
-    func configure(with model: GifStickerCellConfigurable, onLongPress: @escaping (String) -> Void) {
-           if let url = model.imageURL {
-               imageView.loadGif(from: url)
-           }
-           if let emojiDatum = model as? EmojiDatum {
-               imageView.image?.accessibilityIdentifier = emojiDatum.id
-           }
-           self.onLongPress = onLongPress
-       }
-   }
-//        }
-//
-//        func configure(with model: GifStickerCellConfigurable) {
-//            if let url = model.imageURL {
-//                imageView.loadGif(from: url)
-//            }
-//        }
-//    }
+        @objc private func handleTap() {
+            onTap?(imageView.image?.accessibilityIdentifier ?? "")
+        }
 
+        func configure(with model: GifStickerCellConfigurable, onTap: @escaping (String) -> Void, onForceTouch: @escaping (String) -> Void) {
+            if let url = model.imageURL {
+                imageView.loadGif(from: url)
+            }
+            imageView.image?.accessibilityIdentifier = model.id
+            self.onTap = onTap
+            self.onForceTouch = onForceTouch
+        }
+    }
+
+    extension GifStickerCell: UIPreviewInteractionDelegate {
+        func previewInteraction(_ previewInteraction: UIPreviewInteraction, didUpdatePreviewTransition transitionProgress: CGFloat, ended: Bool) {
+            if ended {
+                onForceTouch?(imageView.image?.accessibilityIdentifier ?? "")
+            }
+        }
+
+        func previewInteractionDidCancel(_ previewInteraction: UIPreviewInteraction) {}
+    }
+
+    @available(iOS 13.0, *)
+    extension GifStickerCell: UIContextMenuInteractionDelegate {
+        func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+            return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+                let action = UIAction(title: "View Variations") { [weak self] _ in
+                    self?.onForceTouch?(self?.imageView.image?.accessibilityIdentifier ?? "")
+                }
+                return UIMenu(title: "", children: [action])
+            }
+        }
+    }

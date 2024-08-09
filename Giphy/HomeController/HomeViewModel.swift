@@ -84,6 +84,8 @@ class HomeViewModel {
     var onFetchCompleted: (() -> Void)?
     var onFetchFailed: ((String) -> Void)?
     
+    
+    
     func fetchContent(for category: Int) {
             print("Fetching content for category: \(category)")
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
@@ -101,16 +103,17 @@ class HomeViewModel {
         }
     
     func fetchEmojiVariations(for emojiId: String, completion: @escaping ([EmojiDatum]?) -> Void) {
-           homeManager.getEmojiVariations(for: emojiId) { data, error in
-               if let data = data {
-                   completion(data)
-               } else {
-                   print("Error fetching emoji variations: \(error ?? "Unknown error")")
-                   completion(nil)
-               }
-           }
-       }
-
+            homeManager.getEmojiVariations(for: emojiId) { data, error in
+                if let data = data {
+                    completion(data)
+                } else {
+                    print("Error fetching emoji variations: \(error ?? "Unknown error")")
+                    completion(nil)
+                }
+            }
+        }
+    
+    
     private func fetchTrendingGIFs() {
         print("Fetching trending GIFs")
         homeManager.getTrendingGIFs { [weak self] data, error in
@@ -149,5 +152,7 @@ class HomeViewModel {
             }
         }
     }
+    
+    
     
 }
