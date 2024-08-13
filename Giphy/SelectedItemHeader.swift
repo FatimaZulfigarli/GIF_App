@@ -14,7 +14,6 @@ class SelectedItemHeader: UICollectionReusableView {
        override func awakeFromNib() {
            super.awakeFromNib()
            
-           self.backgroundColor = .red
            
            // Register the cell
            let nib = UINib(nibName: "SelectedIemCell", bundle: nil)
@@ -34,7 +33,7 @@ class SelectedItemHeader: UICollectionReusableView {
        
        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedIemCell", for: indexPath) as! SelectedIemCell
-           cell.backgroundColor = .blue // Set a background color for visibility
+           
            return cell
        }
        

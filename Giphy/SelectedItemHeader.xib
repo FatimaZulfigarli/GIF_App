@@ -27,10 +27,18 @@
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                         </collectionView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HV-Kg-FTc">
+                            <rect key="frame" x="148.66666666666666" y="47" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="EcA-Zv-UCK" secondAttribute="trailing" id="71M-jJ-owM"/>
                         <constraint firstAttribute="bottom" secondItem="EcA-Zv-UCK" secondAttribute="bottom" id="ZL4-TY-Cus"/>
+                        <constraint firstItem="5HV-Kg-FTc" firstAttribute="centerX" secondItem="DJz-x1-zmN" secondAttribute="centerX" id="rlT-7e-tPP"/>
+                        <constraint firstItem="5HV-Kg-FTc" firstAttribute="centerY" secondItem="DJz-x1-zmN" secondAttribute="centerY" id="sQ1-Gj-piy"/>
                         <constraint firstItem="EcA-Zv-UCK" firstAttribute="leading" secondItem="DJz-x1-zmN" secondAttribute="leading" id="tvN-DK-sez"/>
                         <constraint firstItem="EcA-Zv-UCK" firstAttribute="top" secondItem="DJz-x1-zmN" secondAttribute="top" id="yD9-3M-UTp"/>
                     </constraints>

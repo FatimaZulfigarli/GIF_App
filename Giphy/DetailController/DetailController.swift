@@ -41,7 +41,6 @@ extension DetailController: UICollectionViewDataSource, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BasicCell", for: indexPath)
-        cell.backgroundColor = .blue // Set a background color so you can see the cell
         return cell
     }
 }
@@ -57,8 +56,8 @@ extension DetailController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 50) 
+        let size = CGSize(width: collectionView.bounds.width, height: 50)
         print("Reference size for header in section \(section): \(String(describing: size))")
-// Ensure the size is non-zero
+        return size
     }
 }
