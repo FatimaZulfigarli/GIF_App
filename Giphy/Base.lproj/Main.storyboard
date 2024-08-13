@@ -104,9 +104,48 @@
                     <view key="view" contentMode="scaleToFill" id="Qv7-FA-0yI">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VSk-NS-QcV">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1qZ-AZ-Aoe">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="RYx-sp-uKC">
+                                        <rect key="frame" x="0.0" y="50" width="127.99999999999997" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="H2N-Rn-FtY">
+                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SelectedItemHeader" id="5fb-c6-Hdm" customClass="SelectedItemHeader" customModule="Giphy" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="lus-GS-7Ou" id="HYK-ns-jru"/>
+                                    <outlet property="delegate" destination="lus-GS-7Ou" id="nTw-8A-kXr"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="NTy-XP-ffI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VSk-NS-QcV" firstAttribute="leading" secondItem="NTy-XP-ffI" secondAttribute="leading" id="3fp-GU-lOI"/>
+                            <constraint firstItem="VSk-NS-QcV" firstAttribute="top" secondItem="NTy-XP-ffI" secondAttribute="top" id="9GC-Ax-LNA"/>
+                            <constraint firstItem="NTy-XP-ffI" firstAttribute="bottom" secondItem="VSk-NS-QcV" secondAttribute="bottom" id="H4W-DI-QCu"/>
+                            <constraint firstItem="NTy-XP-ffI" firstAttribute="trailing" secondItem="VSk-NS-QcV" secondAttribute="trailing" id="If8-QF-P0J"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="VSk-NS-QcV" id="2GZ-Ie-n9S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkg-7L-I8C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

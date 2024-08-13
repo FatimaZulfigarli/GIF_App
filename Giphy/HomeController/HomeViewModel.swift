@@ -75,6 +75,14 @@ import Foundation
 ////        }
 //}
 
+//"Gif", "Sticker", "Emoji"
+
+enum ContentType: String {
+    case gif = "Gif"
+    case sticker = "Sticker"
+    case emoji = "Emoji"
+}
+
 class HomeViewModel {
     private let homeManager = HomeManager()
     var gifs: [Datum] = []
@@ -84,17 +92,15 @@ class HomeViewModel {
     var onFetchCompleted: (() -> Void)?
     var onFetchFailed: ((String) -> Void)?
     
-    func fetchContent(for category: Int) {
+    func fetchContent(for category: ContentType) {
         print("Fetching content for category: \(category)")
         switch category {
-        case 0: // GIFs
+        case .gif: // GIFs
             fetchTrendingGIFs()
-        case 1: // Stickers
+        case .sticker: // Stickers
             fetchTrendingStickers()
-        case 2: // Emojis
+        case .emoji: // Emojis
             fetchEmojis()
-        default:
-            print("Unknown category: \(category)")
         }
     }
     
@@ -137,7 +143,7 @@ class HomeViewModel {
         }
     }
     
-    func fetchEmojis() {
+    private func fetchEmojis() {
         homeManager.getEmojis { [weak self] data, error in
             if let data = data {
                 self?.emojis = data
@@ -148,7 +154,4 @@ class HomeViewModel {
             }
         }
     }
-    
-    
-    
 }

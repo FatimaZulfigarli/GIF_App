@@ -25,32 +25,43 @@ class GifStickerCell: UICollectionViewCell {
             setupGestures()
         }
 
-        private func setupGestures() {
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-            addGestureRecognizer(tapGesture)
+    private func setupGestures() {
+         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+         addGestureRecognizer(tapGesture)
 
-            if #available(iOS 13.0, *) {
-                let interaction = UIContextMenuInteraction(delegate: self)
-                addInteraction(interaction)
-            } else {
-                previewInteraction = UIPreviewInteraction(view: self)
-                previewInteraction?.delegate = self
-            }
-        }
+         if #available(iOS 13.0, *) {
+             let interaction = UIContextMenuInteraction(delegate: self)
+             addInteraction(interaction)
+         } else {
+             previewInteraction = UIPreviewInteraction(view: self)
+             previewInteraction?.delegate = self
+         }
+     }
 
-        @objc private func handleTap() {
-            onTap?(imageView.image?.accessibilityIdentifier ?? "")
-        }
-
-        func configure(with model: GifStickerCellConfigurable, onTap: @escaping (String) -> Void, onForceTouch: @escaping (String) -> Void) {
-            if let url = model.imageURL {
-                imageView.loadGif(from: url)
-            }
-            imageView.image?.accessibilityIdentifier = model.id
-            self.onTap = onTap
-            self.onForceTouch = onForceTouch
+    @objc private func handleTap() {
+        print("GifStickerCell tapped")
+        if let id = imageView.accessibilityIdentifier {
+            onTap?(id)
+        } else {
+            print("No ID found in accessibilityIdentifier")
         }
     }
+
+    func configure(with model: GifStickerCellConfigurable, onTap: @escaping (String) -> Void, onForceTouch: @escaping (String) -> Void) {
+        if let url = model.imageURL {
+            imageView.loadGif(from: url)
+        }
+        if let id = model.id {
+            print("Setting accessibilityIdentifier with id: \(id)")
+            imageView.accessibilityIdentifier = id
+        } else {
+            print("Warning: Model id is nil")
+        }
+        self.onTap = onTap
+        self.onForceTouch = onForceTouch
+        print("GifStickerCell configured with id: \(model.id ?? "unknown")")
+    }
+}
 
     extension GifStickerCell: UIPreviewInteractionDelegate {
         func previewInteraction(_ previewInteraction: UIPreviewInteraction, didUpdatePreviewTransition transitionProgress: CGFloat, ended: Bool) {

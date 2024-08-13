@@ -34,6 +34,10 @@
 		4508ADD22C5A9E5800588B89 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADD12C5A9E5800588B89 /* Coordinator.swift */; };
 		4508ADD42C5B9DF300588B89 /* StickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508ADD32C5B9DF300588B89 /* StickerModel.swift */; };
 		4508AE022C611EE100588B89 /* EmojiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508AE012C611EE100588B89 /* EmojiModel.swift */; };
+		4508AE392C6B217200588B89 /* SelectedItemHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508AE372C6B217200588B89 /* SelectedItemHeader.swift */; };
+		4508AE3A2C6B217200588B89 /* SelectedItemHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4508AE382C6B217200588B89 /* SelectedItemHeader.xib */; };
+		4508AE3D2C6B40CF00588B89 /* SelectedIemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508AE3B2C6B40CF00588B89 /* SelectedIemCell.swift */; };
+		4508AE3E2C6B40CF00588B89 /* SelectedIemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4508AE3C2C6B40CF00588B89 /* SelectedIemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +68,10 @@
 		4508ADD12C5A9E5800588B89 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		4508ADD32C5B9DF300588B89 /* StickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerModel.swift; sourceTree = "<group>"; };
 		4508AE012C611EE100588B89 /* EmojiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiModel.swift; sourceTree = "<group>"; };
+		4508AE372C6B217200588B89 /* SelectedItemHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedItemHeader.swift; sourceTree = "<group>"; };
+		4508AE382C6B217200588B89 /* SelectedItemHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedItemHeader.xib; sourceTree = "<group>"; };
+		4508AE3B2C6B40CF00588B89 /* SelectedIemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedIemCell.swift; sourceTree = "<group>"; };
+		4508AE3C2C6B40CF00588B89 /* SelectedIemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedIemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +113,10 @@
 				4508ADB32C54D56200588B89 /* GifStickerCell */,
 				4508ADB52C54D5AB00588B89 /* HomeController */,
 				4508AD4E2C4FC17800588B89 /* Main.storyboard */,
+				4508AE3B2C6B40CF00588B89 /* SelectedIemCell.swift */,
+				4508AE3C2C6B40CF00588B89 /* SelectedIemCell.xib */,
+				4508AE372C6B217200588B89 /* SelectedItemHeader.swift */,
+				4508AE382C6B217200588B89 /* SelectedItemHeader.xib */,
 				4508ADCE2C5A9DE800588B89 /* DetailController */,
 				4508AD512C4FC17900588B89 /* Assets.xcassets */,
 				4508AD532C4FC17900588B89 /* LaunchScreen.storyboard */,
@@ -153,8 +165,8 @@
 		4508ADB52C54D5AB00588B89 /* HomeController */ = {
 			isa = PBXGroup;
 			children = (
-				4508ADC02C54DF5400588B89 /* HomeViewModel.swift */,
 				4508AD6C2C50FBE400588B89 /* HomeController.swift */,
+				4508ADC02C54DF5400588B89 /* HomeViewModel.swift */,
 				4508ADD52C5B9DF800588B89 /* Models */,
 				4508ADB02C54D4BF00588B89 /* CategoriesHeader */,
 			);
@@ -274,7 +286,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4508AE3A2C6B217200588B89 /* SelectedItemHeader.xib in Resources */,
 				4508ADA62C53BE9100588B89 /* GifStickerCell.xib in Resources */,
+				4508AE3E2C6B40CF00588B89 /* SelectedIemCell.xib in Resources */,
 				4508AD6B2C50FB8400588B89 /* CategoriesCell.xib in Resources */,
 				4508AD552C4FC17900588B89 /* LaunchScreen.storyboard in Resources */,
 				4508ADA82C53C20900588B89 /* Gif.gif in Resources */,
@@ -291,6 +305,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4508AE3D2C6B40CF00588B89 /* SelectedIemCell.swift in Sources */,
+				4508AE392C6B217200588B89 /* SelectedItemHeader.swift in Sources */,
 				4508ADD22C5A9E5800588B89 /* Coordinator.swift in Sources */,
 				4508ADC42C54DF7800588B89 /* HomeManager.swift in Sources */,
 				4508ADBE2C54DCC700588B89 /* NetworkConstants.swift in Sources */,

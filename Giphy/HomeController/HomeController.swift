@@ -12,14 +12,15 @@ class HomeController: UIViewController {
     @IBOutlet weak var collection: UICollectionView!
     private let viewModel = HomeViewModel()
     private let loadingIndicator = UIActivityIndicatorView(style: .large)
+    private var detailCoordinator: DetailCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupLoadingIndicator()
         setupCollectionView()
         bindViewModel()
-        viewModel.fetchContent(for: 0) // Start with GIFs
-        viewModel.fetchEmojis()
+        viewModel.fetchContent(for: .gif) // Start with GIFs
     }
     
     @IBAction func searchAction(_ sender: UITextField) {
@@ -124,15 +125,32 @@ class HomeController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+//        private func handleItemTap(id: String) {
+//            if let item = viewModel.currentItems.first(where: { ($0 as? EmojiDatum)?.id == id }) as? EmojiDatum {
+//                showEmojiVariations(for: id, from: collection)
+//            } else {
+//                // Handle taps for non-emoji items (GIFs, stickers) if needed
+//                print("Tapped item with id: \(id)")
+//            }
+//        }
+    
     private func handleItemTap(id: String) {
-        if let item = viewModel.currentItems.first(where: { ($0 as? EmojiDatum)?.id == id }) as? EmojiDatum {
-            showEmojiVariations(for: id, from: collection)
+        print("handleItemTap called with id: \(id)")
+        if let item = viewModel.currentItems.first(where: { $0.id == id }) {
+            print("Item found, starting DetailCoordinator")
+            startDetailCoordinator(with: item)
         } else {
-            // Handle taps for non-emoji items (GIFs, stickers) if needed
-            print("Tapped item with id: \(id)")
+            print("No item found with id: \(id)")
         }
     }
-}
+    private func startDetailCoordinator(with item: GifStickerCellConfigurable) {
+          print("startDetailCoordinator called with item id: \(item.id ?? "unknown")")
+          detailCoordinator = DetailCoordinator(navigationController: navigationController!, selectedItem: item)
+          detailCoordinator?.start()
+      }
+  }
+ 
+
 
 extension HomeController: UICollectionViewDataSource {
     func collectionView(_ collection: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -140,39 +158,39 @@ extension HomeController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GifStickerCell", for: indexPath) as! GifStickerCell
-        let item = viewModel.currentItems[indexPath.item]
-        cell.configure(with: item, onTap: { [weak self] id in
-            self?.handleItemTap(id: id)
-        }, onForceTouch: { [weak self] id in
-            self?.showEmojiVariations(for: id, from: cell)
-        })
-        return cell
-    }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GifStickerCell", for: indexPath) as! GifStickerCell
+            let item = viewModel.currentItems[indexPath.item]
+            cell.configure(with: item, onTap: { [weak self] id in
+                print("Cell onTap closure called with id: \(id)")
+                self?.handleItemTap(id: id)
+            }, onForceTouch: { [weak self] id in
+                self?.showEmojiVariations(for: id, from: cell)
+            })
+            return cell
+        }
+    
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionView.elementKindSectionHeader {
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategoriesHeaderView", for: indexPath) as! CategoriesHeaderView
-            headerView.didSelectCategory = { [weak self] index in
-                self?.showLoadingIndicator()
-                self?.viewModel.currentItems.removeAll()
-                self?.collection.reloadData()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self?.viewModel.fetchContent(for: index)
-                }
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategoriesHeaderView", for: indexPath) as! CategoriesHeaderView
+        headerView.didSelectCategory = { [weak self] type in
+            self?.showLoadingIndicator()
+            self?.viewModel.currentItems.removeAll()
+            self?.collection.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self?.viewModel.fetchContent(for: type)
             }
-            return headerView
         }
-        return UICollectionReusableView()
+        return headerView
     }
 }
 
 extension HomeController: UICollectionViewDelegate {
-    func collectionView(_ collection: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // This method is not needed anymore as we're handling taps in the cell configuration
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("collectionView didSelectItemAt called with indexPath: \(indexPath)")
+        let item = viewModel.currentItems[indexPath.item]
+        startDetailCoordinator(with: item)
     }
 }
-
 extension HomeController: CHTCollectionViewDelegateWaterfallLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.bounds.width - 30) / 2
