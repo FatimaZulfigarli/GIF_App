@@ -125,14 +125,14 @@ class HomeController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-//        private func handleItemTap(id: String) {
-//            if let item = viewModel.currentItems.first(where: { ($0 as? EmojiDatum)?.id == id }) as? EmojiDatum {
-//                showEmojiVariations(for: id, from: collection)
-//            } else {
-//                // Handle taps for non-emoji items (GIFs, stickers) if needed
-//                print("Tapped item with id: \(id)")
-//            }
-//        }
+    //        private func handleItemTap(id: String) {
+    //            if let item = viewModel.currentItems.first(where: { ($0 as? EmojiDatum)?.id == id }) as? EmojiDatum {
+    //                showEmojiVariations(for: id, from: collection)
+    //            } else {
+    //                // Handle taps for non-emoji items (GIFs, stickers) if needed
+    //                print("Tapped item with id: \(id)")
+    //            }
+    //        }
     
     private func handleItemTap(id: String) {
         print("handleItemTap called with id: \(id)")
@@ -143,14 +143,14 @@ class HomeController: UIViewController {
             print("No item found with id: \(id)")
         }
     }
+    
     private func startDetailCoordinator(with item: GifStickerCellConfigurable) {
-          print("startDetailCoordinator called with item id: \(item.id ?? "unknown")")
-          detailCoordinator = DetailCoordinator(navigationController: navigationController!, selectedItem: item)
-          detailCoordinator?.start()
-      }
-  }
- 
-
+        print("startDetailCoordinator called with item id: \(item.id ?? "unknown")")
+        detailCoordinator = DetailCoordinator(navigationController: navigationController!, selectedItem: item)
+        detailCoordinator?.start()
+    }
+    
+}
 
 extension HomeController: UICollectionViewDataSource {
     func collectionView(_ collection: UICollectionView, numberOfItemsInSection section: Int) -> Int {

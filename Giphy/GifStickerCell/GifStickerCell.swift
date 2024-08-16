@@ -47,19 +47,30 @@ class GifStickerCell: UICollectionViewCell {
         }
     }
 
+//    func configure(with model: GifStickerCellConfigurable, onTap: @escaping (String) -> Void, onForceTouch: @escaping (String) -> Void) {
+//        if let url = model.imageURL {
+//            imageView.loadGif(from: url)
+//        }
+//        if let id = model.id {
+//            print("Setting accessibilityIdentifier with id: \(id)")
+//            imageView.accessibilityIdentifier = id
+//        } else {
+//            print("Warning: Model id is nil")
+//        }
+//        self.onTap = onTap
+//        self.onForceTouch = onForceTouch
+//        print("GifStickerCell configured with id: \(model.id ?? "unknown")")
+//    }
+    
     func configure(with model: GifStickerCellConfigurable, onTap: @escaping (String) -> Void, onForceTouch: @escaping (String) -> Void) {
         if let url = model.imageURL {
             imageView.loadGif(from: url)
         }
         if let id = model.id {
-            print("Setting accessibilityIdentifier with id: \(id)")
             imageView.accessibilityIdentifier = id
-        } else {
-            print("Warning: Model id is nil")
         }
         self.onTap = onTap
         self.onForceTouch = onForceTouch
-        print("GifStickerCell configured with id: \(model.id ?? "unknown")")
     }
 }
 

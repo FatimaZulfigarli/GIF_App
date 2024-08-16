@@ -26,14 +26,20 @@ class DetailController: UIViewController {
     }
 
     private func configureView() {
-        // Set title or other UI elements based on selectedItem
-        title = "Detail View"
-        
-        // Reload the collection view to ensure the header is displayed
-        collectionView.reloadData()
+            // Set title or other UI elements based on selectedItem
+            title = selectedItem?.altText ?? "Detail View"
+            
+            // Load the GIF into the image view
+            if let imageURL = selectedItem?.imageURL {
+                gifImageView.loadGif(from: imageURL)
+            } else {
+                print("No imageURL available for the selected item")
+            }
+            
+            // Reload the collection view to ensure the header is displayed
+            collectionView.reloadData()
+        }
     }
-    }
-
 extension DetailController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1 // Just returning 1 for now to have something in the collection view
