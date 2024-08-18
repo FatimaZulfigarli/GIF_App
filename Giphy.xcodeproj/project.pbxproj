@@ -36,8 +36,8 @@
 		4508AE022C611EE100588B89 /* EmojiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508AE012C611EE100588B89 /* EmojiModel.swift */; };
 		4508AE392C6B217200588B89 /* SelectedItemHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508AE372C6B217200588B89 /* SelectedItemHeader.swift */; };
 		4508AE3A2C6B217200588B89 /* SelectedItemHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4508AE382C6B217200588B89 /* SelectedItemHeader.xib */; };
-		4508AE3D2C6B40CF00588B89 /* SelectedIemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508AE3B2C6B40CF00588B89 /* SelectedIemCell.swift */; };
-		4508AE3E2C6B40CF00588B89 /* SelectedIemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4508AE3C2C6B40CF00588B89 /* SelectedIemCell.xib */; };
+		451AB7492C6FB17300532673 /* SelectedIemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451AB7472C6FB17300532673 /* SelectedIemCell.swift */; };
+		451AB74A2C6FB17300532673 /* SelectedIemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 451AB7482C6FB17300532673 /* SelectedIemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,8 +70,8 @@
 		4508AE012C611EE100588B89 /* EmojiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiModel.swift; sourceTree = "<group>"; };
 		4508AE372C6B217200588B89 /* SelectedItemHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedItemHeader.swift; sourceTree = "<group>"; };
 		4508AE382C6B217200588B89 /* SelectedItemHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedItemHeader.xib; sourceTree = "<group>"; };
-		4508AE3B2C6B40CF00588B89 /* SelectedIemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedIemCell.swift; sourceTree = "<group>"; };
-		4508AE3C2C6B40CF00588B89 /* SelectedIemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedIemCell.xib; sourceTree = "<group>"; };
+		451AB7472C6FB17300532673 /* SelectedIemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectedIemCell.swift; path = ../HomeController/SelectedIemCell.swift; sourceTree = "<group>"; };
+		451AB7482C6FB17300532673 /* SelectedIemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SelectedIemCell.xib; path = ../HomeController/SelectedIemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,10 +202,10 @@
 			children = (
 				4508ADCC2C5A9DDC00588B89 /* DetailController.swift */,
 				4508ADCF2C5A9E3300588B89 /* DetailCoordinator.swift */,
-				4508AE3B2C6B40CF00588B89 /* SelectedIemCell.swift */,
-				4508AE3C2C6B40CF00588B89 /* SelectedIemCell.xib */,
 				4508AE372C6B217200588B89 /* SelectedItemHeader.swift */,
 				4508AE382C6B217200588B89 /* SelectedItemHeader.xib */,
+				451AB7472C6FB17300532673 /* SelectedIemCell.swift */,
+				451AB7482C6FB17300532673 /* SelectedIemCell.xib */,
 			);
 			path = DetailController;
 			sourceTree = "<group>";
@@ -288,7 +288,7 @@
 			files = (
 				4508AE3A2C6B217200588B89 /* SelectedItemHeader.xib in Resources */,
 				4508ADA62C53BE9100588B89 /* GifStickerCell.xib in Resources */,
-				4508AE3E2C6B40CF00588B89 /* SelectedIemCell.xib in Resources */,
+				451AB74A2C6FB17300532673 /* SelectedIemCell.xib in Resources */,
 				4508AD6B2C50FB8400588B89 /* CategoriesCell.xib in Resources */,
 				4508AD552C4FC17900588B89 /* LaunchScreen.storyboard in Resources */,
 				4508ADA82C53C20900588B89 /* Gif.gif in Resources */,
@@ -305,7 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4508AE3D2C6B40CF00588B89 /* SelectedIemCell.swift in Sources */,
+				451AB7492C6FB17300532673 /* SelectedIemCell.swift in Sources */,
 				4508AE392C6B217200588B89 /* SelectedItemHeader.swift in Sources */,
 				4508ADD22C5A9E5800588B89 /* Coordinator.swift in Sources */,
 				4508ADC42C54DF7800588B89 /* HomeManager.swift in Sources */,
