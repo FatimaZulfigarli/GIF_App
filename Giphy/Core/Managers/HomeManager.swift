@@ -1,65 +1,75 @@
+////
+////  HomeManager.swift
+////  Giphy
+////
+////  Created by Fatya on 27.07.24.
+////
 //
-//  HomeManager.swift
-//  Giphy
+//import Foundation
 //
-//  Created by Fatya on 27.07.24.
-//
-
-import Foundation
-
 //
 //class HomeManager: HomeUseCase {
 //    func getTrendingGIFs(completion: @escaping ([Datum]?, String?) -> Void) {
-//        NetworkManager.request(model: [Datum].self, endpoint: .gifsTrending, completion: completion)
+//        NetworkManager.request(model: GIFModel.self, endpoint: .gifsTrending) { gifModel, error in
+//            completion(gifModel?.data, error)
+//        }
 //    }
 //    
 //    func getTrendingStickers(completion: @escaping ([StickerDatum]?, String?) -> Void) {
-//        NetworkManager.request(model: [StickerDatum].self, endpoint: .stickersTrending, completion: completion)
-//    }
-//}
-
-
-    
-//    func getEmojiVariations(for gifId: String, completion: @escaping ([EmojiDatum]?, String?) -> Void) {
-//        NetworkManager.request(model: EmojiModel.self, endpoint: .emojiVariations(gifId: gifId)) { emojiModel, error in
-//            completion(emojiModel, error)
+//        NetworkManager.request(model: StickerModel.self, endpoint: .stickersTrending) { stickerModel, error in
+//            completion(stickerModel?.data, error)
 //        }
 //    }
-    
-   
-    
-class HomeManager {
+//    
+//    func getEmojis(completion: @escaping ([EmojiDatum]?, String?) -> Void) {
+//        NetworkManager.request(model: EmojiModel.self, endpoint: .emoji) { emojiModel, error in
+//            completion(emojiModel?.data, error)
+//        }
+//    }
+//    
+//    func searchGIFs(query: String, completion: @escaping (GIFSearch?, String?) -> Void) {
+//        NetworkManager.request(model: GIFSearch.self, 
+//                               endpoint: .gifsSearch(query: query),
+//                               completion: completion)
+//    }
+//    
+//    func searchStickers(query: String, completion: @escaping (StickerModel?, String?) -> Void) {
+//        NetworkManager.request(model: StickerModel.self, endpoint: .stickersSearch(query: query)) { stickerModel, error in
+//            completion(stickerModel, error)
+//        }
+//    }
+//}
+import Foundation
+
+class HomeManager: HomeUseCase {
     func getTrendingGIFs(completion: @escaping ([Datum]?, String?) -> Void) {
-        NetworkManager.request(model: GIFModel.self, endpoint: .gifsTrending) { model, error in
-            completion(model?.data, error)
+        NetworkManager.request(model: GIFModel.self, endpoint: .gifsTrending) { gifModel, error in
+            completion(gifModel?.data, error)
         }
     }
     
     func getTrendingStickers(completion: @escaping ([StickerDatum]?, String?) -> Void) {
-        NetworkManager.request(model: StickerModel.self, endpoint: .stickersTrending) { model, error in
-            completion(model?.data, error)
+        NetworkManager.request(model: StickerModel.self, endpoint: .stickersTrending) { stickerModel, error in
+            completion(stickerModel?.data, error)
         }
     }
     
     func getEmojis(completion: @escaping ([EmojiDatum]?, String?) -> Void) {
-        NetworkManager.request(model: EmojiModel.self, endpoint: .emoji) { model, error in
-            completion(model?.data, error)
+        NetworkManager.request(model: EmojiModel.self, endpoint: .emoji) { emojiModel, error in
+            completion(emojiModel?.data, error)
         }
     }
     
-    func getEmojiVariations(for emojiId: String, completion: @escaping ([EmojiDatum]?, String?) -> Void) {
-        let endpoint = Endpoint.emojiVariations(emojiId: emojiId)
-        NetworkManager.request(model: EmojiModel.self, endpoint: endpoint) { model, error in
-            completion(model?.data, error)
+    func searchGIFs(query: String, completion: @escaping (GIFSearch?, String?) -> Void) {
+        NetworkManager.request(model: GIFSearch.self,
+                               endpoint: .gifsSearch(query: query),
+                               completion: completion)
+    }
+    
+    func searchStickers(query: String, completion: @escaping (StickerModel?, String?) -> Void) {
+        NetworkManager.request(model: StickerModel.self,
+                               endpoint: .stickersSearch(query: query)) { stickerModel, error in
+            completion(stickerModel, error)
         }
     }
-   }
-    
-//    func fetchEmojis(completion: @escaping (EmojiModel?, String?) -> Void) {
-//           
-//        }
-        
-//        func fetchEmojiVariations(for gifId: String, completion: @escaping (EmojiModel?, String?) -> Void) {
-//            
-//        }
-
+}
