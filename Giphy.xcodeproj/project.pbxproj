@@ -38,6 +38,7 @@
 		4508AE3A2C6B217200588B89 /* SelectedItemHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4508AE382C6B217200588B89 /* SelectedItemHeader.xib */; };
 		451AB7492C6FB17300532673 /* SelectedIemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451AB7472C6FB17300532673 /* SelectedIemCell.swift */; };
 		451AB74A2C6FB17300532673 /* SelectedIemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 451AB7482C6FB17300532673 /* SelectedIemCell.xib */; };
+		45A3142B2C79C9EB0099AC79 /* GIFSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A3142A2C79C9EB0099AC79 /* GIFSearch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		4508AE382C6B217200588B89 /* SelectedItemHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedItemHeader.xib; sourceTree = "<group>"; };
 		451AB7472C6FB17300532673 /* SelectedIemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectedIemCell.swift; path = ../HomeController/SelectedIemCell.swift; sourceTree = "<group>"; };
 		451AB7482C6FB17300532673 /* SelectedIemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SelectedIemCell.xib; path = ../HomeController/SelectedIemCell.xib; sourceTree = "<group>"; };
+		45A3142A2C79C9EB0099AC79 /* GIFSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFSearch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 				4508ADCA2C54EE1D00588B89 /* GIFModel.swift */,
 				4508ADD32C5B9DF300588B89 /* StickerModel.swift */,
 				4508AE012C611EE100588B89 /* EmojiModel.swift */,
+				45A3142A2C79C9EB0099AC79 /* GIFSearch.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				4508ADC12C54DF5400588B89 /* HomeViewModel.swift in Sources */,
 				4508ADAA2C53C43B00588B89 /* UIImageView+Extension .swift in Sources */,
 				4508ADC72C54DF9300588B89 /* HomeUseCase.swift in Sources */,
+				45A3142B2C79C9EB0099AC79 /* GIFSearch.swift in Sources */,
 				4508AD6D2C50FBE400588B89 /* HomeController.swift in Sources */,
 				4508ADCD2C5A9DDC00588B89 /* DetailController.swift in Sources */,
 				4508ADB92C54DC2300588B89 /* NetworkManager.swift in Sources */,

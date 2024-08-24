@@ -18,7 +18,7 @@
 //                                    encoding: ParameterEncoding = URLEncoding.default,
 //                                    completion: @escaping((T?, String?) -> Void)) {
 //        let url = NetworkConstants.getUrl(for: endpoint)
-//        
+//
 //        AF.request(url,
 //                   method: method,
 //                   parameters: parameters,
@@ -53,10 +53,10 @@ class NetworkManager {
                                     parameters: Parameters? = nil,
                                     encoding: ParameterEncoding = URLEncoding.default,
                                     completion: @escaping((T?, String?) -> Void)) {
-        let url = NetworkConstants.getUrl(for: endpoint)
-        print("Requesting URL: \(url)")
-
-        AF.request(url,
+//        let url = NetworkConstants.getUrl(for: endpoint)
+        print("Requesting URL: \(endpoint.path)")
+        
+        AF.request(endpoint.path,
                    method: method,
                    parameters: parameters,
                    encoding: encoding).responseData { response in
