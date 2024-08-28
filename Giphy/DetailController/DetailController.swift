@@ -62,7 +62,7 @@ extension DetailController: UICollectionViewDataSource, UICollectionViewDelegate
         
         // Configure each cell with the corresponding item
         let item = selectedItems[indexPath.item]
-        cell.configure(with: item, onTap: { _ in })
+//        cell.configure(with: item, onTap: { _ in })
         
         return cell
     }

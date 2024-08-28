@@ -145,19 +145,76 @@ class HomeController: UIViewController {
                print("No item found with id: \(id)")
            }
        }
-       
-       // Updated method to start DetailCoordinator with all selected items
-       private func startDetailCoordinator(with items: [GifStickerCellConfigurable]) {
+    private func startDetailCoordinator(with items: [GifStickerCellConfigurable]) {
            print("startDetailCoordinator called")
            detailCoordinator = DetailCoordinator(navigationController: navigationController!, selectedItems: items)
            detailCoordinator?.start()
        }
+       
+       private func toggleFavorite(for id: String) {
+           // Toggle favorite state
+           if viewModel.isItemFavorite(id: id) {
+               viewModel.removeFromFavorites(id: id)
+           } else {
+               viewModel.addToFavorites(id: id)
+           }
+           
+           // Save to Firebase
+           viewModel.saveFavoritesToFirebase()
+           
+           // Reload the collection view to reflect the change
+           collection.reloadData()
+       }
+   }
+       
+//   extension HomeController: UICollectionViewDataSource {
+//       func collectionView(_ collection: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//           return viewModel.currentItems.count
+//       }
+//       
+//       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//               let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GifStickerCell", for: indexPath) as! GifStickerCell
+//               let item = viewModel.currentItems[indexPath.item]
+//               cell.configure(with: item, onTap: { [weak self] id in
+//                   print("Cell onTap closure called with id: \(id)")
+//                   self?.handleItemTap(id: id)
+//               }, onFavButtonTap: { [weak self] id in
+//                   self?.toggleFavorite(for: id)
+//               })
+//               
+//               // Check if the item is already marked as favorite
+//               let isFavorite = viewModel.isItemFavorite(id: item.id)
+//               cell.updateFavButton(isFavorite: isFavorite)
+//               
+//               return cell
+//           }
+//       
+//       }
+//
+
+extension HomeController: UICollectionViewDataSource {
+    func collectionView(_ collection: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.currentItems.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GifStickerCell", for: indexPath) as! GifStickerCell
+           let item = viewModel.currentItems[indexPath.item]
+           cell.configure(with: item, onTap: { [weak self] (id: String) in
+               print("Cell onTap closure called with id: \(id)")
+               self?.handleItemTap(id: id)
+           }, onFavButtonTap: { [weak self] (id: String) in
+               self?.toggleFavorite(for: id)
+           })
+           
+           // Check if the item is already marked as favorite
+           let isFavorite = viewModel.isItemFavorite(id: item.id)
+           cell.updateFavButton(isFavorite: isFavorite)
+           
+           return cell
+       }
    }
 
-   extension HomeController: UICollectionViewDataSource {
-       func collectionView(_ collection: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-           return viewModel.currentItems.count
-       }
        
 //       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 //           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GifStickerCell", for: indexPath) as! GifStickerCell
@@ -165,57 +222,49 @@ class HomeController: UIViewController {
 //           cell.configure(with: item, onTap: { [weak self] id in
 //               print("Cell onTap closure called with id: \(id)")
 //               self?.handleItemTap(id: id)
-//           }, onForceTouch: { [weak self] id in
-//               self?.showEmojiVariations(for: id, from: cell)
 //           })
 //           return cell
 //       }
-       
-       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GifStickerCell", for: indexPath) as! GifStickerCell
-           let item = viewModel.currentItems[indexPath.item]
-           cell.configure(with: item, onTap: { [weak self] id in
-               print("Cell onTap closure called with id: \(id)")
-               self?.handleItemTap(id: id)
-           })
-           return cell
-       }
+//
 //       func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//           let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategoriesHeaderView", for: indexPath) as! CategoriesHeaderView
-//           headerView.didSelectCategory = { [weak self] type in
-//               self?.showLoadingIndicator()
-//               self?.viewModel.currentItems.removeAll()
-//               self?.collection.reloadData()
-//               DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//                   self?.viewModel.fetchContent(for: type)
+//               let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategoriesHeaderView", for: indexPath) as! CategoriesHeaderView
+//               headerView.didSelectCategory = { [weak self] type in
+//                   self?.viewModel.selectedCategory = type // Update the selected category
+//                   self?.showLoadingIndicator()
+//                   self?.viewModel.fetchContent(for: type) // Fetch content for the selected category
 //               }
+//               return headerView
 //           }
-//           return headerView
+//       
+//
+//   extension HomeController: UICollectionViewDelegate {
+//       func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//           print("collectionView didSelectItemAt called with indexPath: \(indexPath)")
+//           let items = viewModel.currentItems // Get all items to pass to DetailCoordinator
+//           startDetailCoordinator(with: items)
 //       }
 //   }
-       func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-               let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategoriesHeaderView", for: indexPath) as! CategoriesHeaderView
-               headerView.didSelectCategory = { [weak self] type in
-                   self?.viewModel.selectedCategory = type // Update the selected category
-                   self?.showLoadingIndicator()
-                   self?.viewModel.fetchContent(for: type) // Fetch content for the selected category
-               }
-               return headerView
-           }
-       }
+//
+//   extension HomeController: CHTCollectionViewDelegateWaterfallLayout {
+//       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//           let width = (collectionView.bounds.width - 30) / 2
+//           let height = CGFloat(arc4random_uniform(100) + 100)
+//           return CGSize(width: width, height: height)
+//       }
+//   }
 
-   extension HomeController: UICollectionViewDelegate {
-       func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-           print("collectionView didSelectItemAt called with indexPath: \(indexPath)")
-           let items = viewModel.currentItems // Get all items to pass to DetailCoordinator
-           startDetailCoordinator(with: items)
-       }
-   }
+extension HomeController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("collectionView didSelectItemAt called with indexPath: \(indexPath)")
+        let items = viewModel.currentItems // Get all items to pass to DetailCoordinator
+        startDetailCoordinator(with: items)
+    }
+}
 
-   extension HomeController: CHTCollectionViewDelegateWaterfallLayout {
-       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-           let width = (collectionView.bounds.width - 30) / 2
-           let height = CGFloat(arc4random_uniform(100) + 100)
-           return CGSize(width: width, height: height)
-       }
-   }
+extension HomeController: CHTCollectionViewDelegateWaterfallLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.bounds.width - 30) / 2
+        let height = CGFloat(arc4random_uniform(100) + 100)
+        return CGSize(width: width, height: height)
+    }
+}
