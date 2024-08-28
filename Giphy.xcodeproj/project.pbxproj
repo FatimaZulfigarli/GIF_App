@@ -58,6 +58,7 @@
 		45A314532C7C57670099AC79 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 45A314522C7C57670099AC79 /* FirebaseStorage */; };
 		45A314552C7C630D0099AC79 /* RegistrationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A314542C7C630D0099AC79 /* RegistrationData.swift */; };
 		45A314572C7C659D0099AC79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45A314562C7C659D0099AC79 /* GoogleService-Info.plist */; };
+		45A314592C7F04730099AC79 /* StickerSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A314582C7F04730099AC79 /* StickerSearch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		45A314432C7C55410099AC79 /* GoogleService-Info-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-2.plist"; sourceTree = "<group>"; };
 		45A314542C7C630D0099AC79 /* RegistrationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationData.swift; sourceTree = "<group>"; };
 		45A314562C7C659D0099AC79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		45A314582C7F04730099AC79 /* StickerSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerSearch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 				4508ADD32C5B9DF300588B89 /* StickerModel.swift */,
 				4508AE012C611EE100588B89 /* EmojiModel.swift */,
 				45A3142A2C79C9EB0099AC79 /* GIFSearch.swift */,
+				45A314582C7F04730099AC79 /* StickerSearch.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45A314592C7F04730099AC79 /* StickerSearch.swift in Sources */,
 				451AB7492C6FB17300532673 /* SelectedIemCell.swift in Sources */,
 				4508AE392C6B217200588B89 /* SelectedItemHeader.swift in Sources */,
 				4508ADD22C5A9E5800588B89 /* Coordinator.swift in Sources */,

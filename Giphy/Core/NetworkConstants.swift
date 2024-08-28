@@ -88,14 +88,39 @@ enum BaseURL {
     }
 }
 
+//enum Endpoint {
+//    case gifsTrending
+//    case stickersTrending
+//    case emoji
+//    case emojiVariations(emojiId: String)
+//    case gifsSearch(query: String)
+//    case stickersSearch(query: String)
+//    
+//    var path: String {
+//        switch self {
+//        case .gifsTrending:
+//            return BaseURL.v1.path + "gifs/trending?api_key=\(NetworkConstants.apiKey)"
+//        case .stickersTrending:
+//            return BaseURL.v1.path + "stickers/trending?api_key=\(NetworkConstants.apiKey)"
+//        case .emoji:
+//            return BaseURL.v2.path + "emoji?api_key=\(NetworkConstants.apiKey)"
+//        case .emojiVariations(let emojiId):
+//            return BaseURL.v2.path + "emoji/\(emojiId)/variations?api_key=\(NetworkConstants.apiKey)"
+//        case .gifsSearch(let query):
+//            return BaseURL.v1.path + "gifs/search?api_key=\(NetworkConstants.apiKey)&q=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? query)"
+//        case .stickersSearch(let query):
+//            return BaseURL.v1.path + "stickers/search?api_key=\(NetworkConstants.apiKey)&q=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? query)"
+//        }
+//    }
+//}
+
 enum Endpoint {
     case gifsTrending
     case stickersTrending
     case emoji
-    case emojiVariations(emojiId: String)
     case gifsSearch(query: String)
     case stickersSearch(query: String)
-    
+
     var path: String {
         switch self {
         case .gifsTrending:
@@ -104,8 +129,6 @@ enum Endpoint {
             return BaseURL.v1.path + "stickers/trending?api_key=\(NetworkConstants.apiKey)"
         case .emoji:
             return BaseURL.v2.path + "emoji?api_key=\(NetworkConstants.apiKey)"
-        case .emojiVariations(let emojiId):
-            return BaseURL.v2.path + "emoji/\(emojiId)/variations?api_key=\(NetworkConstants.apiKey)"
         case .gifsSearch(let query):
             return BaseURL.v1.path + "gifs/search?api_key=\(NetworkConstants.apiKey)&q=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? query)"
         case .stickersSearch(let query):
