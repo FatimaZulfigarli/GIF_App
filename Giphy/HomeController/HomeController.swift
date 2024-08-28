@@ -191,41 +191,30 @@ class HomeController: UIViewController {
 //       
 //       }
 //
+
 extension HomeController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collection: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.currentItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GifStickerCell", for: indexPath) as! GifStickerCell
-        let item = viewModel.currentItems[indexPath.item]
-        cell.configure(with: item, onTap: { [weak self] (id: String) in
-            print("Cell onTap closure called with id: \(id)")
-            self?.handleItemTap(id: id)
-        }, onFavButtonTap: { [weak self] (id: String) in
-            self?.toggleFavorite(for: id)
-        })
-        
-        // Check if the item is already marked as favorite
-        let isFavorite = viewModel.isItemFavorite(id: item.id)
-        cell.updateFavButton(isFavorite: isFavorite)
-        
-        return cell
-    }
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GifStickerCell", for: indexPath) as! GifStickerCell
+           let item = viewModel.currentItems[indexPath.item]
+           cell.configure(with: item, onTap: { [weak self] (id: String) in
+               print("Cell onTap closure called with id: \(id)")
+               self?.handleItemTap(id: id)
+           }, onFavButtonTap: { [weak self] (id: String) in
+               self?.toggleFavorite(for: id)
+           })
+           
+           // Check if the item is already marked as favorite
+           let isFavorite = viewModel.isItemFavorite(id: item.id)
+           cell.updateFavButton(isFavorite: isFavorite)
+           
+           return cell
+       }
+   }
 
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionView.elementKindSectionHeader {
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(CategoriesHeaderView.self)", for: indexPath) as! CategoriesHeaderView
-            headerView.didSelectCategory = { [weak self] type in
-                self?.viewModel.selectedCategory = type
-                self?.showLoadingIndicator()
-                self?.viewModel.fetchContent(for: type)
-            }
-            return headerView
-        }
-        return UICollectionReusableView()
-    }
-}
        
 //       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 //           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GifStickerCell", for: indexPath) as! GifStickerCell

@@ -39,33 +39,24 @@ class DetailController: UIViewController {
 }
 
 extension DetailController: UICollectionViewDataSource, UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return selectedItems.count // Return the total number of selected items
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GifStickerCell", for: indexPath) as! GifStickerCell
-//        
-//        // Configure each cell with the corresponding item
-//        let item = selectedItems[indexPath.item]
-//        cell.configure(with: item, onTap: { _ in }, onForceTouch: { _ in })
-//        
-//        return cell
-//    }
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return selectedItems.count // Return the total number of selected items
+        return selectedItems.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GifStickerCell", for: indexPath) as! GifStickerCell
-        
-        // Configure each cell with the corresponding item
-        let item = selectedItems[indexPath.item]
-//        cell.configure(with: item, onTap: { _ in })
-        
-        return cell
-    }
+            
+            let item = selectedItems[indexPath.item]
+            cell.configure(with: item, onTap: { id in
+                print("Tapped on item with ID: \(id)")
+            }, onFavButtonTap: { id in
+                print("Favorite button tapped for item with ID: \(id)")
+            })
+            
+            return cell
+        }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {

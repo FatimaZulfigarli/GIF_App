@@ -37,15 +37,15 @@ class SelectedItemHeader: UICollectionReusableView {
         }
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedIemCell", for: indexPath) as! SelectedIemCell
-            
-            // Configure the cell with the selected item
-            if let selectedItem = selectedItem {
-                cell.configure(with: selectedItem)
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedIemCell", for: indexPath) as! SelectedIemCell
+                
+                // Configure the cell with the selected item
+                if let selectedItem = selectedItem {
+                    cell.configure(with: selectedItem)
+                }
+                
+                return cell
             }
-            
-            return cell
-        }
         
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             print("Selected item at indexPath: \(indexPath)")

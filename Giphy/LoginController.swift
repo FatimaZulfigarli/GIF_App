@@ -27,19 +27,21 @@ class LoginController: UIViewController {
                    return
                }
                
-               Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-                   if let error = error {
-                       print("Login failed: \(error.localizedDescription)")
-                       return
-                   }
-                   
-                   // Login successful, navigate to the main view controller
-                   let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                   if let viewController = storyboard.instantiateViewController(withIdentifier: "HomeController") as? HomeController {
-                       self?.navigationController?.show(viewController, sender: nil)
-                   }
-               }
-           }
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+                if let error = error {
+                    print("Login failed: \(error.localizedDescription)")
+                    return
+                }
+                
+                // Login successful, navigate to the Tab Bar Controller programmatically
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                if let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabNav") as? UITabBarController {
+                    tabBarController.modalPresentationStyle = .fullScreen
+                    self?.present(tabBarController, animated: true, completion: nil)
+                }
+            }
+        }
+    
     @IBAction func signupButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                if let registerController = storyboard.instantiateViewController(withIdentifier: "RegisterController") as? RegisterController {
