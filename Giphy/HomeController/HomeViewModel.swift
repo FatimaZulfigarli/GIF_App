@@ -272,6 +272,8 @@ class HomeViewModel {
             }
         }
     }
+    
+    
 
     private func fetchTrendingStickers() {
         homeManager.getTrendingStickers { [weak self] data, error in

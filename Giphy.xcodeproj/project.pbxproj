@@ -49,7 +49,7 @@
 		45A3143F2C7C4FED0099AC79 /* centralGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 45A314362C7C4FED0099AC79 /* centralGif.gif */; };
 		45A314402C7C4FED0099AC79 /* background.gif in Resources */ = {isa = PBXBuildFile; fileRef = 45A314372C7C4FED0099AC79 /* background.gif */; };
 		45A314422C7C50550099AC79 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A314412C7C50550099AC79 /* RegisterController.swift */; };
-		45A314442C7C55410099AC79 /* GoogleService-Info-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45A314432C7C55410099AC79 /* GoogleService-Info-2.plist */; };
+		45A314442C7C55410099AC79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45A314432C7C55410099AC79 /* GoogleService-Info.plist */; };
 		45A314492C7C57670099AC79 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 45A314482C7C57670099AC79 /* FirebaseAnalytics */; };
 		45A3144B2C7C57670099AC79 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 45A3144A2C7C57670099AC79 /* FirebaseAuth */; };
 		45A3144D2C7C57670099AC79 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 45A3144C2C7C57670099AC79 /* FirebaseCrashlytics */; };
@@ -57,7 +57,6 @@
 		45A314512C7C57670099AC79 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 45A314502C7C57670099AC79 /* FirebaseFirestore */; };
 		45A314532C7C57670099AC79 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 45A314522C7C57670099AC79 /* FirebaseStorage */; };
 		45A314552C7C630D0099AC79 /* RegistrationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A314542C7C630D0099AC79 /* RegistrationData.swift */; };
-		45A314572C7C659D0099AC79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45A314562C7C659D0099AC79 /* GoogleService-Info.plist */; };
 		45A314592C7F04730099AC79 /* StickerSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A314582C7F04730099AC79 /* StickerSearch.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,9 +103,8 @@
 		45A314362C7C4FED0099AC79 /* centralGif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = centralGif.gif; sourceTree = "<group>"; };
 		45A314372C7C4FED0099AC79 /* background.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = background.gif; sourceTree = "<group>"; };
 		45A314412C7C50550099AC79 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
-		45A314432C7C55410099AC79 /* GoogleService-Info-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-2.plist"; sourceTree = "<group>"; };
+		45A314432C7C55410099AC79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Gifs/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		45A314542C7C630D0099AC79 /* RegistrationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationData.swift; sourceTree = "<group>"; };
-		45A314562C7C659D0099AC79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		45A314582C7F04730099AC79 /* StickerSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerSearch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,7 +160,7 @@
 				4508AD512C4FC17900588B89 /* Assets.xcassets */,
 				4508AD532C4FC17900588B89 /* LaunchScreen.storyboard */,
 				4508AD562C4FC17900588B89 /* Info.plist */,
-				45A314562C7C659D0099AC79 /* GoogleService-Info.plist */,
+				45A314432C7C55410099AC79 /* GoogleService-Info.plist */,
 				45A3142E2C7C4FED0099AC79 /* Gifs */,
 			);
 			path = Giphy;
@@ -271,7 +269,6 @@
 		45A3142E2C7C4FED0099AC79 /* Gifs */ = {
 			isa = PBXGroup;
 			children = (
-				45A314432C7C55410099AC79 /* GoogleService-Info-2.plist */,
 				45A3142F2C7C4FED0099AC79 /* profileGIF.gif */,
 				45A314302C7C4FED0099AC79 /* loopwp.mp4 */,
 				45A314312C7C4FED0099AC79 /* looooop.gif */,
@@ -369,11 +366,10 @@
 				4508AD6B2C50FB8400588B89 /* CategoriesCell.xib in Resources */,
 				4508AD552C4FC17900588B89 /* LaunchScreen.storyboard in Resources */,
 				45A3143F2C7C4FED0099AC79 /* centralGif.gif in Resources */,
-				45A314572C7C659D0099AC79 /* GoogleService-Info.plist in Resources */,
 				45A314402C7C4FED0099AC79 /* background.gif in Resources */,
 				4508AD652C50F99F00588B89 /* CategoriesHeaderView.xib in Resources */,
 				4508AD522C4FC17900588B89 /* Assets.xcassets in Resources */,
-				45A314442C7C55410099AC79 /* GoogleService-Info-2.plist in Resources */,
+				45A314442C7C55410099AC79 /* GoogleService-Info.plist in Resources */,
 				4508AD502C4FC17800588B89 /* Main.storyboard in Resources */,
 				45A314382C7C4FED0099AC79 /* profileGIF.gif in Resources */,
 				45A3143C2C7C4FED0099AC79 /* icon.gif in Resources */,
