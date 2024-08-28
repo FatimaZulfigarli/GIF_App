@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth 
 
 
 enum ContentType: String {
@@ -218,36 +219,44 @@ class HomeViewModel {
     }
 
     func saveFavoritesToFirebase() {
-        // Get a reference to Firebase
-        let db = Firestore.firestore()
-        let userId = "unique_user_id" // Replace with actual user ID
-        let favoriteData = ["favorites": Array(favorites)]
+            guard let userId = Auth.auth().currentUser?.uid else {
+                print("User is not logged in")
+                return
+            }
 
-        db.collection("users").document(userId).setData(favoriteData) { error in
-            if let error = error {
-                print("Failed to save favorites to Firebase: \(error)")
-            } else {
-                print("Favorites successfully saved to Firebase.")
+            // Get a reference to Firebase
+            let db = Firestore.firestore()
+            let favoriteData = ["favorites": Array(favorites)]
+
+            db.collection("users").document(userId).setData(favoriteData) { error in
+                if let error = error {
+                    print("Failed to save favorites to Firebase: \(error)")
+                } else {
+                    print("Favorites successfully saved to Firebase.")
+                }
             }
         }
-    }
 
     // Call this method during app launch to load favorites from Firebase
     func loadFavoritesFromFirebase(completion: @escaping () -> Void) {
-        let db = Firestore.firestore()
-        let userId = "unique_user_id" // Replace with actual user ID
+           guard let userId = Auth.auth().currentUser?.uid else {
+               print("User is not logged in")
+               return
+           }
 
-        db.collection("users").document(userId).getDocument { document, error in
-            if let document = document, document.exists {
-                if let favoriteArray = document.data()?["favorites"] as? [String] {
-                    self.favorites = Set(favoriteArray)
-                }
-            } else {
-                print("Failed to load favorites from Firebase: \(error?.localizedDescription ?? "No error description")")
-            }
-            completion()
-        }
-    }
+           let db = Firestore.firestore()
+
+           db.collection("users").document(userId).getDocument { document, error in
+               if let document = document, document.exists {
+                   if let favoriteArray = document.data()?["favorites"] as? [String] {
+                       self.favorites = Set(favoriteArray)
+                   }
+               } else {
+                   print("Failed to load favorites from Firebase: \(error?.localizedDescription ?? "No error description")")
+               }
+               completion()
+           }
+       }
 
     func fetchContent(for category: ContentType) {
         print("Fetching content for category: \(category)")
