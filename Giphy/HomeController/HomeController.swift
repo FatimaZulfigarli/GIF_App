@@ -28,12 +28,25 @@ class HomeController: UIViewController {
             return
         }
 
-        let selectedCategory: ContentType = .gif
+//        let selectedCategory: ContentType = .gif
+//
+//        showLoadingIndicator()
+//        viewModel.searchContent(for: selectedCategory, query: query)
+//    }
 
         showLoadingIndicator()
-        viewModel.searchContent(for: selectedCategory, query: query)
-    }
 
+               // Use selectedCategory to decide which search method to call
+               switch viewModel.selectedCategory {
+               case .gif:
+                   viewModel.searchGIFs(query: query) // Search GIFs
+               case .sticker:
+                   viewModel.searchStickers(query: query) // Search Stickers
+               case .emoji:
+                   // Currently no search for emojis; you could handle differently if needed
+                   break
+               }
+           }
 
     private func setupLoadingIndicator() {
            loadingIndicator.center = view.center
@@ -167,19 +180,29 @@ class HomeController: UIViewController {
            })
            return cell
        }
+//       func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//           let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategoriesHeaderView", for: indexPath) as! CategoriesHeaderView
+//           headerView.didSelectCategory = { [weak self] type in
+//               self?.showLoadingIndicator()
+//               self?.viewModel.currentItems.removeAll()
+//               self?.collection.reloadData()
+//               DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                   self?.viewModel.fetchContent(for: type)
+//               }
+//           }
+//           return headerView
+//       }
+//   }
        func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-           let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategoriesHeaderView", for: indexPath) as! CategoriesHeaderView
-           headerView.didSelectCategory = { [weak self] type in
-               self?.showLoadingIndicator()
-               self?.viewModel.currentItems.removeAll()
-               self?.collection.reloadData()
-               DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                   self?.viewModel.fetchContent(for: type)
+               let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategoriesHeaderView", for: indexPath) as! CategoriesHeaderView
+               headerView.didSelectCategory = { [weak self] type in
+                   self?.viewModel.selectedCategory = type // Update the selected category
+                   self?.showLoadingIndicator()
+                   self?.viewModel.fetchContent(for: type) // Fetch content for the selected category
                }
+               return headerView
            }
-           return headerView
        }
-   }
 
    extension HomeController: UICollectionViewDelegate {
        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

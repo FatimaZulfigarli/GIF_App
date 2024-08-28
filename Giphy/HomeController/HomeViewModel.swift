@@ -144,7 +144,8 @@ enum ContentType: String {
 
 class HomeViewModel {
     private let homeManager = HomeManager()
-    
+    var selectedCategory: ContentType = .gif // Default category is GIF
+
     var stickerSearchResults: [StickerDatum] = [] // Updated to StickerDatum
     var gifSearchResults: [GIFDatum] = []  // Separate property for GIFSearch results
 
@@ -226,7 +227,7 @@ class HomeViewModel {
 //            }
 //        }
 //    }
-    private func searchGIFs(query: String) {
+     func searchGIFs(query: String) {
         homeManager.searchGIFs(query: query) { [weak self] gifSearch, error in
             if let gifSearch = gifSearch {
                 self?.gifSearchResults = gifSearch.data ?? []
@@ -237,15 +238,30 @@ class HomeViewModel {
             }
         }
     }
-    private func searchStickers(query: String) {
-        homeManager.searchStickers(query: query) { [weak self] stickerSearch, error in
-            if let stickerSearch = stickerSearch {
-                self?.stickers = stickerSearch.data ?? []
-                self?.currentItems = stickerSearch.data ?? []
-                self?.onFetchCompleted?()
-            } else if let error = error {
-                self?.onFetchFailed?(error)
-            }
-        }
-    }
-}
+//    private func searchStickers(query: String) {
+//        homeManager.searchStickers(query: query) { [weak self] stickerSearch, error in
+//            if let stickerSearch = stickerSearch {
+//                self?.stickers = stickerSearch.data ?? []
+//                self?.currentItems = stickerSearch.data ?? []
+//                self?.onFetchCompleted?()
+//            } else if let error = error {
+//                self?.onFetchFailed?(error)
+//            }
+//        }
+//    }
+//}
+
+     func searchStickers(query: String) {
+           homeManager.searchStickers(query: query) { [weak self] stickerSearch, error in
+               if let error = error {
+                   print("Error searching Stickers: \(error)")
+                   self?.onFetchFailed?(error)
+                   return
+               }
+               print("Successfully searched Stickers")
+               self?.stickers = stickerSearch?.data ?? []
+               self?.currentItems = self?.stickers ?? []
+               self?.onFetchCompleted?()
+           }
+       }
+   }

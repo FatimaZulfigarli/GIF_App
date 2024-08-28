@@ -96,9 +96,20 @@ class HomeManager: HomeUseCase {
         NetworkManager.request(model: GIFSearch.self, endpoint: .gifsSearch(query: query), completion: completion)
     }
     
+//    func searchStickers(query: String, completion: @escaping (StickerSearch?, String?) -> Void) {
+//        NetworkManager.request(model: StickerSearch.self, endpoint: .stickersSearch(query: query)) { stickerSearch, error in
+//            completion(stickerSearch, error)
+//        }
+//    }
+    
     func searchStickers(query: String, completion: @escaping (StickerSearch?, String?) -> Void) {
-        NetworkManager.request(model: StickerSearch.self, endpoint: .stickersSearch(query: query)) { stickerSearch, error in
-            completion(stickerSearch, error)
+            print("Searching Stickers with query: \(query)")
+            NetworkManager.request(model: StickerSearch.self, endpoint: .stickersSearch(query: query)) { stickerSearch, error in
+                if let error = error {
+                    print("Error searching Stickers: \(error)")
+                }
+                completion(stickerSearch, error)
+            }
         }
     }
-}
+

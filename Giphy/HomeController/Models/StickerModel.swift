@@ -190,7 +190,17 @@ struct StickerLooping: Codable {
 enum StickerRating: String, Codable {
     case g = "g"
     case pg = "pg"
+    case pg13 = "pg-13"
+    case r = "r"  // Add this case to handle the "r" rating
+    case unknown // Fallback case for unexpected values
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let rawValue = try container.decode(String.self)
+        self = StickerRating(rawValue: rawValue) ?? .unknown
+    }
 }
+
 
 enum StickerTypeEnum: String, Codable {
     case sticker = "sticker"
