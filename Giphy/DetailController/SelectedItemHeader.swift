@@ -23,30 +23,27 @@ class SelectedItemHeader: UICollectionReusableView {
             collectionView.dataSource = self
             collectionView.delegate = self
         }
-        
-        func configure(with selectedItem: GifStickerCellConfigurable) {
+    func configure(with selectedItem: GifStickerCellConfigurable) {
             self.selectedItem = selectedItem
+            print("SelectedItemHeader configure called with item: \(selectedItem)")
             collectionView.reloadData()
         }
     }
 
     extension SelectedItemHeader: UICollectionViewDataSource, UICollectionViewDelegate {
-        
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return 1 // Since we only have one selected item to display
+            return 1 // Only one selected item to display
         }
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedIemCell", for: indexPath) as! SelectedIemCell
-                
-                // Configure the cell with the selected item
-                if let selectedItem = selectedItem {
-                    cell.configure(with: selectedItem)
-                }
-                
-                return cell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedIemCell", for: indexPath) as! SelectedIemCell
+            if let selectedItem = selectedItem {
+                print("Configuring cell with item: \(selectedItem)")
+                cell.configure(with: selectedItem)
             }
-        
+            return cell
+        }
+    
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             print("Selected item at indexPath: \(indexPath)")
         }

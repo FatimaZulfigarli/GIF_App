@@ -39,42 +39,33 @@ class DetailController: UIViewController {
 }
 
 extension DetailController: UICollectionViewDataSource, UICollectionViewDelegate {
-
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return selectedItems.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GifStickerCell", for: indexPath) as! GifStickerCell
-            
-            let item = selectedItems[indexPath.item]
-            cell.configure(with: item, onTap: { id in
-                print("Tapped on item with ID: \(id)")
-            }, onFavButtonTap: { id in
-                print("Favorite button tapped for item with ID: \(id)")
-            })
-            
-            return cell
-        }
-    
+        let item = selectedItems[indexPath.item]
+        cell.configure(with: item, onTap: { id in
+            print("Tapped on item with ID: \(id)")
+        }, onFavButtonTap: { id in
+            print("Favorite button tapped for item with ID: \(id)")
+        })
+        return cell
+    }
+
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            print("Attempting to dequeue header...")
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SelectedItemHeader", for: indexPath) as! SelectedItemHeader
-            
-            // Pass the first selected item to the header or handle as needed
             if let firstItem = selectedItems.first {
-                headerView.configure(with: firstItem)
+                print("Configuring header with item: \(firstItem)")
+                headerView.configure(with: firstItem) // Pass the correct selected item
             }
-            
-            print("Header dequeued successfully")
             return headerView
         }
-        fatalError("Unexpected kind")
+        return UICollectionReusableView()
     }
 }
-
 extension DetailController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         let screenHeight = UIScreen.main.bounds.height

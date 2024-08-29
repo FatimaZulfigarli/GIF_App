@@ -136,15 +136,16 @@ class HomeController: UIViewController {
        }
        
        // Add this method here
-       private func handleItemTap(id: String) {
-           print("handleItemTap called with id: \(id)")
-           if let item = viewModel.currentItems.first(where: { $0.id == id }) {
-               print("Item found, starting DetailCoordinator")
-               startDetailCoordinator(with: viewModel.currentItems) // Pass all items to DetailCoordinator
-           } else {
-               print("No item found with id: \(id)")
-           }
-       }
+    private func handleItemTap(id: String) {
+        print("handleItemTap called with id: \(id)")
+        if let selectedItem = viewModel.currentItems.first(where: { $0.id == id }) {
+            print("Selected item found: \(selectedItem)")
+            startDetailCoordinator(with: [selectedItem]) // Pass only the selected item
+        } else {
+            print("No item found with id: \(id)")
+        }
+    }
+
     private func startDetailCoordinator(with items: [GifStickerCellConfigurable]) {
            print("startDetailCoordinator called")
            detailCoordinator = DetailCoordinator(navigationController: navigationController!, selectedItems: items)
@@ -213,7 +214,22 @@ extension HomeController: UICollectionViewDataSource {
            
            return cell
        }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+           if kind == UICollectionView.elementKindSectionHeader {
+               let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategoriesHeaderView", for: indexPath) as! CategoriesHeaderView
+               headerView.didSelectCategory = { [weak self] type in
+                   self?.viewModel.selectedCategory = type
+                   self?.showLoadingIndicator()
+                   self?.viewModel.fetchContent(for: type)
+               }
+               print("CategoriesHeaderView successfully loaded")
+               return headerView
+           }
+           return UICollectionReusableView()
+       }
    }
+   
 
        
 //       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

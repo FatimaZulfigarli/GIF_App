@@ -15,10 +15,13 @@ class SelectedIemCell: UICollectionViewCell {
            // Initialization code
        }
        
-       func configure(with item: GifStickerCellConfigurable) {
-           // Load the GIF into the UIImageView
-           if let imageURL = item.imageURL {
-               gifStickerImage.loadGif(from: imageURL)
-           }
-       }
-   }
+    func configure(with item: GifStickerCellConfigurable) {
+            print("Configuring SelectedIemCell with item: \(item)")
+            // Load the image or GIF into the UIImageView
+            if let imageURL = item.imageURL {
+                gifStickerImage.loadGif(from: imageURL)
+            } else {
+                print("No image URL found for item")
+            }
+        }
+    }
