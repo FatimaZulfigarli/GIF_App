@@ -181,21 +181,27 @@ class HomeController: UIViewController {
 //           detailCoordinator = DetailCoordinator(navigationController: navigationController!, selectedItems: items)
 //           detailCoordinator?.start()
 //       }
-       
-       private func toggleFavorite(for id: String) {
-           // Toggle favorite state
-           if viewModel.isItemFavorite(id: id) {
-               viewModel.removeFromFavorites(id: id)
-           } else {
-               viewModel.addToFavorites(id: id)
-           }
-           
-           // Save to Firebase
-           viewModel.saveFavoritesToFirebase()
-           
-           // Reload the collection view to reflect the change
-           collection.reloadData()
-       }
+    private func toggleFavoriteButton(for id: String) {
+        if let index = viewModel.currentItems.firstIndex(where: { $0.id == id }),
+           let cell = collection.cellForItem(at: IndexPath(item: index, section: 0)) as? GifStickerCell {
+            let isFavorite = viewModel.isItemFavorite(id: id)
+            cell.updateFavButton(isFavorite: isFavorite)
+        }
+    }
+    private func toggleFavorite(for id: String) {
+        // Toggle favorite state
+        if viewModel.isItemFavorite(id: id) {
+            viewModel.removeFromFavorites(id: id)
+        } else {
+            viewModel.addToFavorites(id: id)
+        }
+        
+        // Save to Firebase
+        viewModel.saveFavoritesToFirebase()
+        
+        // Directly update the favorite button
+        toggleFavoriteButton(for: id)
+    }
    }
        
 //   extension HomeController: UICollectionViewDataSource {
