@@ -58,6 +58,7 @@
 		45A314532C7C57670099AC79 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 45A314522C7C57670099AC79 /* FirebaseStorage */; };
 		45A314552C7C630D0099AC79 /* RegistrationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A314542C7C630D0099AC79 /* RegistrationData.swift */; };
 		45A314592C7F04730099AC79 /* StickerSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A314582C7F04730099AC79 /* StickerSearch.swift */; };
+		45A3145F2C8079980099AC79 /* ProfilePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A3145E2C8079980099AC79 /* ProfilePageController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		45A314432C7C55410099AC79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Gifs/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		45A314542C7C630D0099AC79 /* RegistrationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationData.swift; sourceTree = "<group>"; };
 		45A314582C7F04730099AC79 /* StickerSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerSearch.swift; sourceTree = "<group>"; };
+		45A3145E2C8079980099AC79 /* ProfilePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 				4508AD4E2C4FC17800588B89 /* Main.storyboard */,
 				45A3142C2C7C4EB10099AC79 /* LoginController.swift */,
 				45A314412C7C50550099AC79 /* RegisterController.swift */,
+				45A3145E2C8079980099AC79 /* ProfilePageController.swift */,
 				4508ADCE2C5A9DE800588B89 /* DetailController */,
 				4508AD512C4FC17900588B89 /* Assets.xcassets */,
 				4508AD532C4FC17900588B89 /* LaunchScreen.storyboard */,
@@ -385,6 +388,7 @@
 			files = (
 				45A314592C7F04730099AC79 /* StickerSearch.swift in Sources */,
 				451AB7492C6FB17300532673 /* SelectedIemCell.swift in Sources */,
+				45A3145F2C8079980099AC79 /* ProfilePageController.swift in Sources */,
 				4508AE392C6B217200588B89 /* SelectedItemHeader.swift in Sources */,
 				4508ADD22C5A9E5800588B89 /* Coordinator.swift in Sources */,
 				45A314422C7C50550099AC79 /* RegisterController.swift in Sources */,

@@ -136,21 +136,51 @@ class HomeController: UIViewController {
        }
        
        // Add this method here
-    private func handleItemTap(id: String) {
-        print("handleItemTap called with id: \(id)")
-        if let selectedItem = viewModel.currentItems.first(where: { $0.id == id }) {
-            print("Selected item found: \(selectedItem)")
-            startDetailCoordinator(with: [selectedItem]) // Pass only the selected item
-        } else {
-            print("No item found with id: \(id)")
-        }
-    }
+//    private func handleItemTap(id: String) {
+//        print("handleItemTap called with id: \(id)")
+//        if let selectedItem = viewModel.currentItems.first(where: { $0.id == id }) {
+//            print("Selected item found: \(selectedItem)")
+//            startDetailCoordinator(with: [selectedItem]) // Pass only the selected item
+//        } else {
+//            print("No item found with id: \(id)")
+//        }
+//    }
 
-    private func startDetailCoordinator(with items: [GifStickerCellConfigurable]) {
-           print("startDetailCoordinator called")
-           detailCoordinator = DetailCoordinator(navigationController: navigationController!, selectedItems: items)
-           detailCoordinator?.start()
-       }
+    
+    private func handleItemTap(id: String) {
+            print("handleItemTap called with id: \(id)")
+            if let selectedItem = viewModel.currentItems.first(where: { $0.id == id }) {
+                print("Selected item found: \(selectedItem)")
+                // Pass all items and the specific selected item to the DetailCoordinator
+                startDetailCoordinator(with: viewModel.currentItems, initialSelectedItem: selectedItem)
+            } else {
+                print("No item found with id: \(id)")
+            }
+        }
+
+        // **Updated: Now requires initialSelectedItem parameter**
+        private func startDetailCoordinator(with items: [GifStickerCellConfigurable], initialSelectedItem: GifStickerCellConfigurable) {
+            print("startDetailCoordinator called")
+            detailCoordinator = DetailCoordinator(navigationController: navigationController!, selectedItems: items, initialSelectedItem: initialSelectedItem)
+            detailCoordinator?.start()
+        }
+        
+
+//    private func handleItemTap(id: String) {
+//        print("handleItemTap called with id: \(id)")
+//        if let selectedItem = viewModel.currentItems.first(where: { $0.id == id }) {
+//            print("Selected item found: \(selectedItem)")
+//            startDetailCoordinator(with: viewModel.currentItems) // Pass all items instead of just selected
+//        } else {
+//            print("No item found with id: \(id)")
+//        }
+//    }
+//
+//    private func startDetailCoordinator(with items: [GifStickerCellConfigurable]) {
+//           print("startDetailCoordinator called")
+//           detailCoordinator = DetailCoordinator(navigationController: navigationController!, selectedItems: items)
+//           detailCoordinator?.start()
+//       }
        
        private func toggleFavorite(for id: String) {
            // Toggle favorite state
@@ -268,12 +298,11 @@ extension HomeController: UICollectionViewDataSource {
 //           return CGSize(width: width, height: height)
 //       }
 //   }
-
 extension HomeController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("collectionView didSelectItemAt called with indexPath: \(indexPath)")
-        let items = viewModel.currentItems // Get all items to pass to DetailCoordinator
-        startDetailCoordinator(with: items)
+        let items = viewModel.currentItems
+        startDetailCoordinator(with: items, initialSelectedItem: items[indexPath.item])
     }
 }
 
