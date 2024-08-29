@@ -225,15 +225,22 @@ class HomeViewModel {
             print("User is not logged in")
             return
         }
-
+        
+        // Get the current user's email
+        let userEmail = Auth.auth().currentUser?.email
+        
+        // Prepare the data to be saved
+        let favoriteData: [String: Any] = [
+            "email": userEmail ?? "Unknown",  // Add the user's email to the data
+            "favorites": Array(favorites)
+        ]
+        
         let db = Firestore.firestore()
-        let favoriteData = ["favorites": Array(favorites)]
-
         db.collection("users").document(userId).setData(favoriteData) { error in
             if let error = error {
                 print("Failed to save favorites to Firebase: \(error)")
             } else {
-                print("Favorites successfully saved to Firebase.")
+                print("Favorites and email successfully saved to Firebase.")
             }
         }
     }
