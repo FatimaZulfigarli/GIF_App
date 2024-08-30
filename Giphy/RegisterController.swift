@@ -56,9 +56,29 @@ class RegisterController: UIViewController {
     @IBAction func haveAccountButton(_ sender: Any) {
     }
     @IBAction func googleSignIn(_ sender: Any) {
-        loginAdapter.loginWithGoogle()
-            
-    }
+        loginAdapter.userCompletion = { [weak self] userProfile in
+                   guard let self = self else { return }
+                   print("Google Sign-In successful for user: \(userProfile.fullname)")
+                   
+                   // Automatically navigate to the main app screen after Google Sign-In
+                   self.navigateToMainApp()
+               }
+               
+               // Trigger Google Sign-In
+               loginAdapter.loginWithGoogle()
+           }
+           
+           private func navigateToMainApp() {
+               let storyboard = UIStoryboard(name: "Main", bundle: nil)
+               if let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabNav") as? UITabBarController {
+                   tabBarController.modalPresentationStyle = .fullScreen
+                   self.present(tabBarController, animated: true, completion: nil)
+               } else if let homeController = storyboard.instantiateViewController(withIdentifier: "HomeController") as? HomeController {
+                   homeController.modalPresentationStyle = .fullScreen
+                   self.present(homeController, animated: true, completion: nil)
+               }
+           }
+       
    
     @IBAction func googlePrivacy(_ sender: Any) {
     }
