@@ -14,11 +14,19 @@ class LoginController: UIViewController {
     @IBOutlet weak var giphyLabel: UILabel!
     
     @IBOutlet weak var loginPasswordTextField: UITextField!
+    lazy var loginAdapter = LoginAdapter(controller: self)
+
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-       
-    }
+        loginAdapter.userCompletion = { [weak self] userProfile in
+                   guard let self = self else { return }
+                   
+                   print("Logged in as: \(userProfile.fullname)")
+                   print("Email: \(userProfile.email ?? "No email found")")
+                   
+                   self.navigateToMainApp()
+               }
+           }
     
     @IBAction func loginButton(_ sender: Any) {
         guard let email = loginEmailTextField.text, !email.isEmpty,
@@ -27,26 +35,16 @@ class LoginController: UIViewController {
                    return
                }
                
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-                if let error = error {
-                    print("Login failed: \(error.localizedDescription)")
-                    return
-                }
-                
-                // Login successful, navigate to the Tab Bar Controller programmatically
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                if let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabNav") as? UITabBarController {
-                    tabBarController.modalPresentationStyle = .fullScreen
-                    self?.present(tabBarController, animated: true, completion: nil)
-                }
-            }
-        }
+               let loginData = LoginData(email: email, password: password)
+               loginAdapter.loginWithEmail(loginData: loginData)
+           }
+    
+    
     
     @IBAction func signupButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                if let registerController = storyboard.instantiateViewController(withIdentifier: "RegisterController") as? RegisterController {
                    
-                   // Set the callback to update the email and password fields
                    registerController.onRegisterComplete = { [weak self] registrationData in
                        self?.loginEmailTextField.text = registrationData.email
                        self?.loginPasswordTextField.text = registrationData.password
@@ -72,5 +70,13 @@ class LoginController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    private func navigateToMainApp() {
+           let storyboard = UIStoryboard(name: "Main", bundle: nil)
+           if let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabNav") as? UITabBarController {
+               tabBarController.modalPresentationStyle = .fullScreen
+               self.present(tabBarController, animated: true, completion: nil)
+           }
+       }
+   }
 
-}
+

@@ -16,6 +16,7 @@ class RegisterController: UIViewController {
     
     @IBOutlet weak var regPasswordTextField: UITextField!
     var onRegisterComplete: ((RegistrationData) -> Void)?
+    lazy var loginAdapter = LoginAdapter(controller: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,21 +40,24 @@ class RegisterController: UIViewController {
         let registrationData = RegistrationData(email: email, password: password, fullname: fullname)
         print("Attempting to create user with email: \(email)")  // Debugging
         
-        Auth.auth().createUser(withEmail: registrationData.email, password: registrationData.password) { [weak self] result, error in
-            if let user = result?.user {
-                print("User registered with email: \(user.email ?? "")")  // Debugging
-                self?.onRegisterComplete?(registrationData)
-                self?.navigationController?.popViewController(animated: true)
-            } else {
-                print("Registration failed: \(error?.localizedDescription ?? "Unknown error")")  // Debugging
+        loginAdapter.registerWithEmail(registrationData: registrationData) { [weak self] result in
+                    switch result {
+                    case .success(let userProfile):
+                        print("User registered: \(userProfile.fullname)")
+                        self?.onRegisterComplete?(registrationData)
+                        self?.navigationController?.popViewController(animated: true)
+                    case .failure(let error):
+                        print("Registration failed: \(error.localizedDescription)")
+                    }
+                }
             }
-        }
-    }
     
     
     @IBAction func haveAccountButton(_ sender: Any) {
     }
     @IBAction func googleSignIn(_ sender: Any) {
+        loginAdapter.loginWithGoogle()
+            
     }
    
     @IBAction func googlePrivacy(_ sender: Any) {
