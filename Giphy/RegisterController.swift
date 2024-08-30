@@ -11,7 +11,9 @@ import FirebaseAuth
 class RegisterController: UIViewController {
 
     @IBOutlet weak var regFullnameTextField: UITextField!
+    
     @IBOutlet weak var regEmailTextField: UITextField!
+    
     @IBOutlet weak var regPasswordTextField: UITextField!
     var onRegisterComplete: ((RegistrationData) -> Void)?
 
@@ -24,6 +26,7 @@ class RegisterController: UIViewController {
     }
     
     @IBAction func signUpButton(_ sender: Any) {
+    
          print("Register button tapped")  // Debugging
         
         guard let email = regEmailTextField.text, !email.isEmpty,
