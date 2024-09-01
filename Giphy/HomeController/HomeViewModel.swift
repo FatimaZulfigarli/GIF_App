@@ -260,15 +260,15 @@ class HomeViewModel {
                     self?.favorites = Set(favoriteArray)
                     print("Favorites loaded from Firebase: \(favoriteArray)")
                     // Update currentItems with the fetched favorites
-                    self?.currentItems = favoriteArray.compactMap { favoriteId in
-                        self?.fetchItem(by: favoriteId)
-                    }
-                    print("Loaded favorite items: \(self?.currentItems ?? [])")
+//                    self?.currentItems = favoriteArray.compactMap { favoriteId in
+//                        self?.fetchItem(by: favoriteId)
+//                    }
+//                    print("Loaded favorite items: \(self?.currentItems ?? [])")
+                    completion()
                 }
             } else {
                 print("Failed to load favorites from Firebase: \(error?.localizedDescription ?? "No error description")")
             }
-            completion()
         }
     }
 

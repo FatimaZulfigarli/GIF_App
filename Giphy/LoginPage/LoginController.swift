@@ -15,6 +15,8 @@ class LoginController: UIViewController {
     
     @IBOutlet weak var loginPasswordTextField: UITextField!
     lazy var loginAdapter = LoginAdapter(controller: self)
+    private let urlHelper = URLs()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,9 +59,13 @@ class LoginController: UIViewController {
     @IBAction func forgetPasswordButton(_ sender: Any) {
     }
     @IBAction func termsOfService(_ sender: Any) {
+        urlHelper.callURL(urlType: .termsOfService)
+        print("terms of service clicked")
     }
     
     @IBAction func privacyPolicy(_ sender: Any) {
+        urlHelper.callURL(urlType: .privacyTerms)
+        print("privacy policy clicked")
     }
     /*
     // MARK: - Navigation

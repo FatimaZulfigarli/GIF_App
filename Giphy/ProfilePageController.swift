@@ -9,47 +9,47 @@ import UIKit
 import Firebase
 import FirebaseAuth
 class ProfilePageController: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     private var favoriteItems: [GifStickerCellConfigurable] = [] // Array to store favorite items
-        private let homeViewModel = HomeViewModel() // Use the existing HomeViewModel for fetching favorites
-
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            setupCollectionView()  // Setup the collection view
-        }
-
-        override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            loadFavoritesFromFirebase() // Load favorites every time the view appears
-        }
-
-        private func setupCollectionView() {
-            collectionView.dataSource = self
-            collectionView.delegate = self
-            collectionView.register(UINib(nibName: "GifStickerCell", bundle: nil), forCellWithReuseIdentifier: "GifStickerCell")
-        }
-
-        private func loadFavoritesFromFirebase() {
-            homeViewModel.loadFavoritesFromFirebase { [weak self] in
-                guard let self = self else { return }
-                self.favoriteItems = self.homeViewModel.favorites.compactMap { id in
-                    let item = self.homeViewModel.fetchItem(by: id)
-                    if item == nil {
-                        print("No item found for ID \(id)")
-                    } else {
-                        print("Fetched item for ID \(id): \(item!)")
-                    }
-                    return item
-                }
-                DispatchQueue.main.async {
-                    print("Loaded favorite items: \(self.favoriteItems)")
-                    self.collectionView.reloadData()  // Refresh collection view
-                    print("Reloading collection view with \(self.favoriteItems.count) items")
-                }
+    private let homeViewModel = HomeViewModel() // Use the existing HomeViewModel for fetching favorites
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupCollectionView()  // Setup the collection view
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadFavoritesFromFirebase() // Load favorites every time the view appears
+    }
+    
+    private func setupCollectionView() {
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(UINib(nibName: "GifStickerCell", bundle: nil), forCellWithReuseIdentifier: "GifStickerCell")
+    }
+    
+    private func loadFavoritesFromFirebase() {
+        homeViewModel.loadFavoritesFromFirebase { [weak self] in
+            guard let self = self else { return }
+//            self.favoriteItems = self.homeViewModel.favorites.compactMap { id in
+//                let item = self.homeViewModel.fetchItem(by: id)
+//                if item == nil {
+//                    print("No item found for ID \(id)")
+//                } else {
+//                    print("Fetched item for ID \(id): \(item!)")
+//                }
+//                return item
+//            }
+            DispatchQueue.main.async {
+                print("Loaded favorite items: \(self.favoriteItems)")
+                self.collectionView.reloadData()  // Refresh collection view
+                print("Reloading collection view with \(self.favoriteItems.count) items")
             }
         }
     }
+}
 
 extension ProfilePageController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
