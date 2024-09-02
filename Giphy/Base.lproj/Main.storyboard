@@ -292,7 +292,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="EPA-or-QFq"/>
                     <connections>
-                        <outlet property="collectionView" destination="wdC-2X-Mal" id="eAe-eZ-RyQ"/>
+                        <outlet property="collectionView" destination="wdC-2X-Mal" id="fkz-5b-qzR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ExB-K6-62C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
