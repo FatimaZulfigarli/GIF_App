@@ -86,7 +86,7 @@ import FirebaseAuth
 ////            completion()
 ////        }
 ////    }
-//    
+//
 //    func loadFavoritesFromFirebase(completion: @escaping () -> Void) {
 //        guard let userId = Auth.auth().currentUser?.uid else {
 //            print("User is not logged in")
