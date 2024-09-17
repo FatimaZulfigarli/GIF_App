@@ -35,6 +35,8 @@
 		4508AE022C611EE100588B89 /* EmojiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508AE012C611EE100588B89 /* EmojiModel.swift */; };
 		4508AE392C6B217200588B89 /* SelectedItemHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508AE372C6B217200588B89 /* SelectedItemHeader.swift */; };
 		4508AE3A2C6B217200588B89 /* SelectedItemHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4508AE382C6B217200588B89 /* SelectedItemHeader.xib */; };
+		450F901C2C9A0F2300F5FD24 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F901B2C9A0F2300F5FD24 /* HomeCoordinator.swift */; };
+		450F901E2C9A0FA300F5FD24 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F901D2C9A0FA200F5FD24 /* LoginCoordinator.swift */; };
 		451AB7492C6FB17300532673 /* SelectedIemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451AB7472C6FB17300532673 /* SelectedIemCell.swift */; };
 		451AB74A2C6FB17300532673 /* SelectedIemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 451AB7482C6FB17300532673 /* SelectedIemCell.xib */; };
 		45A3142B2C79C9EB0099AC79 /* GIFSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A3142A2C79C9EB0099AC79 /* GIFSearch.swift */; };
@@ -95,6 +97,8 @@
 		4508AE012C611EE100588B89 /* EmojiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiModel.swift; sourceTree = "<group>"; };
 		4508AE372C6B217200588B89 /* SelectedItemHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedItemHeader.swift; sourceTree = "<group>"; };
 		4508AE382C6B217200588B89 /* SelectedItemHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedItemHeader.xib; sourceTree = "<group>"; };
+		450F901B2C9A0F2300F5FD24 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		450F901D2C9A0FA200F5FD24 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		451AB7472C6FB17300532673 /* SelectedIemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedIemCell.swift; sourceTree = "<group>"; };
 		451AB7482C6FB17300532673 /* SelectedIemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedIemCell.xib; sourceTree = "<group>"; };
 		45A3142A2C79C9EB0099AC79 /* GIFSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFSearch.swift; sourceTree = "<group>"; };
@@ -160,8 +164,6 @@
 			children = (
 				4508AD482C4FC17800588B89 /* AppDelegate.swift */,
 				4508AD4A2C4FC17800588B89 /* SceneDelegate.swift */,
-				45A314542C7C630D0099AC79 /* RegistrationData.swift */,
-				45A314682C81F8060099AC79 /* UserProfile.swift */,
 				45A3146A2C8201F60099AC79 /* URLs.swift */,
 				4508ADBF2C54DF3100588B89 /* Core */,
 				4508ADB22C54D55700588B89 /* Extensions */,
@@ -225,6 +227,7 @@
 			children = (
 				4508AD6C2C50FBE400588B89 /* HomeController.swift */,
 				4508ADC02C54DF5400588B89 /* HomeViewModel.swift */,
+				450F901B2C9A0F2300F5FD24 /* HomeCoordinator.swift */,
 				4508ADB02C54D4BF00588B89 /* CategoriesHeader */,
 			);
 			path = HomeController;
@@ -275,6 +278,8 @@
 				4508AE012C611EE100588B89 /* EmojiModel.swift */,
 				45A3142A2C79C9EB0099AC79 /* GIFSearch.swift */,
 				45A314582C7F04730099AC79 /* StickerSearch.swift */,
+				45A314542C7C630D0099AC79 /* RegistrationData.swift */,
+				45A314682C81F8060099AC79 /* UserProfile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -299,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				45A3142C2C7C4EB10099AC79 /* LoginController.swift */,
+				450F901D2C9A0FA200F5FD24 /* LoginCoordinator.swift */,
 				45A314662C81F6350099AC79 /* LoginAdapter.swift */,
 			);
 			path = LoginPage;
@@ -441,8 +447,10 @@
 				4508ADAA2C53C43B00588B89 /* UIImageView+Extension .swift in Sources */,
 				4508ADC72C54DF9300588B89 /* HomeUseCase.swift in Sources */,
 				45A3142D2C7C4EB10099AC79 /* LoginController.swift in Sources */,
+				450F901E2C9A0FA300F5FD24 /* LoginCoordinator.swift in Sources */,
 				45A3142B2C79C9EB0099AC79 /* GIFSearch.swift in Sources */,
 				45A314692C81F8060099AC79 /* UserProfile.swift in Sources */,
+				450F901C2C9A0F2300F5FD24 /* HomeCoordinator.swift in Sources */,
 				45A314552C7C630D0099AC79 /* RegistrationData.swift in Sources */,
 				4508AD6D2C50FBE400588B89 /* HomeController.swift in Sources */,
 				4508ADCD2C5A9DDC00588B89 /* DetailController.swift in Sources */,

@@ -8,7 +8,8 @@
 import UIKit
 import CHTCollectionViewWaterfallLayout
 class HomeController: UIViewController {
-    
+    var coordinator: HomeCoordinator? // Reference to the HomeCoordinator
+
     @IBOutlet weak var collection: UICollectionView!
     //    private let viewModel = HomeViewModel()
     //    private let loadingIndicator = UIActivityIndicatorView(style: .large)

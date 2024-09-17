@@ -486,7 +486,7 @@
         <!--Login Controller-->
         <scene sceneID="GOf-e0-71y">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="Oc3-3D-3dE" customClass="LoginController" customModule="Giphy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Oc3-3D-3dE" customClass="LoginController" customModule="Giphy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F7X-uo-fdX">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

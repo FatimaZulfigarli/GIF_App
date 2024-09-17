@@ -9,6 +9,7 @@ import UIKit
 import FirebaseAuth
 
 class LoginController: UIViewController {
+    var coordinator: LoginCoordinator? // Reference to the LoginCoordinator
 
     @IBOutlet weak var loginEmailTextField: UITextField!
     @IBOutlet weak var giphyLabel: UILabel!
