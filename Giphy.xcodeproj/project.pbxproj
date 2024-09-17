@@ -164,24 +164,20 @@
 			children = (
 				4508AD482C4FC17800588B89 /* AppDelegate.swift */,
 				4508AD4A2C4FC17800588B89 /* SceneDelegate.swift */,
-				45A3146A2C8201F60099AC79 /* URLs.swift */,
 				4508ADBF2C54DF3100588B89 /* Core */,
+				45A3142E2C7C4FED0099AC79 /* Gifs */,
 				4508ADB22C54D55700588B89 /* Extensions */,
-				4508ADB32C54D56200588B89 /* GifStickerCell */,
-				4508ADB52C54D5AB00588B89 /* HomeController */,
 				4508AD4E2C4FC17800588B89 /* Main.storyboard */,
-				4508ADD52C5B9DF800588B89 /* Models */,
-				4508ADC22C54DF6300588B89 /* Managers */,
+				450F90232C9A14D700F5FD24 /* Reusable items */,
 				45A314652C81F6230099AC79 /* LoginPage */,
-				45A314412C7C50550099AC79 /* RegisterController.swift */,
-				45A3145E2C8079980099AC79 /* ProfilePageController.swift */,
+				450F90242C9A153300F5FD24 /* RegisterController */,
+				4508ADB52C54D5AB00588B89 /* HomeController */,
+				450F90252C9A154800F5FD24 /* ProfilePageController */,
 				4508ADCE2C5A9DE800588B89 /* DetailPage */,
-				4508ADC52C54DF8200588B89 /* Use Cases */,
 				4508AD512C4FC17900588B89 /* Assets.xcassets */,
 				4508AD532C4FC17900588B89 /* LaunchScreen.storyboard */,
 				4508AD562C4FC17900588B89 /* Info.plist */,
 				45A314432C7C55410099AC79 /* GoogleService-Info.plist */,
-				45A3142E2C7C4FED0099AC79 /* Gifs */,
 			);
 			path = Giphy;
 			sourceTree = "<group>";
@@ -227,7 +223,9 @@
 			children = (
 				4508AD6C2C50FBE400588B89 /* HomeController.swift */,
 				4508ADC02C54DF5400588B89 /* HomeViewModel.swift */,
+				4508ADC62C54DF9300588B89 /* HomeUseCase.swift */,
 				450F901B2C9A0F2300F5FD24 /* HomeCoordinator.swift */,
+				4508ADC32C54DF7800588B89 /* HomeManager.swift */,
 				4508ADB02C54D4BF00588B89 /* CategoriesHeader */,
 			);
 			path = HomeController;
@@ -239,24 +237,10 @@
 				4508ADD12C5A9E5800588B89 /* Coordinator.swift */,
 				4508ADB82C54DC2300588B89 /* NetworkManager.swift */,
 				4508ADBD2C54DCC700588B89 /* NetworkConstants.swift */,
+				45A3146A2C8201F60099AC79 /* URLs.swift */,
+				4508ADD52C5B9DF800588B89 /* Models */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		4508ADC22C54DF6300588B89 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				4508ADC32C54DF7800588B89 /* HomeManager.swift */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
-		4508ADC52C54DF8200588B89 /* Use Cases */ = {
-			isa = PBXGroup;
-			children = (
-				4508ADC62C54DF9300588B89 /* HomeUseCase.swift */,
-			);
-			path = "Use Cases";
 			sourceTree = "<group>";
 		};
 		4508ADCE2C5A9DE800588B89 /* DetailPage */ = {
@@ -282,6 +266,30 @@
 				45A314682C81F8060099AC79 /* UserProfile.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		450F90232C9A14D700F5FD24 /* Reusable items */ = {
+			isa = PBXGroup;
+			children = (
+				4508ADB32C54D56200588B89 /* GifStickerCell */,
+			);
+			path = "Reusable items";
+			sourceTree = "<group>";
+		};
+		450F90242C9A153300F5FD24 /* RegisterController */ = {
+			isa = PBXGroup;
+			children = (
+				45A314412C7C50550099AC79 /* RegisterController.swift */,
+			);
+			path = RegisterController;
+			sourceTree = "<group>";
+		};
+		450F90252C9A154800F5FD24 /* ProfilePageController */ = {
+			isa = PBXGroup;
+			children = (
+				45A3145E2C8079980099AC79 /* ProfilePageController.swift */,
+			);
+			path = ProfilePageController;
 			sourceTree = "<group>";
 		};
 		45A3142E2C7C4FED0099AC79 /* Gifs */ = {
