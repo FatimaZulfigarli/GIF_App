@@ -131,7 +131,9 @@ class ProfilePageController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        homeViewModel.fetchContent(for: .gif)
+        homeViewModel.fetchTrendingGIFs()
+        homeViewModel.fetchTrendingStickers()
+        homeViewModel.fetchEmojis()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -139,6 +141,19 @@ class ProfilePageController: UIViewController {
         loadFavoritesFromFirebase()
     }
     
+    @IBAction func logoutButtonTapped(_ sender: Any) {
+        do {
+                try Auth.auth().signOut()
+                // Switch back to LoginController
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                if let loginController = storyboard.instantiateViewController(withIdentifier: "LoginController") as? LoginController {
+                    UIApplication.shared.windows.first?.rootViewController = UINavigationController(rootViewController: loginController)
+                    UIApplication.shared.windows.first?.makeKeyAndVisible()
+                }
+            } catch let error {
+                print("Error signing out: \(error.localizedDescription)")
+            }
+        }
     private func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self

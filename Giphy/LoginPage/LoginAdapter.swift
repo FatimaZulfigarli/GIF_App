@@ -20,10 +20,11 @@ class LoginAdapter {
     }
     
     // Function to handle login with email and password
-    func loginWithEmail(loginData: LoginData) {
+    func loginWithEmail(loginData: LoginData, completion: @escaping (Result<UserProfile, Error>) -> Void) {
         Auth.auth().signIn(withEmail: loginData.email, password: loginData.password) { [weak self] authResult, error in
             if let error = error {
                 print("Login failed: \(error.localizedDescription)")
+                completion(.failure(error))
                 return
             }
             
@@ -32,11 +33,10 @@ class LoginAdapter {
                 let userProfile = UserProfile(fullname: user.displayName ?? "",
                                               email: user.email,
                                               password: "")
-                self?.userCompletion?(userProfile)
+                completion(.success(userProfile))
             }
         }
     }
-    
     // Function to handle Google Sign-In
     func loginWithGoogle() {
         GIDSignIn.sharedInstance.signIn(withPresenting: controller) { result, error in

@@ -32,15 +32,28 @@ class LoginController: UIViewController {
     
     @IBAction func loginButton(_ sender: Any) {
         guard let email = loginEmailTextField.text, !email.isEmpty,
-                     let password = loginPasswordTextField.text, !password.isEmpty else {
-                   print("Email or password is missing")
-                   return
-               }
-               
-               let loginData = LoginData(email: email, password: password)
-               loginAdapter.loginWithEmail(loginData: loginData)
-           }
-    
+                  let password = loginPasswordTextField.text, !password.isEmpty else {
+                showAlert(message: "Email or password is missing.")
+                return
+            }
+            
+            let loginData = LoginData(email: email, password: password)
+            loginAdapter.loginWithEmail(loginData: loginData) { [weak self] result in
+                switch result {
+                case .success(let userProfile):
+                    self?.navigateToMainApp()
+                case .failure(let error):
+                    self?.showAlert(message: "Login failed: \(error.localizedDescription)")
+                }
+            }
+        }
+
+        private func showAlert(message: String) {
+            let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            present(alertController, animated: true, completion: nil)
+        }
     
     
     @IBAction func signupButton(_ sender: Any) {

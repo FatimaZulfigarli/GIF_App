@@ -329,7 +329,7 @@ class HomeViewModel {
         }
     }
 
-    private func fetchTrendingGIFs() {
+    func fetchTrendingGIFs() {
         homeManager.getTrendingGIFs { [weak self] data, error in
             if let data = data {
                 self?.gifs = data
@@ -341,7 +341,7 @@ class HomeViewModel {
         }
     }
 
-    private func fetchTrendingStickers() {
+     func fetchTrendingStickers() {
         homeManager.getTrendingStickers { [weak self] data, error in
             if let data = data {
                 self?.stickers = data
@@ -353,7 +353,7 @@ class HomeViewModel {
         }
     }
 
-    private func fetchEmojis() {
+     func fetchEmojis() {
         homeManager.getEmojis { [weak self] data, error in
             if let data = data {
                 self?.emojis = data
