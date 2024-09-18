@@ -48,20 +48,40 @@ class GifStickerCell: UICollectionViewCell {
         }
     }
         
-        func configure(with model: GifStickerCellConfigurable, onTap: @escaping (String) -> Void, onFavButtonTap: @escaping (String) -> Void) {
-            if let url = model.imageURL {
-                imageView.loadGif(from: url)
-            }
-            if let id = model.id {
-                imageView.accessibilityIdentifier = id
-            }
-            self.onTap = onTap
-            self.onFavButtonTap = onFavButtonTap
-        }
-        
-        func updateFavButton(isFavorite: Bool) {
-            let imageName = isFavorite ? "heart.fill" : "heart" // Use SF Symbols
-            favButton.setImage(UIImage(systemName: imageName), for: .normal)
-        }
-    }
+//        func configure(with model: GifStickerCellConfigurable, onTap: @escaping (String) -> Void, onFavButtonTap: @escaping (String) -> Void) {
+//            if let url = model.imageURL {
+//                imageView.loadGif(from: url)
+//            }
+//            if let id = model.id {
+//                imageView.accessibilityIdentifier = id
+//            }
+//            self.onTap = onTap
+//            self.onFavButtonTap = onFavButtonTap
+//        }
+//        
+//        func updateFavButton(isFavorite: Bool) {
+//            let imageName = isFavorite ? "heart.fill" : "heart" // Use SF Symbols
+//            favButton.setImage(UIImage(systemName: imageName), for: .normal)
+//        }
+//    }
+    
+    func configure(with model: GifStickerCellConfigurable, showFavButton: Bool = true, onTap: @escaping (String) -> Void, onFavButtonTap: @escaping (String) -> Void) {
+           if let url = model.imageURL {
+               imageView.loadGif(from: url)
+           }
+           if let id = model.id {
+               imageView.accessibilityIdentifier = id
+           }
+           self.onTap = onTap
+           self.onFavButtonTap = onFavButtonTap
+           
+           // Show or hide the favorite button based on the flag
+           favButton.isHidden = !showFavButton
+       }
+       
+       func updateFavButton(isFavorite: Bool) {
+           let imageName = isFavorite ? "heart.fill" : "heart" // Use SF Symbols
+           favButton.setImage(UIImage(systemName: imageName), for: .normal)
+       }
+   }
 
