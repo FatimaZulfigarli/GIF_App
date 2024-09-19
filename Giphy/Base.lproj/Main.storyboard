@@ -494,10 +494,59 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.gif" translatesAutoresizingMaskIntoConstraints="NO" id="IFE-rc-PpT">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
-                            <view alpha="0.80000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7kd-zm-Fvm">
+                            <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7kd-zm-Fvm">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="zgu-06-CbT">
+                                        <rect key="frame" x="38.666666666666657" y="606" width="315.66666666666674" height="24"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By loggining in you agree GIFINITY's " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GxI-9O-OXe">
+                                                <rect key="frame" x="0.0" y="7.3333333333333703" width="146.66666666666666" height="9.6666666666666643"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZP0-gn-vjW">
+                                                <rect key="frame" x="138.66666666666669" y="0.33333333333337123" width="95" height="23.666666666666668"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Terms of Service">
+                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="8"/>
+                                                    <color key="baseForegroundColor" name="HyperLink"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="termsOfService:" destination="Oc3-3D-3dE" eventType="touchUpInside" id="LDa-x6-8Ep"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="and" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODp-VK-rgX">
+                                                <rect key="frame" x="225.66666666666666" y="7.3333333333333703" width="14.666666666666657" height="9.6666666666666643"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JB5-Np-eJ1">
+                                                <rect key="frame" x="232.33333333333334" y="0.33333333333337123" width="83.333333333333343" height="23.666666666666668"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Privacy Policy">
+                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="8"/>
+                                                    <color key="baseForegroundColor" name="HyperLink"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="privacyPolicy:" destination="Oc3-3D-3dE" eventType="touchUpInside" id="SlG-hB-miO"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.97647058959999999" green="0.85490196939999996" blue="0.28627452250000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="DS6-fM-jML"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstItem="zgu-06-CbT" firstAttribute="top" secondItem="7kd-zm-Fvm" secondAttribute="top" constant="606" id="8lb-Ca-EX7"/>
+                                    <constraint firstItem="zgu-06-CbT" firstAttribute="centerX" secondItem="7kd-zm-Fvm" secondAttribute="centerX" id="PQ0-bY-us7"/>
+                                    <constraint firstItem="zgu-06-CbT" firstAttribute="leading" secondItem="7kd-zm-Fvm" secondAttribute="leading" constant="38.666666666666657" id="zoV-eH-IyB"/>
+                                </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A GIPHY account lets you Favorite, Collect all the GIFs!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5je-OD-y4H">
                                 <rect key="frame" x="12" y="115" width="369" height="47"/>
@@ -570,55 +619,12 @@
                                             <action selector="forgetPasswordButton:" destination="Oc3-3D-3dE" eventType="touchUpInside" id="gU3-cw-90f"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="QL6-Qp-Y31">
-                                        <rect key="frame" x="38.666666666666657" y="261.99999999999994" width="315.66666666666674" height="32"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By loggining in you agree GIFINITY's " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVm-13-lLZ">
-                                                <rect key="frame" x="0.0" y="11" width="146.66666666666666" height="9.6666666666666643"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xxi-9n-3t6">
-                                                <rect key="frame" x="138.66666666666669" y="4" width="95" height="23.666666666666668"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Terms of Service">
-                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="8"/>
-                                                    <color key="baseForegroundColor" name="HyperLink"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="termsOfService:" destination="Oc3-3D-3dE" eventType="touchUpInside" id="YKY-Ea-VEI"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="and" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRs-RN-bd4">
-                                                <rect key="frame" x="225.66666666666666" y="11" width="14.666666666666657" height="9.6666666666666643"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IvJ-Cd-0S9">
-                                                <rect key="frame" x="232.33333333333334" y="4" width="83.333333333333343" height="23.666666666666668"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Privacy Policy">
-                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="8"/>
-                                                    <color key="baseForegroundColor" name="HyperLink"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="privacyPolicy:" destination="Oc3-3D-3dE" eventType="touchUpInside" id="zsi-e2-o0C"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="gcF-IL-LkM"/>
-                                        </constraints>
-                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="u1A-td-QH4" firstAttribute="top" secondItem="YMY-AN-Kqy" secondAttribute="bottom" constant="7" id="0hK-nE-Ugl"/>
                                     <constraint firstItem="6TG-qW-PAh" firstAttribute="top" secondItem="KJb-ys-RY2" secondAttribute="bottom" constant="6.6666666666666572" id="31B-9e-80c"/>
                                     <constraint firstItem="KJb-ys-RY2" firstAttribute="top" secondItem="u1A-td-QH4" secondAttribute="bottom" constant="15.333333333333343" id="70d-PM-Bgs"/>
-                                    <constraint firstItem="QL6-Qp-Y31" firstAttribute="centerX" secondItem="flv-fc-lw1" secondAttribute="centerX" id="EHG-2u-mPg"/>
                                     <constraint firstItem="YMY-AN-Kqy" firstAttribute="leading" secondItem="flv-fc-lw1" secondAttribute="leading" constant="12" id="Fem-LX-LxF"/>
                                     <constraint firstItem="KJb-ys-RY2" firstAttribute="centerX" secondItem="u1A-td-QH4" secondAttribute="centerX" id="QCL-Ze-kKp"/>
                                     <constraint firstItem="KJb-ys-RY2" firstAttribute="leading" secondItem="u1A-td-QH4" secondAttribute="leading" id="aqR-I9-2o7"/>
@@ -626,7 +632,6 @@
                                     <constraint firstAttribute="trailing" secondItem="YMY-AN-Kqy" secondAttribute="trailing" constant="12" id="bnW-Ql-A6E"/>
                                     <constraint firstItem="KJb-ys-RY2" firstAttribute="trailing" secondItem="u1A-td-QH4" secondAttribute="trailing" id="giF-h8-peX"/>
                                     <constraint firstItem="YMY-AN-Kqy" firstAttribute="top" secondItem="flv-fc-lw1" secondAttribute="top" id="gjM-E5-pHP"/>
-                                    <constraint firstItem="QL6-Qp-Y31" firstAttribute="top" secondItem="6TG-qW-PAh" secondAttribute="bottom" constant="15.000000000000057" id="mKk-3u-SvA"/>
                                     <constraint firstAttribute="height" constant="260" id="qbl-eD-NV3"/>
                                     <constraint firstItem="u1A-td-QH4" firstAttribute="leading" secondItem="YMY-AN-Kqy" secondAttribute="leading" id="tbP-HA-1ER"/>
                                     <constraint firstItem="u1A-td-QH4" firstAttribute="trailing" secondItem="YMY-AN-Kqy" secondAttribute="trailing" id="vWS-H1-vTg"/>
@@ -638,15 +643,20 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="IFE-rc-PpT" firstAttribute="leading" secondItem="7c8-MK-f6N" secondAttribute="leading" id="20h-SI-PhX"/>
+                            <constraint firstAttribute="bottom" secondItem="7kd-zm-Fvm" secondAttribute="bottom" id="6hb-PJ-MYP"/>
                             <constraint firstAttribute="bottom" secondItem="IFE-rc-PpT" secondAttribute="bottom" id="7Ai-QE-zVV"/>
                             <constraint firstItem="5je-OD-y4H" firstAttribute="centerX" secondItem="7c8-MK-f6N" secondAttribute="centerX" id="7lj-9x-esS"/>
                             <constraint firstItem="5je-OD-y4H" firstAttribute="top" secondItem="7c8-MK-f6N" secondAttribute="top" constant="12" id="8e0-X6-LY2"/>
+                            <constraint firstItem="7kd-zm-Fvm" firstAttribute="top" secondItem="F7X-uo-fdX" secondAttribute="top" id="JdI-e4-qYu"/>
                             <constraint firstItem="5je-OD-y4H" firstAttribute="width" secondItem="F7X-uo-fdX" secondAttribute="width" multiplier="0.938931" id="JhN-Ll-Jkb"/>
                             <constraint firstItem="flv-fc-lw1" firstAttribute="centerX" secondItem="7c8-MK-f6N" secondAttribute="centerX" id="Jlt-uw-cSS"/>
                             <constraint firstItem="flv-fc-lw1" firstAttribute="centerY" secondItem="7c8-MK-f6N" secondAttribute="centerY" id="NbH-vQ-gux"/>
                             <constraint firstItem="IFE-rc-PpT" firstAttribute="top" secondItem="F7X-uo-fdX" secondAttribute="top" id="PW0-lg-fgP"/>
                             <constraint firstItem="7c8-MK-f6N" firstAttribute="trailing" secondItem="flv-fc-lw1" secondAttribute="trailing" id="Z1Y-hZ-eQo"/>
+                            <constraint firstItem="6TG-qW-PAh" firstAttribute="leading" secondItem="zgu-06-CbT" secondAttribute="trailing" constant="-226.66666666666669" id="llf-Nf-2UA"/>
+                            <constraint firstItem="7kd-zm-Fvm" firstAttribute="trailing" secondItem="7c8-MK-f6N" secondAttribute="trailing" id="mwf-yl-50L"/>
                             <constraint firstItem="IFE-rc-PpT" firstAttribute="trailing" secondItem="7c8-MK-f6N" secondAttribute="trailing" id="nw3-nc-2Qc"/>
+                            <constraint firstItem="7kd-zm-Fvm" firstAttribute="leading" secondItem="7c8-MK-f6N" secondAttribute="leading" id="pPg-bv-0mi"/>
                             <constraint firstItem="flv-fc-lw1" firstAttribute="leading" secondItem="7c8-MK-f6N" secondAttribute="leading" id="yPg-4d-7Ze"/>
                         </constraints>
                     </view>

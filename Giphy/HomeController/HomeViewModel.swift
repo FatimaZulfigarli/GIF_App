@@ -248,14 +248,46 @@ class HomeViewModel {
         return favorites.contains(id)
     }
 
+//    func addToFavorites(id: String) {
+//        favorites.insert(id)
+//        saveFavoritesToFirebase()
+//    }
+//
+//    func removeFromFavorites(id: String) {
+//        favorites.remove(id)
+//        saveFavoritesToFirebase()
+//    }
+//
+//    func saveFavoritesToFirebase() {
+//        guard let userId = Auth.auth().currentUser?.uid else {
+//            print("User is not logged in")
+//            return
+//        }
+//
+//        let db = Firestore.firestore()
+//        let favoriteData = ["favorites": Array(favorites)]
+//
+//        db.collection("users").document(userId).setData(favoriteData) { error in
+//            if let error = error {
+//                print("Failed to save favorites to Firebase: \(error)")
+//            } else {
+//                print("Favorites successfully saved to Firebase.")
+//            }
+//        }
+//    }
+//
+//    
     func addToFavorites(id: String) {
-        favorites.insert(id)
-        saveFavoritesToFirebase()
+        // Only add if the item is not already a favorite
+        if !favorites.contains(id) {
+            favorites.insert(id) // Add to the in-memory set
+            saveFavoritesToFirebase() // Save the updated set to Firebase
+        }
     }
 
     func removeFromFavorites(id: String) {
-        favorites.remove(id)
-        saveFavoritesToFirebase()
+        favorites.remove(id) // Remove from the in-memory set
+        saveFavoritesToFirebase() // Save the updated set to Firebase
     }
 
     func saveFavoritesToFirebase() {
@@ -265,9 +297,9 @@ class HomeViewModel {
         }
 
         let db = Firestore.firestore()
-        let favoriteData = ["favorites": Array(favorites)]
+        let favoriteData = ["favorites": Array(favorites)] // Convert Set to Array
 
-        db.collection("users").document(userId).setData(favoriteData) { error in
+        db.collection("users").document(userId).setData(favoriteData, merge: true) { error in
             if let error = error {
                 print("Failed to save favorites to Firebase: \(error)")
             } else {
@@ -275,7 +307,36 @@ class HomeViewModel {
             }
         }
     }
-
+    
+//    func loadFavoritesFromFirebase(completion: @escaping () -> Void) {
+//        guard let userId = Auth.auth().currentUser?.uid else {
+//            print("User is not logged in")
+//            completion()
+//            return
+//        }
+//
+//        let db = Firestore.firestore()
+//        db.collection("users").document(userId).getDocument { [weak self] document, error in
+//            if let error = error {
+//                print("Failed to load favorites from Firebase: \(error.localizedDescription)")
+//                completion()
+//                return
+//            }
+//
+//            if let document = document, document.exists {
+//                if let favoriteArray = document.data()?["favorites"] as? [String] {
+//                    self?.favorites = Set(favoriteArray)
+//                    print("Favorites loaded from Firebase: \(favoriteArray)")
+//                } else {
+//                    print("Favorites field does not exist or is not a valid format")
+//                }
+//            } else {
+//                print("Document does not exist")
+//            }
+//            completion()
+//        }
+//    }
+    
     func loadFavoritesFromFirebase(completion: @escaping () -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else {
             print("User is not logged in")
@@ -293,10 +354,10 @@ class HomeViewModel {
 
             if let document = document, document.exists {
                 if let favoriteArray = document.data()?["favorites"] as? [String] {
-                    self?.favorites = Set(favoriteArray)
+                    self?.favorites = Set(favoriteArray) // Keep all current favorites
                     print("Favorites loaded from Firebase: \(favoriteArray)")
                 } else {
-                    print("Favorites field does not exist or is not a valid format")
+                    print("No favorites field or invalid format")
                 }
             } else {
                 print("Document does not exist")
