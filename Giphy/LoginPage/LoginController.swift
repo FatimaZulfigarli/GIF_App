@@ -75,7 +75,6 @@ class LoginController: UIViewController {
             
     
     @IBAction func termsOfService(_ sender: Any) {
-        print("clicking termsofservice")
         urlHelper.callURL(urlType: .termsOfService, from: self)
                 print("Terms of Service clicked")
             }

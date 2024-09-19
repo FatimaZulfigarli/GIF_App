@@ -17,6 +17,8 @@ class RegisterController: UIViewController {
     @IBOutlet weak var regPasswordTextField: UITextField!
     var onRegisterComplete: ((RegistrationData) -> Void)?
     lazy var loginAdapter = LoginAdapter(controller: self)
+    private let urlHelper = URLs()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +63,14 @@ class RegisterController: UIViewController {
     
     
     @IBAction func haveAccountButton(_ sender: Any) {
-    }
+        if let navigationController = self.navigationController {
+                // Create an instance of LoginCoordinator and start it
+                let loginCoordinator = LoginCoordinator(navigationController: navigationController)
+                loginCoordinator.start() // This will navigate to the LoginController
+            } else {
+                print("Navigation controller is nil")
+            }
+        }
     @IBAction func googleSignIn(_ sender: Any) {
         loginAdapter.userCompletion = { [weak self] userProfile in
                    guard let self = self else { return }
@@ -88,10 +97,13 @@ class RegisterController: UIViewController {
        
    
     @IBAction func googlePrivacy(_ sender: Any) {
+        urlHelper.callURL(urlType: .googlePrivacyTerms, from: self)
     }
     @IBAction func termsOfService(_ sender: Any) {
+        urlHelper.callURL(urlType: .termsOfService, from: self)
     }
     @IBAction func privacyPolicy(_ sender: Any) {
+        urlHelper.callURL(urlType: .privacyTerms, from: self)
     }
     @IBAction func tickButton(_ sender: Any) {
     }
