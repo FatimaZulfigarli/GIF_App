@@ -252,12 +252,22 @@ class HomeViewModel {
 //        favorites.insert(id)
 //        saveFavoritesToFirebase()
 //    }
-//
-//    func removeFromFavorites(id: String) {
-//        favorites.remove(id)
-//        saveFavoritesToFirebase()
-//    }
-//
+    func addToFavorites(id: String) {
+        // First, load the existing favorites from Firebase
+        loadFavoritesFromFirebase { [weak self] in
+            // Now, add the new favorite if it's not already in the set
+            if let self = self, !self.favorites.contains(id) {
+                self.favorites.insert(id)
+                self.saveFavoritesToFirebase() // Save updated favorites to Firebase
+            }
+        }
+    }
+
+    func removeFromFavorites(id: String) {
+        favorites.remove(id)
+        saveFavoritesToFirebase()
+    }
+
 //    func saveFavoritesToFirebase() {
 //        guard let userId = Auth.auth().currentUser?.uid else {
 //            print("User is not logged in")
@@ -275,21 +285,7 @@ class HomeViewModel {
 //            }
 //        }
 //    }
-//
-//    
-    func addToFavorites(id: String) {
-        // Only add if the item is not already a favorite
-        if !favorites.contains(id) {
-            favorites.insert(id) // Add to the in-memory set
-            saveFavoritesToFirebase() // Save the updated set to Firebase
-        }
-    }
-
-    func removeFromFavorites(id: String) {
-        favorites.remove(id) // Remove from the in-memory set
-        saveFavoritesToFirebase() // Save the updated set to Firebase
-    }
-
+    
     func saveFavoritesToFirebase() {
         guard let userId = Auth.auth().currentUser?.uid else {
             print("User is not logged in")
@@ -297,7 +293,7 @@ class HomeViewModel {
         }
 
         let db = Firestore.firestore()
-        let favoriteData = ["favorites": Array(favorites)] // Convert Set to Array
+        let favoriteData = ["favorites": Array(favorites)] // Convert the Set to an Array
 
         db.collection("users").document(userId).setData(favoriteData, merge: true) { error in
             if let error = error {
@@ -307,33 +303,44 @@ class HomeViewModel {
             }
         }
     }
-    
-//    func loadFavoritesFromFirebase(completion: @escaping () -> Void) {
+
+//    
+//    func addToFavorites(id: String) {
+//        // Load existing favorites from Firebase
+//        loadFavoritesFromFirebase { [weak self] in
+//            // Append the new favorite only if it's not already in the set
+//            if let self = self, !self.favorites.contains(id) {
+//                self.favorites.insert(id)
+//                self.saveFavoritesToFirebase() // Save updated favorites to Firebase
+//            }
+//        }
+//    }
+//
+//    func removeFromFavorites(id: String) {
+//        // Load existing favorites from Firebase
+//        loadFavoritesFromFirebase { [weak self] in
+//            if let self = self {
+//                self.favorites.remove(id) // Remove from the in-memory set
+//                self.saveFavoritesToFirebase() // Save the updated set to Firebase
+//            }
+//        }
+//    }
+//
+//    func saveFavoritesToFirebase() {
 //        guard let userId = Auth.auth().currentUser?.uid else {
 //            print("User is not logged in")
-//            completion()
 //            return
 //        }
 //
 //        let db = Firestore.firestore()
-//        db.collection("users").document(userId).getDocument { [weak self] document, error in
-//            if let error = error {
-//                print("Failed to load favorites from Firebase: \(error.localizedDescription)")
-//                completion()
-//                return
-//            }
+//        let favoriteData = ["favorites": Array(favorites)] // Convert Set to Array
 //
-//            if let document = document, document.exists {
-//                if let favoriteArray = document.data()?["favorites"] as? [String] {
-//                    self?.favorites = Set(favoriteArray)
-//                    print("Favorites loaded from Firebase: \(favoriteArray)")
-//                } else {
-//                    print("Favorites field does not exist or is not a valid format")
-//                }
+//        db.collection("users").document(userId).setData(favoriteData, merge: true) { error in
+//            if let error = error {
+//                print("Failed to save favorites to Firebase: \(error)")
 //            } else {
-//                print("Document does not exist")
+//                print("Favorites successfully saved to Firebase.")
 //            }
-//            completion()
 //        }
 //    }
     
@@ -354,10 +361,11 @@ class HomeViewModel {
 
             if let document = document, document.exists {
                 if let favoriteArray = document.data()?["favorites"] as? [String] {
-                    self?.favorites = Set(favoriteArray) // Keep all current favorites
+                    // Use union to add only new items and keep existing ones
+                    self?.favorites.formUnion(favoriteArray)
                     print("Favorites loaded from Firebase: \(favoriteArray)")
                 } else {
-                    print("No favorites field or invalid format")
+                    print("Favorites field does not exist or is not a valid format")
                 }
             } else {
                 print("Document does not exist")
@@ -365,6 +373,35 @@ class HomeViewModel {
             completion()
         }
     }
+    
+//    func loadFavoritesFromFirebase(completion: @escaping () -> Void) {
+//        guard let userId = Auth.auth().currentUser?.uid else {
+//            print("User is not logged in")
+//            completion()
+//            return
+//        }
+//
+//        let db = Firestore.firestore()
+//        db.collection("users").document(userId).getDocument { [weak self] document, error in
+//            if let error = error {
+//                print("Failed to load favorites from Firebase: \(error.localizedDescription)")
+//                completion()
+//                return
+//            }
+//
+//            if let document = document, document.exists {
+//                if let favoriteArray = document.data()?["favorites"] as? [String] {
+//                    self?.favorites = Set(favoriteArray) // Keep all current favorites
+//                    print("Favorites loaded from Firebase: \(favoriteArray)")
+//                } else {
+//                    print("No favorites field or invalid format")
+//                }
+//            } else {
+//                print("Document does not exist")
+//            }
+//            completion()
+//        }
+//    }
 
     func fetchItem(by id: String) -> GifStickerCellConfigurable? {
         // Fetch item by ID from gifs, stickers, or emojis

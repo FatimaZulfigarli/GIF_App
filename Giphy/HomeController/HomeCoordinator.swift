@@ -54,15 +54,15 @@ class HomeCoordinator: Coordinator {
     }
     
     // Navigate to ProfilePageController and pass the LoginCoordinator
-    func showProfile() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let profilePageController = storyboard.instantiateViewController(withIdentifier: "ProfilePageController") as? ProfilePageController {
-            // Create and pass the LoginCoordinator
-            let loginCoordinator = LoginCoordinator(navigationController: navigationController)
-            profilePageController.loginCoordinator = loginCoordinator
-            navigationController.pushViewController(profilePageController, animated: true)
-        }
-    }
+//    func showProfile() {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if let profilePageController = storyboard.instantiateViewController(withIdentifier: "ProfilePageController") as? ProfilePageController {
+//            // Create and pass the LoginCoordinator
+//            let loginCoordinator = LoginCoordinator(navigationController: navigationController)
+//            profilePageController.loginCoordinator = loginCoordinator
+//            navigationController.pushViewController(profilePageController, animated: true)
+//        }
+//    }
     
     func showDetail(selectedItem: GifStickerCellConfigurable, items: [GifStickerCellConfigurable]) {
         let detailCoordinator = DetailCoordinator(navigationController: navigationController, selectedItems: items, initialSelectedItem: selectedItem)
