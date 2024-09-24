@@ -7,6 +7,7 @@
 
 import UIKit
 import CHTCollectionViewWaterfallLayout
+import FirebaseAuth
 class HomeController: UIViewController {
     var coordinator: HomeCoordinator? // Reference to the HomeCoordinator
     
@@ -34,8 +35,25 @@ class HomeController: UIViewController {
         setupCollectionView()
         bindViewModel()
         viewModel.fetchContent(for: .gif) // Start with GIFs
+        observeAuthChanges()
+
     }
     
+    private func observeAuthChanges() {
+          Auth.auth().addStateDidChangeListener { [weak self] auth, user in
+              if let user = user {
+                  print("User is signed in: \(user.uid)")
+                  // Reload favorites or other user-specific data after sign-in
+                  self?.viewModel.loadFavoritesFromFirebase {
+                      print("Favorites loaded for user: \(user.uid)")
+                      self?.collection.reloadData() // Reload the collection view after loading favorites
+                  }
+              } else {
+                  print("No user is signed in")
+                  // Optionally handle if the user is signed out (e.g., redirect to Login screen)
+              }
+          }
+      }
     
     
     @IBAction func searchAction(_ sender: UITextField) {

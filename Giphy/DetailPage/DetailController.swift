@@ -108,7 +108,6 @@ class DetailController: UIViewController {
         
         private func loadItems() {
             gifItems = selectedItems // Load all items passed
-            print("Loaded \(gifItems.count) items into gifItems array.")
             collectionView.reloadData()
         }
         
@@ -141,7 +140,7 @@ class DetailController: UIViewController {
             if kind == UICollectionView.elementKindSectionHeader {
                 let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SelectedItemHeader", for: indexPath) as! SelectedItemHeader
                 if let initialSelectedItem = initialSelectedItem {
-                    print("Configuring header with initial selected item: \(initialSelectedItem)")
+                    
                     headerView.configure(with: initialSelectedItem) // Display initial selected item
                 }
                 return headerView
@@ -155,7 +154,7 @@ class DetailController: UIViewController {
             let screenHeight = UIScreen.main.bounds.height
             let headerHeight = screenHeight / 2
             let size = CGSize(width: collectionView.bounds.width, height: headerHeight)
-            print("Reference size for header in section \(section): \(String(describing: size))")
+          
             return size
         }
         
