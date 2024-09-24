@@ -248,10 +248,7 @@ class HomeViewModel {
         return favorites.contains(id)
     }
 
-//    func addToFavorites(id: String) {
-//        favorites.insert(id)
-//        saveFavoritesToFirebase()
-//    }
+
     func addToFavorites(id: String) {
         // First, load the existing favorites from Firebase
         loadFavoritesFromFirebase { [weak self] in

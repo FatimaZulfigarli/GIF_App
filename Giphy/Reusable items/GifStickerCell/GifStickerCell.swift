@@ -42,11 +42,24 @@ class GifStickerCell: UICollectionViewCell {
     }
     
     @IBAction func favButtonTapped(_ sender: Any) {
+//        print("Favorite button tapped")
+//        if let id = imageView.accessibilityIdentifier {
+//            onFavButtonTap?(id) // Notify the ViewController
+//        }
+//    }
         print("Favorite button tapped")
-        if let id = imageView.accessibilityIdentifier {
-            onFavButtonTap?(id) // Notify the ViewController
+            if let id = imageView.accessibilityIdentifier {
+                // 1. Check if the current button is filled or not
+                let isCurrentlyFavorited = favButton.image(for: .normal) == UIImage(systemName: "heart.fill")
+                
+                // 2. Toggle the button UI immediately
+                let newImageName = isCurrentlyFavorited ? "heart" : "heart.fill"
+                favButton.setImage(UIImage(systemName: newImageName), for: .normal)
+                
+                // 3. Call the callback to update the favorites in the ViewController
+                onFavButtonTap?(id)
+            }
         }
-    }
         
 //        func configure(with model: GifStickerCellConfigurable, onTap: @escaping (String) -> Void, onFavButtonTap: @escaping (String) -> Void) {
 //            if let url = model.imageURL {

@@ -9,7 +9,7 @@ import UIKit
 import CHTCollectionViewWaterfallLayout
 class HomeController: UIViewController {
     var coordinator: HomeCoordinator? // Reference to the HomeCoordinator
-
+    
     @IBOutlet weak var collection: UICollectionView!
     //    private let viewModel = HomeViewModel()
     //    private let loadingIndicator = UIActivityIndicatorView(style: .large)
@@ -350,6 +350,13 @@ class HomeController: UIViewController {
         detailCoordinator?.start()
     }
     
+    //    private func toggleFavoriteButton(for id: String) {
+    //        if let index = viewModel.currentItems.firstIndex(where: { $0.id == id }),
+    //           let cell = collection.cellForItem(at: IndexPath(item: index, section: 0)) as? GifStickerCell {
+    //            let isFavorite = viewModel.isItemFavorite(id: id)
+    //            cell.updateFavButton(isFavorite: isFavorite)
+    //        }
+    //    }
     private func toggleFavoriteButton(for id: String) {
         if let index = viewModel.currentItems.firstIndex(where: { $0.id == id }),
            let cell = collection.cellForItem(at: IndexPath(item: index, section: 0)) as? GifStickerCell {
@@ -357,16 +364,60 @@ class HomeController: UIViewController {
             cell.updateFavButton(isFavorite: isFavorite)
         }
     }
+    //    private func toggleFavorite(for id: String) {
+    //        if viewModel.isItemFavorite(id: id) {
+    //            viewModel.removeFromFavorites(id: id)
+    //        } else {
+    //            viewModel.addToFavorites(id: id)
+    //        }
+    //        
+    //        //  viewModel.saveFavoritesToFirebase()
+    //        toggleFavoriteButton(for: id)
+    //    }
+    //}
     
+    //    private func toggleFavorite(for id: String) {
+    //        // Toggle favorite state
+    //        let isFavorite = viewModel.isItemFavorite(id: id)
+    //        
+    //        // 1. **Immediately Update the Button UI**
+    //        if let index = viewModel.currentItems.firstIndex(where: { $0.id == id }),
+    //           let cell = collection.cellForItem(at: IndexPath(item: index, section: 0)) as? GifStickerCell {
+    //            // Toggle the button UI immediately
+    //            cell.updateFavButton(isFavorite: !isFavorite) // Fill or unfill the heart
+    //        }
+    //        
+    //        // 2. **Update the Favorite State in the ViewModel**
+    //        if isFavorite {
+    //            viewModel.removeFromFavorites(id: id)
+    //        } else {
+    //            viewModel.addToFavorites(id: id)
+    //        }
+    //        
+    //        // 3. **Save the Favorite State in Firebase (background task)**
+    //        viewModel.saveFavoritesToFirebase()
+    //    }
+    //}
     private func toggleFavorite(for id: String) {
-        if viewModel.isItemFavorite(id: id) {
+        // Toggle favorite state in ViewModel
+        let isFavorite = viewModel.isItemFavorite(id: id)
+        
+        // 1. Immediately update the UI (toggle the heart icon)
+        if let index = viewModel.currentItems.firstIndex(where: { $0.id == id }),
+           let cell = collection.cellForItem(at: IndexPath(item: index, section: 0)) as? GifStickerCell {
+            // Toggle the button UI immediately
+            cell.updateFavButton(isFavorite: !isFavorite) // Invert the current state to update UI immediately
+        }
+        
+        // 2. Update favorite state in ViewModel
+        if isFavorite {
             viewModel.removeFromFavorites(id: id)
         } else {
             viewModel.addToFavorites(id: id)
         }
         
-        //  viewModel.saveFavoritesToFirebase()
-        toggleFavoriteButton(for: id)
+        // 3. Save the updated favorites in Firebase asynchronously (non-blocking)
+        viewModel.saveFavoritesToFirebase()
     }
 }
 
