@@ -71,7 +71,20 @@ class LoginController: UIViewController {
                }
            }
     @IBAction func forgetPasswordButton(_ sender: Any) {
-    }
+        guard let email = loginEmailTextField.text, !email.isEmpty else {
+                   showAlert(message: "Please enter your email address.")
+                   return
+               }
+               
+               // Send password reset email
+               Auth.auth().sendPasswordReset(withEmail: email) { [weak self] error in
+                   if let error = error {
+                       self?.showAlert(message: "Failed to send password reset email: \(error.localizedDescription)")
+                   } else {
+                       self?.showAlert(message: "A password reset link has been sent to your email.")
+                   }
+               }
+           }
             
     
     @IBAction func termsOfService(_ sender: Any) {
