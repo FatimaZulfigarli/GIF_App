@@ -40,7 +40,7 @@
                                                                 <state key="normal" image="unchecked"/>
                                                                 <state key="selected" image="checked"/>
                                                                 <connections>
-                                                                    <action selector="tickButton:" destination="KBJ-BJ-h6O" eventType="touchUpInside" id="uTC-52-nUd"/>
+                                                                    <action selector="tickButtonTapped:" destination="KBJ-BJ-h6O" eventType="touchUpInside" id="X1L-9l-Zu8"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -211,6 +211,7 @@
                         <outlet property="regEmailTextField" destination="eZj-wE-HDg" id="h0M-R8-a1u"/>
                         <outlet property="regFullnameTextField" destination="uFp-pG-YRL" id="xYD-WK-WIz"/>
                         <outlet property="regPasswordTextField" destination="ezz-8y-HkQ" id="DK7-uo-Vdd"/>
+                        <outlet property="tickButton" destination="tiz-6h-TVP" id="KTu-CW-Ryu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6db-Le-8vS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
