@@ -17,6 +17,10 @@ class RegisterController: UIViewController {
     @IBOutlet weak var regPasswordTextField: UITextField!
     @IBOutlet weak var tickButton: UIButton!
     var onRegisterComplete: ((RegistrationData) -> Void)?
+    var viewModel: RegisterViewModel? // Reference to the ViewModel
+    var coordinator: RegisterCoordinator? // Add this property
+
+
     lazy var loginAdapter = LoginAdapter(controller: self)
     private let urlHelper = URLs()
 
@@ -25,16 +29,26 @@ class RegisterController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("RegisterController loaded.") // Debugging
+        viewModel = RegisterViewModel()
+        setupBindings()
 
 
         // Do any additional setup after loading the view.
     }
+    private func setupBindings() {
+            viewModel?.registrationSuccess = { [weak self] registrationData in
+                self?.onRegisterComplete?(registrationData)
+                self?.navigationController?.popViewController(animated: true)
+            }
+            
+            viewModel?.registrationFailure = { [weak self] errorMessage in
+                self?.showAlert(message: errorMessage)
+            }
+        }
     
     @IBAction func signUpButton(_ sender: Any) {
     
-        print("Register button tapped")  // Debugging
-                  
-               guard let email = regEmailTextField.text, !email.isEmpty,
+        guard let email = regEmailTextField.text, !email.isEmpty,
                      let password = regPasswordTextField.text, !password.isEmpty,
                      let fullname = regFullnameTextField.text, !fullname.isEmpty else {
                    showAlert(message: "Email, password, or fullname is empty.")
@@ -47,49 +61,31 @@ class RegisterController: UIViewController {
                }
                
                let registrationData = RegistrationData(email: email, password: password, fullname: fullname)
-               print("Attempting to create user with email: \(email)")  // Debugging
-               
-               loginAdapter.registerWithEmail(registrationData: registrationData) { [weak self] result in
-                   switch result {
-                   case .success(let userProfile):
-                       print("User registered: \(userProfile.fullname)")
-                       self?.onRegisterComplete?(registrationData)
-                       self?.navigationController?.popViewController(animated: true)
-                   case .failure(let error):
-                       self?.showAlert(message: "Registration failed: \(error.localizedDescription)")
-                   }
-               }
+               viewModel?.registerUser(registrationData: registrationData)
            }
-           
            // Alert to show messages
-           private func showAlert(message: String) {
-               let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-               let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-               alertController.addAction(okAction)
-               present(alertController, animated: true, completion: nil)
-           }
+//           private func showAlert(message: String) {
+//               let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+//               let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//               alertController.addAction(okAction)
+//               present(alertController, animated: true, completion: nil)
+//           }
     
     @IBAction func haveAccountButton(_ sender: Any) {
         if let navigationController = self.navigationController {
-                // Create an instance of LoginCoordinator and start it
-                let loginCoordinator = LoginCoordinator(navigationController: navigationController)
-                loginCoordinator.start() // This will navigate to the LoginController
-            } else {
-                print("Navigation controller is nil")
+                    let loginCoordinator = LoginCoordinator(navigationController: navigationController)
+                    loginCoordinator.start()
+                }
             }
-        }
     @IBAction func googleSignIn(_ sender: Any) {
-        loginAdapter.userCompletion = { [weak self] userProfile in
-                   guard let self = self else { return }
-                   print("Google Sign-In successful for user: \(userProfile.fullname)")
-                   
-                   // Automatically navigate to the main app screen after Google Sign-In
-                   self.navigateToMainApp()
-               }
-               
-               // Trigger Google Sign-In
-               loginAdapter.loginWithGoogle()
+        viewModel?.signInWithGoogle()
            }
+    private func showAlert(message: String) {
+            let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            present(alertController, animated: true, completion: nil)
+        }
            
            private func navigateToMainApp() {
                let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -107,23 +103,15 @@ class RegisterController: UIViewController {
         urlHelper.callURL(urlType: .googlePrivacyTerms, from: self)
     }
     @IBAction func termsOfService(_ sender: Any) {
-        urlHelper.callURL(urlType: .termsOfService, from: self)
-    }
+        urlHelper.callURL(urlType: .privacyTerms, from: self)
+            }
     @IBAction func privacyPolicy(_ sender: Any) {
         urlHelper.callURL(urlType: .privacyTerms, from: self)
     }
    
     @IBAction func tickButtonTapped(_ sender: Any) {
-        // Toggle the state
-           isTermsAccepted.toggle()
-
-           // Update the appearance of the button (example: change image or text)
-           let imageName = isTermsAccepted ? "checkmark.square.fill" : "square"
-           
-           if let button = sender as? UIButton {
-               button.setImage(UIImage(systemName: imageName), for: .normal)
-           }
-
-           print("Terms accepted: \(isTermsAccepted)") // Debugging
-       }
+        isTermsAccepted.toggle()
+                let imageName = isTermsAccepted ? "checkmark.square.fill" : "square"
+                tickButton.setImage(UIImage(systemName: imageName), for: .normal)
+            }
 }

@@ -10,6 +10,7 @@ import FirebaseAuth
 
 class LoginController: UIViewController {
     var coordinator: LoginCoordinator? // Reference to the LoginCoordinator
+    var viewModel: LoginViewModel?
 
     @IBOutlet weak var loginEmailTextField: UITextField!
     @IBOutlet weak var giphyLabel: UILabel!
@@ -20,71 +21,59 @@ class LoginController: UIViewController {
 
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        loginAdapter.userCompletion = { [weak self] userProfile in
-                   guard let self = self else { return }
-                   
-                   print("Logged in as: \(userProfile.fullname)")
-                   print("Email: \(userProfile.email ?? "No email found")")
-                   
-                   self.navigateToMainApp()
-               }
-           }
-    
-    @IBAction func loginButton(_ sender: Any) {
-        guard let email = loginEmailTextField.text, !email.isEmpty,
-                  let password = loginPasswordTextField.text, !password.isEmpty else {
-                showAlert(message: "Email or password is missing.")
-                return
+            super.viewDidLoad()
+            viewModel = LoginViewModel()
+            setupBindings()
+        }
+        
+        private func setupBindings() {
+            viewModel?.loginSuccess = { [weak self] in
+                self?.navigateToMainApp()
             }
             
-            let loginData = LoginData(email: email, password: password)
-            loginAdapter.loginWithEmail(loginData: loginData) { [weak self] result in
-                switch result {
-                case .success(let userProfile):
-                    self?.navigateToMainApp()
-                case .failure(let error):
-                    self?.showAlert(message: "Login failed: \(error.localizedDescription)")
-                }
+            viewModel?.loginFailure = { [weak self] errorMessage in
+                self?.showAlert(message: errorMessage)
+            }
+
+            viewModel?.passwordResetSuccess = { [weak self] successMessage in
+                // Show success message without navigating to Home
+                self?.showAlert(message: successMessage)
             }
         }
-
-        private func showAlert(message: String) {
-            let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alertController.addAction(okAction)
-            present(alertController, animated: true, completion: nil)
-        }
-    
+    @IBAction func loginButton(_ sender: Any) {
+        guard let email = loginEmailTextField.text, !email.isEmpty,
+                      let password = loginPasswordTextField.text, !password.isEmpty else {
+                    showAlert(message: "Email or password is missing.")
+                    return
+                }
+                viewModel?.login(email: email, password: password)
+            }
+            
+            private func showAlert(message: String) {
+                let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertController.addAction(okAction)
+                present(alertController, animated: true, completion: nil)
+            }
     
     @IBAction func signupButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-               if let registerController = storyboard.instantiateViewController(withIdentifier: "RegisterController") as? RegisterController {
-                   
-                   registerController.onRegisterComplete = { [weak self] registrationData in
-                       self?.loginEmailTextField.text = registrationData.email
-                       self?.loginPasswordTextField.text = registrationData.password
-                       print("Email: \(registrationData.email), Password: \(registrationData.password)")
-                   }
-                   
-                   self.navigationController?.pushViewController(registerController, animated: true)
-               }
-           }
+                if let registerController = storyboard.instantiateViewController(withIdentifier: "RegisterController") as? RegisterController {
+                    registerController.onRegisterComplete = { [weak self] registrationData in
+                        self?.loginEmailTextField.text = registrationData.email
+                        self?.loginPasswordTextField.text = registrationData.password
+                    }
+                    self.navigationController?.pushViewController(registerController, animated: true)
+                }
+            }
     @IBAction func forgetPasswordButton(_ sender: Any) {
         guard let email = loginEmailTextField.text, !email.isEmpty else {
-                   showAlert(message: "Please enter your email address.")
-                   return
-               }
-               
-               // Send password reset email
-               Auth.auth().sendPasswordReset(withEmail: email) { [weak self] error in
-                   if let error = error {
-                       self?.showAlert(message: "Failed to send password reset email: \(error.localizedDescription)")
-                   } else {
-                       self?.showAlert(message: "A password reset link has been sent to your email.")
-                   }
-               }
-           }
+                    showAlert(message: "Please enter your email address.")
+                    return
+                }
+                
+                viewModel?.resetPassword(email: email)
+            }
             
     
     @IBAction func termsOfService(_ sender: Any) {
@@ -116,12 +105,11 @@ class LoginController: UIViewController {
     }
     */
     private func navigateToMainApp() {
-           let storyboard = UIStoryboard(name: "Main", bundle: nil)
-           if let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabNav") as? UITabBarController {
-               tabBarController.modalPresentationStyle = .fullScreen
-               self.present(tabBarController, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+               if let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabNav") as? UITabBarController {
+                   tabBarController.modalPresentationStyle = .fullScreen
+                   self.present(tabBarController, animated: true, completion: nil)
+               }
            }
        }
-   }
-
 

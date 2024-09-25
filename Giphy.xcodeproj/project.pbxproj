@@ -37,6 +37,13 @@
 		4508AE3A2C6B217200588B89 /* SelectedItemHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4508AE382C6B217200588B89 /* SelectedItemHeader.xib */; };
 		450F901C2C9A0F2300F5FD24 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F901B2C9A0F2300F5FD24 /* HomeCoordinator.swift */; };
 		450F901E2C9A0FA300F5FD24 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F901D2C9A0FA200F5FD24 /* LoginCoordinator.swift */; };
+		450F90272CA422AD00F5FD24 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F90262CA422AD00F5FD24 /* LoginViewModel.swift */; };
+		450F90292CA422C600F5FD24 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F90282CA422C600F5FD24 /* LoginUseCase.swift */; };
+		450F902B2CA422E500F5FD24 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F902A2CA422E500F5FD24 /* LoginManager.swift */; };
+		450F902D2CA4267500F5FD24 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F902C2CA4267500F5FD24 /* RegisterViewModel.swift */; };
+		450F902F2CA4269800F5FD24 /* RegisterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F902E2CA4269800F5FD24 /* RegisterUseCase.swift */; };
+		450F90312CA426B200F5FD24 /* RegisterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F90302CA426B200F5FD24 /* RegisterManager.swift */; };
+		450F90332CA426CA00F5FD24 /* RegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F90322CA426CA00F5FD24 /* RegisterCoordinator.swift */; };
 		451AB7492C6FB17300532673 /* SelectedIemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451AB7472C6FB17300532673 /* SelectedIemCell.swift */; };
 		451AB74A2C6FB17300532673 /* SelectedIemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 451AB7482C6FB17300532673 /* SelectedIemCell.xib */; };
 		45A3142B2C79C9EB0099AC79 /* GIFSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A3142A2C79C9EB0099AC79 /* GIFSearch.swift */; };
@@ -99,6 +106,13 @@
 		4508AE382C6B217200588B89 /* SelectedItemHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedItemHeader.xib; sourceTree = "<group>"; };
 		450F901B2C9A0F2300F5FD24 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		450F901D2C9A0FA200F5FD24 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		450F90262CA422AD00F5FD24 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		450F90282CA422C600F5FD24 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
+		450F902A2CA422E500F5FD24 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		450F902C2CA4267500F5FD24 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		450F902E2CA4269800F5FD24 /* RegisterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUseCase.swift; sourceTree = "<group>"; };
+		450F90302CA426B200F5FD24 /* RegisterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterManager.swift; sourceTree = "<group>"; };
+		450F90322CA426CA00F5FD24 /* RegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCoordinator.swift; sourceTree = "<group>"; };
 		451AB7472C6FB17300532673 /* SelectedIemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedIemCell.swift; sourceTree = "<group>"; };
 		451AB7482C6FB17300532673 /* SelectedIemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedIemCell.xib; sourceTree = "<group>"; };
 		45A3142A2C79C9EB0099AC79 /* GIFSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFSearch.swift; sourceTree = "<group>"; };
@@ -280,6 +294,10 @@
 			isa = PBXGroup;
 			children = (
 				45A314412C7C50550099AC79 /* RegisterController.swift */,
+				450F902C2CA4267500F5FD24 /* RegisterViewModel.swift */,
+				450F902E2CA4269800F5FD24 /* RegisterUseCase.swift */,
+				450F90302CA426B200F5FD24 /* RegisterManager.swift */,
+				450F90322CA426CA00F5FD24 /* RegisterCoordinator.swift */,
 			);
 			path = RegisterController;
 			sourceTree = "<group>";
@@ -312,8 +330,11 @@
 			isa = PBXGroup;
 			children = (
 				45A3142C2C7C4EB10099AC79 /* LoginController.swift */,
+				450F90262CA422AD00F5FD24 /* LoginViewModel.swift */,
+				450F90282CA422C600F5FD24 /* LoginUseCase.swift */,
 				450F901D2C9A0FA200F5FD24 /* LoginCoordinator.swift */,
 				45A314662C81F6350099AC79 /* LoginAdapter.swift */,
+				450F902A2CA422E500F5FD24 /* LoginManager.swift */,
 			);
 			path = LoginPage;
 			sourceTree = "<group>";
@@ -440,11 +461,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				450F90312CA426B200F5FD24 /* RegisterManager.swift in Sources */,
 				45A314592C7F04730099AC79 /* StickerSearch.swift in Sources */,
 				451AB7492C6FB17300532673 /* SelectedIemCell.swift in Sources */,
 				45A3145F2C8079980099AC79 /* ProfilePageController.swift in Sources */,
 				4508AE392C6B217200588B89 /* SelectedItemHeader.swift in Sources */,
 				4508ADD22C5A9E5800588B89 /* Coordinator.swift in Sources */,
+				450F902B2CA422E500F5FD24 /* LoginManager.swift in Sources */,
 				45A314422C7C50550099AC79 /* RegisterController.swift in Sources */,
 				4508ADC42C54DF7800588B89 /* HomeManager.swift in Sources */,
 				4508ADBE2C54DCC700588B89 /* NetworkConstants.swift in Sources */,
@@ -454,12 +477,16 @@
 				4508ADC12C54DF5400588B89 /* HomeViewModel.swift in Sources */,
 				4508ADAA2C53C43B00588B89 /* UIImageView+Extension .swift in Sources */,
 				4508ADC72C54DF9300588B89 /* HomeUseCase.swift in Sources */,
+				450F90292CA422C600F5FD24 /* LoginUseCase.swift in Sources */,
+				450F902D2CA4267500F5FD24 /* RegisterViewModel.swift in Sources */,
 				45A3142D2C7C4EB10099AC79 /* LoginController.swift in Sources */,
+				450F902F2CA4269800F5FD24 /* RegisterUseCase.swift in Sources */,
 				450F901E2C9A0FA300F5FD24 /* LoginCoordinator.swift in Sources */,
 				45A3142B2C79C9EB0099AC79 /* GIFSearch.swift in Sources */,
 				45A314692C81F8060099AC79 /* UserProfile.swift in Sources */,
 				450F901C2C9A0F2300F5FD24 /* HomeCoordinator.swift in Sources */,
 				45A314552C7C630D0099AC79 /* RegistrationData.swift in Sources */,
+				450F90272CA422AD00F5FD24 /* LoginViewModel.swift in Sources */,
 				4508AD6D2C50FBE400588B89 /* HomeController.swift in Sources */,
 				4508ADCD2C5A9DDC00588B89 /* DetailController.swift in Sources */,
 				4508ADB92C54DC2300588B89 /* NetworkManager.swift in Sources */,
@@ -467,6 +494,7 @@
 				4508AD6A2C50FB8400588B89 /* CategoriesCell.swift in Sources */,
 				4508AE022C611EE100588B89 /* EmojiModel.swift in Sources */,
 				4508AD642C50F99F00588B89 /* CategoriesHeaderView.swift in Sources */,
+				450F90332CA426CA00F5FD24 /* RegisterCoordinator.swift in Sources */,
 				4508AD4B2C4FC17800588B89 /* SceneDelegate.swift in Sources */,
 				4508ADD42C5B9DF300588B89 /* StickerModel.swift in Sources */,
 				45A3146B2C8201F60099AC79 /* URLs.swift in Sources */,

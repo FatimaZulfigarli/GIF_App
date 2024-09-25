@@ -22,8 +22,8 @@ class LoginCoordinator: Coordinator {
         }
     }
     
-    func navigateToHome() {
-        let homeCoordinator = HomeCoordinator(navigationController: navigationController)
-        homeCoordinator.start() // Navigate to HomeController
-    }
+//    func navigateToHome() {
+//        let homeCoordinator = HomeCoordinator(navigationController: navigationController)
+//        homeCoordinator.start() // Navigate to HomeController
+//    }
 }
