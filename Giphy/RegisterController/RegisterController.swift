@@ -78,8 +78,8 @@ class RegisterController: UIViewController {
                 }
             }
     @IBAction func googleSignIn(_ sender: Any) {
-        viewModel?.signInWithGoogle()
-           }
+        loginAdapter.loginWithGoogle()
+    }
     private func showAlert(message: String) {
             let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)

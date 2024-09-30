@@ -34,7 +34,7 @@ class LoginAdapter {
                                               email: user.email,
                                               password: "")
                 completion(.success(userProfile))
-
+                
                 // After successful login, load the favorites
                 self?.loadFavoritesAfterLogin()
             }
@@ -44,36 +44,32 @@ class LoginAdapter {
     func loginWithGoogle() {
         GIDSignIn.sharedInstance.signIn(withPresenting: controller) { result, error in
             if let error = error {
-                print(error.localizedDescription)
-            } else if let result = result {
-                let fullname = "\(result.user.profile?.name ?? "") \(result.user.profile?.familyName ?? "")"
-                let user = UserProfile(fullname: fullname,
-                                       email: result.user.profile?.email,
-                                       password: "")
-                
-                self.userCompletion?(user)
-                
-                // Authenticate with Firebase using the Google credential
+                print("Google Sign-In failed: \(error.localizedDescription)")
+                return
+            }
+            
+            // Successful Google Sign-In
+            if let result = result {
+                // Get the Google credential and sign in to Firebase
                 guard let idToken = result.user.idToken?.tokenString else {
-                    print("Failed to retrieve ID token")
+                    print("Failed to get ID token from Google Sign-In")
                     return
                 }
-                let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-                                                               accessToken: result.user.accessToken.tokenString)
-                Auth.auth().signIn(with: credential) { [weak self] _, error in
+                let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: result.user.accessToken.tokenString)
+                
+                // Authenticate with Firebase
+                Auth.auth().signIn(with: credential) { [weak self] authResult, error in
                     if let error = error {
                         print("Firebase Google Sign-In failed: \(error.localizedDescription)")
                     } else {
                         print("User signed in with Google and authenticated with Firebase")
-
-                        // After successful login, load the favorites
-                        self?.loadFavoritesAfterLogin()
+                        self?.navigateToTabBarController() // Navigate to HomeController after successful sign-in
                     }
                 }
             }
         }
     }
-
+    
     // New function to load favorites after successful login
     func loadFavoritesAfterLogin() {
         let homeViewModel = HomeViewModel()
@@ -83,36 +79,43 @@ class LoginAdapter {
         }
     }
     // Function to handle Google Sign-In
-//    func loginWithGoogle() {
-//        GIDSignIn.sharedInstance.signIn(withPresenting: controller) { result, error in
-//            if let error = error {
-//                print(error.localizedDescription)
-//            } else if let result = result {
-//                let fullname = "\(result.user.profile?.name ?? "") \(result.user.profile?.familyName ?? "")"
-//                let user = UserProfile(fullname: fullname,
-//                                       email: result.user.profile?.email,
-//                                       password: "")
-//                
-//                self.userCompletion?(user)
-//                
-//                // Authenticate with Firebase using the Google credential
-//                guard let idToken = result.user.idToken?.tokenString else {
-//                    print("Failed to retrieve ID token")
-//                    return
-//                }
-//                let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-//                                                               accessToken: result.user.accessToken.tokenString)
-//                Auth.auth().signIn(with: credential) { _, error in
-//                    if let error = error {
-//                        print("Firebase Google Sign-In failed: \(error.localizedDescription)")
-//                    } else {
-//                        print("User signed in with Google and authenticated with Firebase")
-//                    }
-//                }
-//            }
-//        }
-//    }
-    
+    //    func loginWithGoogle() {
+    //        GIDSignIn.sharedInstance.signIn(withPresenting: controller) { result, error in
+    //            if let error = error {
+    //                print(error.localizedDescription)
+    //            } else if let result = result {
+    //                let fullname = "\(result.user.profile?.name ?? "") \(result.user.profile?.familyName ?? "")"
+    //                let user = UserProfile(fullname: fullname,
+    //                                       email: result.user.profile?.email,
+    //                                       password: "")
+    //
+    //                self.userCompletion?(user)
+    //
+    //                // Authenticate with Firebase using the Google credential
+    //                guard let idToken = result.user.idToken?.tokenString else {
+    //                    print("Failed to retrieve ID token")
+    //                    return
+    //                }
+    //                let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+    //                                                               accessToken: result.user.accessToken.tokenString)
+    //                Auth.auth().signIn(with: credential) { _, error in
+    //                    if let error = error {
+    //                        print("Firebase Google Sign-In failed: \(error.localizedDescription)")
+    //                    } else {
+    //                        print("User signed in with Google and authenticated with Firebase")
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    // Function to navigate to TabBarController after login or registration
+    private func navigateToTabBarController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabNav") as? UITabBarController {
+            tabBarController.modalPresentationStyle = .fullScreen
+            controller.present(tabBarController, animated: true, completion: nil)
+        }
+    }
     // Function to handle user registration with email and password
     func registerWithEmail(registrationData: RegistrationData, completion: @escaping (Result<UserProfile, Error>) -> Void) {
         Auth.auth().createUser(withEmail: registrationData.email, password: registrationData.password) { result, error in
@@ -131,9 +134,12 @@ class LoginAdapter {
             }
         }
     }
-}
-
-enum LoginType {
-    case email
-    case google
+    
+    
+    
+    
+    enum LoginType {
+        case email
+        case google
+    }
 }
