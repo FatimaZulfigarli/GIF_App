@@ -23,19 +23,6 @@ class RegisterViewModel {
         }
     }
     
-//    func signInWithGoogle() {
-//        // Handle Google Sign-In logic
-//        registerManager.signInWithGoogle { [weak self] result in
-//            switch result {
-//            case .success(let userProfile):
-//                // Handle Google Sign-In success
-//                print("Google Sign-In successful: \(userProfile.fullname)")
-//                // Navigate to the main app after sign-in, or handle it accordingly
-//            case .failure(let error):
-//                self?.registrationFailure?("Google Sign-In failed: \(error.localizedDescription)")
-//            }
-//        }
-//    }
     func signInWithGoogle() {
         registerManager.signInWithGoogle { [weak self] result in
             switch result {

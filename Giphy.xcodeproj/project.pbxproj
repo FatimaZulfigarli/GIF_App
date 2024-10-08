@@ -44,6 +44,9 @@
 		450F902F2CA4269800F5FD24 /* RegisterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F902E2CA4269800F5FD24 /* RegisterUseCase.swift */; };
 		450F90312CA426B200F5FD24 /* RegisterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F90302CA426B200F5FD24 /* RegisterManager.swift */; };
 		450F90332CA426CA00F5FD24 /* RegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F90322CA426CA00F5FD24 /* RegisterCoordinator.swift */; };
+		450F90432CB5561B00F5FD24 /* ProfilePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F90422CB5561B00F5FD24 /* ProfilePageViewModel.swift */; };
+		450F90452CB5573200F5FD24 /* ProfilePageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F90442CB5573200F5FD24 /* ProfilePageUseCase.swift */; };
+		450F90472CB5574E00F5FD24 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F90462CB5574E00F5FD24 /* ProfileManager.swift */; };
 		451AB7492C6FB17300532673 /* SelectedIemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451AB7472C6FB17300532673 /* SelectedIemCell.swift */; };
 		451AB74A2C6FB17300532673 /* SelectedIemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 451AB7482C6FB17300532673 /* SelectedIemCell.xib */; };
 		45A3142B2C79C9EB0099AC79 /* GIFSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A3142A2C79C9EB0099AC79 /* GIFSearch.swift */; };
@@ -113,6 +116,9 @@
 		450F902E2CA4269800F5FD24 /* RegisterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUseCase.swift; sourceTree = "<group>"; };
 		450F90302CA426B200F5FD24 /* RegisterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterManager.swift; sourceTree = "<group>"; };
 		450F90322CA426CA00F5FD24 /* RegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCoordinator.swift; sourceTree = "<group>"; };
+		450F90422CB5561B00F5FD24 /* ProfilePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageViewModel.swift; sourceTree = "<group>"; };
+		450F90442CB5573200F5FD24 /* ProfilePageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageUseCase.swift; sourceTree = "<group>"; };
+		450F90462CB5574E00F5FD24 /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		451AB7472C6FB17300532673 /* SelectedIemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedIemCell.swift; sourceTree = "<group>"; };
 		451AB7482C6FB17300532673 /* SelectedIemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedIemCell.xib; sourceTree = "<group>"; };
 		45A3142A2C79C9EB0099AC79 /* GIFSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFSearch.swift; sourceTree = "<group>"; };
@@ -306,6 +312,9 @@
 			isa = PBXGroup;
 			children = (
 				45A3145E2C8079980099AC79 /* ProfilePageController.swift */,
+				450F90422CB5561B00F5FD24 /* ProfilePageViewModel.swift */,
+				450F90442CB5573200F5FD24 /* ProfilePageUseCase.swift */,
+				450F90462CB5574E00F5FD24 /* ProfileManager.swift */,
 			);
 			path = ProfilePageController;
 			sourceTree = "<group>";
@@ -471,6 +480,7 @@
 				45A314422C7C50550099AC79 /* RegisterController.swift in Sources */,
 				4508ADC42C54DF7800588B89 /* HomeManager.swift in Sources */,
 				4508ADBE2C54DCC700588B89 /* NetworkConstants.swift in Sources */,
+				450F90452CB5573200F5FD24 /* ProfilePageUseCase.swift in Sources */,
 				4508ADA52C53BE9100588B89 /* GifStickerCell.swift in Sources */,
 				4508ADD02C5A9E3300588B89 /* DetailCoordinator.swift in Sources */,
 				4508AD492C4FC17800588B89 /* AppDelegate.swift in Sources */,
@@ -478,12 +488,14 @@
 				4508ADAA2C53C43B00588B89 /* UIImageView+Extension .swift in Sources */,
 				4508ADC72C54DF9300588B89 /* HomeUseCase.swift in Sources */,
 				450F90292CA422C600F5FD24 /* LoginUseCase.swift in Sources */,
+				450F90472CB5574E00F5FD24 /* ProfileManager.swift in Sources */,
 				450F902D2CA4267500F5FD24 /* RegisterViewModel.swift in Sources */,
 				45A3142D2C7C4EB10099AC79 /* LoginController.swift in Sources */,
 				450F902F2CA4269800F5FD24 /* RegisterUseCase.swift in Sources */,
 				450F901E2C9A0FA300F5FD24 /* LoginCoordinator.swift in Sources */,
 				45A3142B2C79C9EB0099AC79 /* GIFSearch.swift in Sources */,
 				45A314692C81F8060099AC79 /* UserProfile.swift in Sources */,
+				450F90432CB5561B00F5FD24 /* ProfilePageViewModel.swift in Sources */,
 				450F901C2C9A0F2300F5FD24 /* HomeCoordinator.swift in Sources */,
 				45A314552C7C630D0099AC79 /* RegistrationData.swift in Sources */,
 				450F90272CA422AD00F5FD24 /* LoginViewModel.swift in Sources */,

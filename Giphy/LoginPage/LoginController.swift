@@ -9,7 +9,7 @@ import UIKit
 import FirebaseAuth
 
 class LoginController: UIViewController {
-    var coordinator: LoginCoordinator? // Reference to the LoginCoordinator
+    var coordinator: LoginCoordinator? 
     var viewModel: LoginViewModel?
 
     @IBOutlet weak var loginEmailTextField: UITextField!
@@ -66,44 +66,25 @@ class LoginController: UIViewController {
                     self.navigationController?.pushViewController(registerController, animated: true)
                 }
             }
+    
     @IBAction func forgetPasswordButton(_ sender: Any) {
         guard let email = loginEmailTextField.text, !email.isEmpty else {
                     showAlert(message: "Please enter your email address.")
                     return
                 }
-                
                 viewModel?.resetPassword(email: email)
             }
             
-    
     @IBAction func termsOfService(_ sender: Any) {
         urlHelper.callURL(urlType: .termsOfService, from: self)
                 print("Terms of Service clicked")
             }
-   
-  
-    
     
     @IBAction func privacyPolicy(_ sender: Any) {
         urlHelper.callURL(urlType: .privacyTerms, from: self)
                 print("Privacy Policy clicked")
             }
     
-    
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-     @IBAction func privacyPolicy(_ sender: Any) {
-     }
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     private func navigateToMainApp() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                if let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabNav") as? UITabBarController {

@@ -21,9 +21,4 @@ class LoginCoordinator: Coordinator {
             navigationController.pushViewController(loginController, animated: true)
         }
     }
-    
-//    func navigateToHome() {
-//        let homeCoordinator = HomeCoordinator(navigationController: navigationController)
-//        homeCoordinator.start() // Navigate to HomeController
-//    }
 }

@@ -11,11 +11,11 @@ import UIKit
 
 class HomeCoordinator: Coordinator {
     var navigationController: UINavigationController
-
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-
+    
     func start() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let homeController = storyboard.instantiateViewController(withIdentifier: "HomeController") as? HomeController {
@@ -23,12 +23,9 @@ class HomeCoordinator: Coordinator {
             navigationController.pushViewController(homeController, animated: true)
         }
     }
-
-    
-
     
     func showDetail(selectedItem: GifStickerCellConfigurable, items: [GifStickerCellConfigurable]) {
         let detailCoordinator = DetailCoordinator(navigationController: navigationController, selectedItems: items, initialSelectedItem: selectedItem)
-        detailCoordinator.start() // Navigate to DetailController
+        detailCoordinator.start()
     }
 }

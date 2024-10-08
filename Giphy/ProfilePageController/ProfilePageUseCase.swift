@@ -2,10 +2,11 @@
 //  ProfilePageUseCase.swift
 //  Giphy
 //
-//  Created by Fatya on 29.08.24.
+//  Created by Fatya on 08.10.24.
 //
 
+import Foundation
 protocol ProfilePageUseCase {
-    func fetchFavorites(completion: @escaping ([GifStickerCellConfigurable]) -> Void)
-    func removeFavorite(id: String)
+    func loadFavoritesFromFirebase(completion: @escaping ([GifStickerCellConfigurable]?, String?) -> Void)
+    func logout(completion: @escaping (String?) -> Void)
 }

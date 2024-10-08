@@ -12,7 +12,6 @@ class SelectedIemCell: UICollectionViewCell {
     @IBOutlet weak var gifStickerImage: UIImageView!
     override func awakeFromNib() {
            super.awakeFromNib()
-           // Initialization code
        }
        
     func configure(with item: GifStickerCellConfigurable) {

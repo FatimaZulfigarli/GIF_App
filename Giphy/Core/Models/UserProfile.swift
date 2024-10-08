@@ -9,5 +9,5 @@ import Foundation
 struct UserProfile {
     let fullname: String
     let email: String?
-    let password: String // Typically empty for social logins
+    let password: String 
 }

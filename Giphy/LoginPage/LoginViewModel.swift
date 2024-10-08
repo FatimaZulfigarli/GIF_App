@@ -12,7 +12,7 @@ class LoginViewModel {
     
     var loginSuccess: (() -> Void)?
     var loginFailure: ((String) -> Void)?
-    var passwordResetSuccess: ((String) -> Void)? // New closure for password reset success
+    var passwordResetSuccess: ((String) -> Void)?
     
     func login(email: String, password: String) {
         loginManager.login(email: email, password: password) { [weak self] success in

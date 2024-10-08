@@ -29,23 +29,8 @@ class ProfilePageController: UIViewController {
             super.viewWillAppear(animated)
             loadFavoritesFromFirebase()
         }
-//    private var favoriteItems: [GifStickerCellConfigurable] = []
-//       private let viewModel = ProfilePageViewModel()
-//       var coordinator: ProfilePageCoordinator?
-//
-//       override func viewDidLoad() {
-//           super.viewDidLoad()
-//           setupCollectionView()
-//           viewModel.loadFavoritesFromFirebase()
-//       }
-//
-//       override func viewWillAppear(_ animated: Bool) {
-//           super.viewWillAppear(animated)
-//           viewModel.loadFavoritesFromFirebase()
-//       }
+
     @IBAction func logoutButtonTapped(_ sender: Any) {
-        
-        
         do {
             try Auth.auth().signOut()
                              // Switch back to LoginController
@@ -117,3 +102,4 @@ extension ProfilePageController: UICollectionViewDataSource, UICollectionViewDel
         return cell
     }
 }
+       

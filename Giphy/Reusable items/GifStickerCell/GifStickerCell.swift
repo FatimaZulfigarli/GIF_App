@@ -17,10 +17,10 @@ protocol GifStickerCellConfigurable {
 class GifStickerCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var favButton: UIButton!
-  
+    
     
     var onTap: ((String) -> Void)?
-    var onFavButtonTap: ((String) -> Void)? // Callback for favorite button tap
+    var onFavButtonTap: ((String) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,59 +42,40 @@ class GifStickerCell: UICollectionViewCell {
     }
     
     @IBAction func favButtonTapped(_ sender: Any) {
-//        print("Favorite button tapped")
-//        if let id = imageView.accessibilityIdentifier {
-//            onFavButtonTap?(id) // Notify the ViewController
-//        }
-//    }
-        print("Favorite button tapped")
-            if let id = imageView.accessibilityIdentifier {
-                // 1. Check if the current button is filled or not
-                let isCurrentlyFavorited = favButton.image(for: .normal) == UIImage(systemName: "heart.fill")
-                
-                // 2. Toggle the button UI immediately
-                let newImageName = isCurrentlyFavorited ? "heart" : "heart.fill"
-                favButton.setImage(UIImage(systemName: newImageName), for: .normal)
-                
-                // 3. Call the callback to update the favorites in the ViewController
-                onFavButtonTap?(id)
-            }
-        }
         
-//        func configure(with model: GifStickerCellConfigurable, onTap: @escaping (String) -> Void, onFavButtonTap: @escaping (String) -> Void) {
-//            if let url = model.imageURL {
-//                imageView.loadGif(from: url)
-//            }
-//            if let id = model.id {
-//                imageView.accessibilityIdentifier = id
-//            }
-//            self.onTap = onTap
-//            self.onFavButtonTap = onFavButtonTap
-//        }
-//        
-//        func updateFavButton(isFavorite: Bool) {
-//            let imageName = isFavorite ? "heart.fill" : "heart" // Use SF Symbols
-//            favButton.setImage(UIImage(systemName: imageName), for: .normal)
-//        }
-//    }
+        print("Favorite button tapped")
+        if let id = imageView.accessibilityIdentifier {
+            //Check if the current button is filled or not
+            let isCurrentlyFavorited = favButton.image(for: .normal) == UIImage(systemName: "heart.fill")
+            
+            //  Toggle the button UI immediately
+            let newImageName = isCurrentlyFavorited ? "heart" : "heart.fill"
+            favButton.setImage(UIImage(systemName: newImageName), for: .normal)
+            
+            // Call the callback to update the favorites in the ViewController
+            onFavButtonTap?(id)
+        }
+    }
+    
+    
     
     func configure(with model: GifStickerCellConfigurable, showFavButton: Bool = true, onTap: @escaping (String) -> Void, onFavButtonTap: @escaping (String) -> Void) {
-           if let url = model.imageURL {
-               imageView.loadGif(from: url)
-           }
-           if let id = model.id {
-               imageView.accessibilityIdentifier = id
-           }
-           self.onTap = onTap
-           self.onFavButtonTap = onFavButtonTap
-           
-           // Show or hide the favorite button based on the flag
-           favButton.isHidden = !showFavButton
-       }
-       
-       func updateFavButton(isFavorite: Bool) {
-           let imageName = isFavorite ? "heart.fill" : "heart" // Use SF Symbols
-           favButton.setImage(UIImage(systemName: imageName), for: .normal)
-       }
-   }
+        if let url = model.imageURL {
+            imageView.loadGif(from: url)
+        }
+        if let id = model.id {
+            imageView.accessibilityIdentifier = id
+        }
+        self.onTap = onTap
+        self.onFavButtonTap = onFavButtonTap
+        
+        // Show or hide the favorite button based on the flag
+        favButton.isHidden = !showFavButton
+    }
+    
+    func updateFavButton(isFavorite: Bool) {
+        let imageName = isFavorite ? "heart.fill" : "heart" 
+        favButton.setImage(UIImage(systemName: imageName), for: .normal)
+    }
+}
 

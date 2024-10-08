@@ -15,11 +15,9 @@ class SelectedItemHeader: UICollectionReusableView {
         override func awakeFromNib() {
             super.awakeFromNib()
             
-            // Register the cell
             let nib = UINib(nibName: "SelectedIemCell", bundle: nil)
             collectionView.register(nib, forCellWithReuseIdentifier: "SelectedIemCell")
             
-            // Set the dataSource and delegate
             collectionView.dataSource = self
             collectionView.delegate = self
         }

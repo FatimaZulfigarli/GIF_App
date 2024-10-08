@@ -63,13 +63,6 @@ class RegisterController: UIViewController {
                let registrationData = RegistrationData(email: email, password: password, fullname: fullname)
                viewModel?.registerUser(registrationData: registrationData)
            }
-           // Alert to show messages
-//           private func showAlert(message: String) {
-//               let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-//               let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-//               alertController.addAction(okAction)
-//               present(alertController, animated: true, completion: nil)
-//           }
     
     @IBAction func haveAccountButton(_ sender: Any) {
         if let navigationController = self.navigationController {

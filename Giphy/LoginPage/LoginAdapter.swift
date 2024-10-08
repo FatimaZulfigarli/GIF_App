@@ -74,40 +74,9 @@ class LoginAdapter {
     func loadFavoritesAfterLogin() {
         let homeViewModel = HomeViewModel()
         homeViewModel.loadFavoritesFromFirebase {
-            // Now the favorites are loaded; you can proceed to update the ProfilePageController
-            print("Favorites loaded after Google Sign-In")
         }
     }
-    // Function to handle Google Sign-In
-    //    func loginWithGoogle() {
-    //        GIDSignIn.sharedInstance.signIn(withPresenting: controller) { result, error in
-    //            if let error = error {
-    //                print(error.localizedDescription)
-    //            } else if let result = result {
-    //                let fullname = "\(result.user.profile?.name ?? "") \(result.user.profile?.familyName ?? "")"
-    //                let user = UserProfile(fullname: fullname,
-    //                                       email: result.user.profile?.email,
-    //                                       password: "")
-    //
-    //                self.userCompletion?(user)
-    //
-    //                // Authenticate with Firebase using the Google credential
-    //                guard let idToken = result.user.idToken?.tokenString else {
-    //                    print("Failed to retrieve ID token")
-    //                    return
-    //                }
-    //                let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-    //                                                               accessToken: result.user.accessToken.tokenString)
-    //                Auth.auth().signIn(with: credential) { _, error in
-    //                    if let error = error {
-    //                        print("Firebase Google Sign-In failed: \(error.localizedDescription)")
-    //                    } else {
-    //                        print("User signed in with Google and authenticated with Firebase")
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
+    
     // Function to navigate to TabBarController after login or registration
     private func navigateToTabBarController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -124,7 +93,6 @@ class LoginAdapter {
                 completion(.failure(error))
                 return
             }
-            
             // Successful registration
             if let user = result?.user {
                 let userProfile = UserProfile(fullname: registrationData.fullname,
@@ -134,9 +102,6 @@ class LoginAdapter {
             }
         }
     }
-    
-    
-    
     
     enum LoginType {
         case email
