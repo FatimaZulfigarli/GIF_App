@@ -3,4 +3,117 @@
    uuid = "7144CDD4-D869-4775-BE3F-8D74A47BFBD6"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CA8A6A58-5B32-4951-B176-637950D6DD8A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Giphy/ProfilePageController/ProfilePageViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "loadFavorites()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CA8A6A58-5B32-4951-B176-637950D6DD8A - 30d4ce568577ef5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Giphy.GifStickerCellConfigurable&gt;&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in Giphy.ProfilePageViewModel.loadFavorites() -&gt; ()"
+                  moduleName = "Giphy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatya/Documents/GitHub/GIF_App/Giphy/ProfilePageController/ProfilePageViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "500">
+               </Location>
+               <Location
+                  uuid = "CA8A6A58-5B32-4951-B176-637950D6DD8A - 30d4ce568577ef5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Giphy.GifStickerCellConfigurable&gt;&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in Giphy.ProfilePageViewModel.loadFavorites() -&gt; ()"
+                  moduleName = "Giphy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatya/Documents/GitHub/GIF_App/Giphy/ProfilePageController/ProfilePageViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "652">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F517E158-D06D-4746-8059-6D87389E976B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Giphy/ProfilePageController/ProfilePageViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "loadFavorites()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F517E158-D06D-4746-8059-6D87389E976B - 5232ed6bd5b0bb44"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Giphy.ProfilePageViewModel.loadFavorites() -&gt; ()"
+                  moduleName = "Giphy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatya/Documents/GitHub/GIF_App/Giphy/ProfilePageController/ProfilePageViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "F517E158-D06D-4746-8059-6D87389E976B - 30d4ce568577f79"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Giphy.GifStickerCellConfigurable&gt;&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in Giphy.ProfilePageViewModel.loadFavorites() -&gt; ()"
+                  moduleName = "Giphy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatya/Documents/GitHub/GIF_App/Giphy/ProfilePageController/ProfilePageViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "F517E158-D06D-4746-8059-6D87389E976B - 30d4ce568577f79"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Giphy.GifStickerCellConfigurable&gt;&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in Giphy.ProfilePageViewModel.loadFavorites() -&gt; ()"
+                  moduleName = "Giphy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatya/Documents/GitHub/GIF_App/Giphy/ProfilePageController/ProfilePageViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

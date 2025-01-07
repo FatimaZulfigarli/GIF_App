@@ -9,12 +9,6 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 import FirebaseAuth 
-//
-//  HomeViewModel.swift
-//  Giphy
-//
-//  Created by Fatya on 27.07.24.
-//
 
 enum ContentType: String {
     case gif = "Gif"
@@ -24,7 +18,7 @@ enum ContentType: String {
 
 class HomeViewModel {
     private let homeManager = HomeManager()
-    var favorites: Set<String> = [] // Set to keep track of favorite item IDs
+    var favorites: Set<String> = []
     
     var selectedCategory: ContentType = .gif // Default category is GIF
     
@@ -46,20 +40,20 @@ class HomeViewModel {
     
     
     func addToFavorites(id: String) {
-        //  load the existing favorites from Firebase
         loadFavoritesFromFirebase { [weak self] in
-            // add the new favorite if it's not already in the set
             if let self = self, !self.favorites.contains(id) {
                 self.favorites.insert(id)
-                self.saveFavoritesToFirebase() // Save updated favorites to Firebase
+                self.saveFavoritesToFirebase()
             }
         }
     }
+    
     
     func removeFromFavorites(id: String) {
         favorites.remove(id)
         saveFavoritesToFirebase()
     }
+    
     
     func saveFavoritesToFirebase() {
         guard let userId = Auth.auth().currentUser?.uid else {
@@ -96,7 +90,6 @@ class HomeViewModel {
             
             if let document = document, document.exists {
                 if let favoriteArray = document.data()?["favorites"] as? [String] {
-                    // Use union to add only new items and keep existing ones
                     self?.favorites.formUnion(favoriteArray)
                     print("Favorites loaded from Firebase: \(favoriteArray)")
                 } else {
@@ -110,7 +103,6 @@ class HomeViewModel {
     }
     
     func fetchItem(by id: String) -> GifStickerCellConfigurable? {
-        // Fetch item by ID from gifs, stickers, or emojis
         if let gif = gifs.first(where: { $0.id == id }) {
             return gif
         } else if let sticker = stickers.first(where: { $0.id == id }) {
@@ -203,4 +195,5 @@ class HomeViewModel {
             }
         }
     }
+    
 }

@@ -20,7 +20,7 @@ class RegisterCoordinator: Coordinator {
         if let registerController = storyboard.instantiateViewController(withIdentifier: "RegisterController") as? RegisterController {
             registerController.coordinator = self
             registerController.viewModel?.registrationSuccess = { [weak self] registrationData in
-                self?.navigateToHomeController() // Navigate to HomeController when registration is successful
+                self?.navigateToHomeController()
             }
             navigationController.pushViewController(registerController, animated: true)
         }
@@ -30,7 +30,6 @@ class RegisterCoordinator: Coordinator {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let homeController = storyboard.instantiateViewController(withIdentifier: "HomeController") as? HomeController {
             homeController.coordinator = HomeCoordinator(navigationController: navigationController)
-            // Replace the stack with HomeController
             navigationController.setViewControllers([homeController], animated: true)
         }
     }

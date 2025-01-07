@@ -313,7 +313,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="K1I-Cn-ZGy">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.23452155159999999" green="0.082976573949999993" blue="0.44284643309999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
                         <segue destination="36b-T9-0SU" kind="relationship" relationship="viewControllers" id="Z46-JJ-tP2"/>
@@ -671,11 +671,11 @@
             </objects>
             <point key="canvasLocation" x="-147.32824427480915" y="-25.35211267605634"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="jfd-PG-L7c">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="36b-T9-0SU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="lwr-In-bei"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house" id="lwr-In-bei"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PzN-Z2-Bi9">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -690,11 +690,11 @@
             </objects>
             <point key="canvasLocation" x="2522.9007633587785" y="-333.0985915492958"/>
         </scene>
-        <!--Item 2-->
+        <!--Profile-->
         <scene sceneID="SRI-tV-tDc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nYg-FU-L2S" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="l48-U2-UH8"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.crop.circle" catalog="system" id="l48-U2-UH8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hsL-7O-WWe">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -714,6 +714,8 @@
         <image name="background.gif" width="127" height="149"/>
         <image name="checked" width="24" height="24"/>
         <image name="google24" width="24" height="24"/>
+        <image name="house" catalog="system" width="128" height="104"/>
+        <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <image name="profileBackgroundGIF.gif" width="808" height="140"/>
         <image name="profileGIF.gif" width="194" height="194"/>
         <image name="recaptcha24" width="24" height="24"/>

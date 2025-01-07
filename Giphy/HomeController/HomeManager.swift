@@ -34,4 +34,3 @@ class HomeManager: HomeUseCase {
         }
     }
 }
-

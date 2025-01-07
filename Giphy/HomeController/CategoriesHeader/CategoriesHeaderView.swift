@@ -22,7 +22,6 @@ class CategoriesHeaderView: UICollectionReusableView {
     }
 }
 
-// MARK: - UICollectionViewDataSource
 extension CategoriesHeaderView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -43,17 +42,14 @@ extension CategoriesHeaderView: UICollectionViewDataSource {
     }
 }
 
-// MARK: - UICollectionViewDelegate
 extension CategoriesHeaderView: UICollectionViewDelegate {
     
-    // Action when a cell is selected
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Header cell selected: \(indexPath.item)")
         didSelectCategory?(categories[indexPath.item])
     }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
 extension CategoriesHeaderView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

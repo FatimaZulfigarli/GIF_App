@@ -28,7 +28,6 @@ class RegisterViewModel {
             switch result {
             case .success(let userProfile):
                 print("Google Sign-In successful: \(userProfile.fullname)")
-                // Trigger the success closure which the coordinator listens to
                 self?.registrationSuccess?(RegistrationData(email: userProfile.email ?? "", password: "", fullname: userProfile.fullname))
             case .failure(let error):
                 self?.registrationFailure?("Google Sign-In failed: \(error.localizedDescription)")

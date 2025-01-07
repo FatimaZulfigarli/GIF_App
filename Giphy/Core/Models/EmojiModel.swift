@@ -31,11 +31,11 @@ struct EmojiDatum: Codable, GifStickerCellConfigurable {
     let emojiGroupID: Int?
     let variation: EmojiVariation?
     let variationCount: Int?
-
+    
     var imageURL: String? {
         return images?.original?.url
     }
-
+    
     enum CodingKeys: String, CodingKey {
         case type, id, url, slug
         case bitlyGIFURL = "bitly_gif_url"
@@ -84,7 +84,7 @@ struct EmojiImages: Codable {
     let previewGIF, previewWebp: Emoji480WStill?
     let hd: Emoji4K?
     let the480WStill: Emoji480WStill?
-
+    
     enum CodingKeys: String, CodingKey {
         case original, downsized
         case downsizedLarge = "downsized_large"
@@ -122,7 +122,7 @@ struct Emoji480WStill: Codable {
 struct Emoji4K: Codable {
     let height, width, mp4Size: String?
     let mp4: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case height, width
         case mp4Size = "mp4_size"
@@ -140,7 +140,7 @@ struct EmojiFixedHeight: Codable {
     let webp: String?
     let frames: String?
     let hash: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case height, width, size, url
         case mp4Size = "mp4_size"
@@ -154,7 +154,7 @@ struct EmojiFixedHeight: Codable {
 struct EmojiLooping: Codable {
     let mp4Size: String?
     let mp4: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case mp4Size = "mp4_size"
         case mp4
@@ -171,7 +171,7 @@ enum EmojiTypeEnum: String, Codable {
     case text = "text"
     case sticker = "sticker"
     case unknown
-
+    
     init(from decoder: Decoder) throws {
         self = try EmojiTypeEnum(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .unknown
     }
@@ -189,7 +189,7 @@ struct EmojiUser: Codable {
     let instagramURL: String?
     let websiteURL: String?
     let isVerified: Bool?
-
+    
     enum CodingKeys: String, CodingKey {
         case avatarURL = "avatar_url"
         case bannerImage = "banner_image"
@@ -209,7 +209,7 @@ struct EmojiMeta: Codable {
     let status: Int?
     let msg: String?
     let responseID: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case status, msg
         case responseID = "response_id"
@@ -221,7 +221,7 @@ struct EmojiPagination: Codable {
     let totalCount: Int?
     let count: Int?
     let offset: Int?
-
+    
     enum CodingKeys: String, CodingKey {
         case totalCount = "total_count"
         case count, offset

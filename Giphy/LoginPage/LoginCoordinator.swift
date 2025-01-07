@@ -17,7 +17,7 @@ class LoginCoordinator: Coordinator {
     func start() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let loginController = storyboard.instantiateViewController(withIdentifier: "LoginController") as? LoginController {
-            loginController.coordinator = self // Pass reference to the coordinator
+            loginController.coordinator = self 
             navigationController.pushViewController(loginController, animated: true)
         }
     }

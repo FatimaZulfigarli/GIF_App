@@ -21,7 +21,7 @@ enum Endpoint {
     case emoji
     case gifsSearch(query: String)
     case stickersSearch(query: String)
-
+    
     var path: String {
         switch self {
         case .gifsTrending:

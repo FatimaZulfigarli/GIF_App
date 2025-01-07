@@ -35,7 +35,7 @@ class ProfileManager: ProfilePageUseCase {
             }
         }
     }
-
+    
     func logout(completion: @escaping (String?) -> Void) {
         do {
             try Auth.auth().signOut()

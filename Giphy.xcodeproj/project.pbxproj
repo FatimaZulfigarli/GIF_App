@@ -47,7 +47,7 @@
 		450F90432CB5561B00F5FD24 /* ProfilePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F90422CB5561B00F5FD24 /* ProfilePageViewModel.swift */; };
 		450F90452CB5573200F5FD24 /* ProfilePageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F90442CB5573200F5FD24 /* ProfilePageUseCase.swift */; };
 		450F90472CB5574E00F5FD24 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450F90462CB5574E00F5FD24 /* ProfileManager.swift */; };
-		451AB7492C6FB17300532673 /* SelectedIemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451AB7472C6FB17300532673 /* SelectedIemCell.swift */; };
+		451AB7492C6FB17300532673 /* SelectedItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451AB7472C6FB17300532673 /* SelectedItemCell.swift */; };
 		451AB74A2C6FB17300532673 /* SelectedIemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 451AB7482C6FB17300532673 /* SelectedIemCell.xib */; };
 		45A3142B2C79C9EB0099AC79 /* GIFSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A3142A2C79C9EB0099AC79 /* GIFSearch.swift */; };
 		45A3142D2C7C4EB10099AC79 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A3142C2C7C4EB10099AC79 /* LoginController.swift */; };
@@ -119,7 +119,7 @@
 		450F90422CB5561B00F5FD24 /* ProfilePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageViewModel.swift; sourceTree = "<group>"; };
 		450F90442CB5573200F5FD24 /* ProfilePageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageUseCase.swift; sourceTree = "<group>"; };
 		450F90462CB5574E00F5FD24 /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
-		451AB7472C6FB17300532673 /* SelectedIemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedIemCell.swift; sourceTree = "<group>"; };
+		451AB7472C6FB17300532673 /* SelectedItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedItemCell.swift; sourceTree = "<group>"; };
 		451AB7482C6FB17300532673 /* SelectedIemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedIemCell.xib; sourceTree = "<group>"; };
 		45A3142A2C79C9EB0099AC79 /* GIFSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFSearch.swift; sourceTree = "<group>"; };
 		45A3142C2C7C4EB10099AC79 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -360,7 +360,7 @@
 		45A3146D2C82040F0099AC79 /* SelectedItemCell */ = {
 			isa = PBXGroup;
 			children = (
-				451AB7472C6FB17300532673 /* SelectedIemCell.swift */,
+				451AB7472C6FB17300532673 /* SelectedItemCell.swift */,
 				451AB7482C6FB17300532673 /* SelectedIemCell.xib */,
 			);
 			path = SelectedItemCell;
@@ -472,7 +472,7 @@
 			files = (
 				450F90312CA426B200F5FD24 /* RegisterManager.swift in Sources */,
 				45A314592C7F04730099AC79 /* StickerSearch.swift in Sources */,
-				451AB7492C6FB17300532673 /* SelectedIemCell.swift in Sources */,
+				451AB7492C6FB17300532673 /* SelectedItemCell.swift in Sources */,
 				45A3145F2C8079980099AC79 /* ProfilePageController.swift in Sources */,
 				4508AE392C6B217200588B89 /* SelectedItemHeader.swift in Sources */,
 				4508ADD22C5A9E5800588B89 /* Coordinator.swift in Sources */,

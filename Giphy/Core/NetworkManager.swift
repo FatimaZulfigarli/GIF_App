@@ -17,7 +17,7 @@ class NetworkManager {
                                     parameters: Parameters? = nil,
                                     encoding: ParameterEncoding = URLEncoding.default,
                                     completion: @escaping ((T?, String?) -> Void)) {
-                   AF.request(endpoint.path,
+        AF.request(endpoint.path,
                    method: method,
                    parameters: parameters,
                    encoding: encoding).responseData { response in

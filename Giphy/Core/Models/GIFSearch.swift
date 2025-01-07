@@ -76,7 +76,7 @@ struct GIFImages: Codable {
     let originalMp4, preview: GIFDownsizedSmall?
     let previewGIF, previewWebp, the480WStill: GIFThe480_WStill?
     let hd: GIFDownsizedSmall?
-
+    
     enum CodingKeys: String, CodingKey {
         case original, downsized
         case downsizedLarge = "downsized_large"
@@ -114,7 +114,7 @@ struct GIFThe480_WStill: Codable {
 struct GIFDownsizedSmall: Codable {
     let height, width, mp4Size: String?
     let mp4: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case height, width
         case mp4Size = "mp4_size"
@@ -131,7 +131,7 @@ struct GIFFixedHeight: Codable {
     let webpSize: String?
     let webp: String?
     let frames, hash: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case height, width, size, url
         case mp4Size = "mp4_size"
@@ -145,7 +145,7 @@ struct GIFFixedHeight: Codable {
 struct GIFLooping: Codable {
     let mp4Size: String?
     let mp4: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case mp4Size = "mp4_size"
         case mp4
@@ -162,7 +162,7 @@ struct GIFUser: Codable {
     let instagramURL: String?
     let websiteURL: String?
     let isVerified: Bool?
-
+    
     enum CodingKeys: String, CodingKey {
         case avatarURL = "avatar_url"
         case bannerImage = "banner_image"
@@ -181,7 +181,7 @@ struct GIFUser: Codable {
 struct GIFMeta: Codable {
     let status: Int?
     let msg, responseID: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case status, msg
         case responseID = "response_id"
@@ -209,9 +209,8 @@ enum GIFRating: String, Codable {
     case g = "g"
     case pg = "pg"
     case pg13 = "pg-13"
-    case unknown // Added an unknown case
-
-    // Custom initializer to handle invalid values
+    case unknown 
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         let rawValue = try container.decode(String.self)

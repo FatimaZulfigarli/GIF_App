@@ -45,14 +45,11 @@ class GifStickerCell: UICollectionViewCell {
         
         print("Favorite button tapped")
         if let id = imageView.accessibilityIdentifier {
-            //Check if the current button is filled or not
             let isCurrentlyFavorited = favButton.image(for: .normal) == UIImage(systemName: "heart.fill")
             
-            //  Toggle the button UI immediately
             let newImageName = isCurrentlyFavorited ? "heart" : "heart.fill"
             favButton.setImage(UIImage(systemName: newImageName), for: .normal)
             
-            // Call the callback to update the favorites in the ViewController
             onFavButtonTap?(id)
         }
     }
@@ -69,7 +66,6 @@ class GifStickerCell: UICollectionViewCell {
         self.onTap = onTap
         self.onFavButtonTap = onFavButtonTap
         
-        // Show or hide the favorite button based on the flag
         favButton.isHidden = !showFavButton
     }
     
@@ -78,4 +74,3 @@ class GifStickerCell: UICollectionViewCell {
         favButton.setImage(UIImage(systemName: imageName), for: .normal)
     }
 }
-

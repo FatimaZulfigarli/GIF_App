@@ -30,7 +30,6 @@ extension UIViewController {
             return
         }
         let safariViewController = SFSafariViewController(url: url)
-        // Present Safari view controller from the current view controller
         self.present(safariViewController, animated: true, completion: nil)
     }
 }

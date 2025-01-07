@@ -40,11 +40,11 @@ struct StickerDatum: Codable, GifStickerCellConfigurable {
     let analyticsResponsePayload: String?
     let analytics: StickerAnalytics?
     let altText: String?
-
+    
     var imageURL: String? {
         return images?.fixedHeight?.url
     }
-
+    
     enum CodingKeys: String, CodingKey {
         case type, id, url, slug
         case bitlyGIFURL = "bitly_gif_url"
@@ -103,7 +103,7 @@ struct StickerImages: Codable {
     let hd: Sticker4K?
     let the480WStill: Sticker480WStill?
     let the4K: Sticker4K?
-
+    
     enum CodingKeys: String, CodingKey {
         case original, downsized
         case downsizedLarge = "downsized_large"
@@ -146,7 +146,7 @@ struct Sticker4K: Codable {
     let width: String?
     let mp4Size: String?
     let mp4: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case height, width
         case mp4Size = "mp4_size"
@@ -166,7 +166,7 @@ struct StickerFixedHeight: Codable {
     let webp: String?
     let frames: String?
     let hash: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case height, width, size, url
         case mp4Size = "mp4_size"
@@ -180,7 +180,7 @@ struct StickerFixedHeight: Codable {
 struct StickerLooping: Codable {
     let mp4Size: String?
     let mp4: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case mp4Size = "mp4_size"
         case mp4
@@ -191,9 +191,9 @@ enum StickerRating: String, Codable {
     case g = "g"
     case pg = "pg"
     case pg13 = "pg-13"
-    case r = "r"  // Add this case to handle the "r" rating
-    case unknown // Fallback case for unexpected values
-
+    case r = "r"
+    case unknown
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         let rawValue = try container.decode(String.self)
@@ -207,7 +207,7 @@ enum StickerTypeEnum: String, Codable {
     case text = "text"
     case emoji = "emoji"
     case unknown
-
+    
     init(from decoder: Decoder) throws {
         self = try StickerTypeEnum(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .unknown
     }
@@ -225,7 +225,7 @@ struct StickerUser: Codable {
     let instagramURL: String?
     let websiteURL: String?
     let isVerified: Bool?
-
+    
     enum CodingKeys: String, CodingKey {
         case avatarURL = "avatar_url"
         case bannerImage = "banner_image"
@@ -245,7 +245,7 @@ struct StickerMeta: Codable {
     let status: Int?
     let msg: String?
     let responseID: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case status, msg
         case responseID = "response_id"
@@ -257,7 +257,7 @@ struct StickerPagination: Codable {
     let totalCount: Int?
     let count: Int?
     let offset: Int?
-
+    
     enum CodingKeys: String, CodingKey {
         case totalCount = "total_count"
         case count, offset
