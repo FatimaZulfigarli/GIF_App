@@ -20,21 +20,21 @@ extension UIImage {
         }
         return UIImage.animatedImageWithSource(source)
     }
-
+    
     public class func gif(url: String) -> UIImage? {
         guard let bundleURL = URL(string: url) else {
             print("SwiftGif: This image named \"\(url)\" does not exist")
             return nil
         }
-
+        
         guard let imageData = try? Data(contentsOf: bundleURL) else {
             print("SwiftGif: Cannot turn image named \"\(url)\" into NSData")
             return nil
         }
-
+        
         return gif(data: imageData)
     }
-
+    
     internal class func delayForImageAtIndex(_ index: Int, source: CGImageSource!) -> Double {
         var delay = 0.1
         let cfProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil)
@@ -57,7 +57,7 @@ extension UIImage {
         }
         return delay
     }
-
+    
     internal class func gcdForPair(_ a: Int?, _ b: Int?) -> Int {
         var a = a
         var b = b
@@ -86,7 +86,7 @@ extension UIImage {
             }
         }
     }
-
+    
     internal class func gcdForArray(_ array: Array<Int>) -> Int {
         if array.isEmpty {
             return 1
@@ -97,7 +97,7 @@ extension UIImage {
         }
         return gcd
     }
-
+    
     internal class func animatedImageWithSource(_ source: CGImageSource) -> UIImage? {
         let count = CGImageSourceGetCount(source)
         var images = [CGImage]()
